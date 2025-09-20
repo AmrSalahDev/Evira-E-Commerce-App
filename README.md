@@ -26,7 +26,7 @@ Evira is a premium and modern E-Commerce & Online Shopping app that brings a com
 
 ## 📑 Table of Contents
 - [✨ Badges](#-badges)
-- [🛒 Evira E-Commerce & Online Shop App](#-evira-e-commerce-&-online-shop-app)
+- [🛒 Evira E-Commerce & Online Shop App](#evira-e-commerce--online-shop-app)
 - [🚀 Features](#-features)
 - [📊 App Architecture](#-app-architecture)
 - [🚀 Getting Started](#-getting-started)
