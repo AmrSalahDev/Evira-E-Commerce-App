@@ -22,7 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "continueWithApple": MessageLookupByLibrary.simpleMessage(
+      "Continue with Apple",
+    ),
+    "continueWithFacebook": MessageLookupByLibrary.simpleMessage(
+      "Continue with Facebook",
+    ),
+    "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Continue with Google",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",
@@ -33,6 +49,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "onboarding_title_3": MessageLookupByLibrary.simpleMessage(
       "Let\'s fulfill your daily needs with Evira right now!",
     ),
+    "or": MessageLookupByLibrary.simpleMessage("or"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
+    "signInWithPassword": MessageLookupByLibrary.simpleMessage(
+      "Sign in with password",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
   };
 }

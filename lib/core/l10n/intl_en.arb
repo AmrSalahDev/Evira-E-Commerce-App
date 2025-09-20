@@ -4,6 +4,16 @@
     "onboarding_title_3":"Let's fulfill your daily needs with Evira right now!",
     "next":"Next",
     "getStarted":"Get Started",
-    "skip":"Skip"
+    "skip":"Skip",
+    "letsYouIn":"Let's you in",
+    "continueWithFacebook":"Continue with Facebook",
+    "continueWithGoogle":"Continue with Google",
+    "continueWithApple":"Continue with Apple",
+    "or":"or",
+    "signInWithPassword":"Sign in with password",
+    "dontHaveAccount":"Don't have an account?",
+    "alreadyHaveAccount":"Already have an account?",
+    "signUp":"Sign up",
+    "signIn":"Sign in"
 
 }
