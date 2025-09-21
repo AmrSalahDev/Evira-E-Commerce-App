@@ -21,5 +21,38 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "لديك حساب بالفعل؟",
+    ),
+    "continueWithApple": MessageLookupByLibrary.simpleMessage(
+      "تابع باستخدام آبل",
+    ),
+    "continueWithFacebook": MessageLookupByLibrary.simpleMessage(
+      "تابع باستخدام فيسبوك",
+    ),
+    "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "تابع باستخدام جوجل",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+    "letsYouIn": MessageLookupByLibrary.simpleMessage("دعنا نُدخلك"),
+    "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
+      "نوفّر منتجات عالية الجودة خصيصًا لك",
+    ),
+    "onboarding_title_2": MessageLookupByLibrary.simpleMessage(
+      "رضاك هو أولويتنا رقم واحد",
+    ),
+    "onboarding_title_3": MessageLookupByLibrary.simpleMessage(
+      "لنلبّي احتياجاتك اليومية مع إيفيرا الآن!",
+    ),
+    "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "signInWithPassword": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول بكلمة المرور",
+    ),
+    "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+  };
 }

@@ -35,7 +35,7 @@ class AppRouter {
       ),
       GoRoute(
         path: AppPaths.auth,
-        pageBuilder: GoTransitions.slide.toRight.withFade.call,
+        pageBuilder: GoTransitions.slide.toLeft.withFade.call,
         builder: (context, state) {
           return const AuthScreen();
         },

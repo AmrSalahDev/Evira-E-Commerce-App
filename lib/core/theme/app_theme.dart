@@ -1,16 +1,31 @@
 import 'package:evira_e_commerce/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_transitions/go_transitions.dart';
 
 class AppTheme {
   AppTheme._();
 
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: GoTransitions.fade,
+        TargetPlatform.iOS: GoTransitions.cupertino,
+        TargetPlatform.macOS: GoTransitions.cupertino,
+      },
+    ),
     scaffoldBackgroundColor: AppColors.lightBackground,
   );
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: GoTransitions.fade,
+        TargetPlatform.iOS: GoTransitions.cupertino,
+        TargetPlatform.macOS: GoTransitions.cupertino,
+      },
+    ),
     scaffoldBackgroundColor: AppColors.darkBackground,
   );
 }

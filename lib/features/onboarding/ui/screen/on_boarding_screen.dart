@@ -1,4 +1,3 @@
-import 'package:evira_e_commerce/core/constants/app_colors.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/onboarding/data/models/onboarding_model.dart';
 import 'package:evira_e_commerce/features/onboarding/ui/widgets/next_button_part.dart';
