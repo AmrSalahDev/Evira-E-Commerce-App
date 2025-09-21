@@ -87,13 +87,11 @@ Below is a list of packages used in this Flutter project along with their versio
 
 ## 🎨 UI & Animations
 - `after_layout: ^1.2.0` – Execute code after the first layout  
-- `animated_custom_dropdown: ^3.1.1` – Animated customizable dropdown  
 - `animated_digit: ^3.3.1+2` – Animated number counter  
 - `awesome_card: ^1.1.7` – Credit/Debit card UI widget  
 - `bounce: ^1.0.2` – Bounce effect animations  
 - `carousel_slider: ^5.1.1` – Image/content slider  
 - `custom_refresh_indicator: ^4.0.1` – Custom pull-to-refresh indicator  
-- `flutter_credit_card: ^4.1.0` – Credit card input & visualization  
 - `flutter_screenutil: ^5.9.3` – Responsive UI scaling across devices  
 - `flutter_staggered_animations: ^1.1.1` – Staggered list/grid animations  
 - `flutter_svg: ^2.2.0` – Render SVG images  
@@ -102,9 +100,7 @@ Below is a list of packages used in this Flutter project along with their versio
 - `group_button: ^5.3.4` – Grouped button widget  
 - `lottie: ^3.3.1` – Play Lottie animations  
 - `readmore: ^3.0.0` – Expandable/collapsible text widget  
-- `scroll_to_hide: ^2.2.1` – Hide widgets on scroll  
 - `shimmer: ^3.0.0` – Shimmer loading effect  
-- `skeletonizer: ^2.1.0+1` – Skeleton loaders for shimmer effect  
 - `smooth_page_indicator: ^1.2.1` – PageView indicators with animations  
 - `toastification: ^3.0.3` – Beautiful toast notifications  
 
