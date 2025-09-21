@@ -31,28 +31,29 @@ final class AppStyles {
   // );
 
   static TextStyle onboardingTitleStyle(BuildContext context) =>
-      GoogleFonts.poppins(
+      GoogleFonts.urbanist(
         fontSize: 30.sp,
         fontWeight: FontWeight.w600,
         color: context.textColor,
       );
 
-  static TextStyle largeTextStyle(BuildContext context) => GoogleFonts.poppins(
-    fontSize: 40.sp,
-    fontWeight: FontWeight.w700,
+  static TextStyle largeTextStyle(BuildContext context) => GoogleFonts.urbanist(
+    fontSize: 45.sp,
+    fontWeight: FontWeight.w600,
     color: context.textColor,
   );
 
-  static TextStyle buttonTextStyle(BuildContext context) => GoogleFonts.poppins(
-    fontSize: 17.sp,
-    fontWeight: FontWeight.w500,
-    color: context.textColor,
-  );
+  static TextStyle buttonTextStyle(BuildContext context) =>
+      GoogleFonts.urbanist(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.bold,
+        color: context.textColor,
+      );
 
   static TextStyle dividerTextStyle(BuildContext context) =>
-      GoogleFonts.poppins(
+      GoogleFonts.urbanist(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
-        color: Theme.of(context).colorScheme.outline, // or `hintColor`
+        color: context.dividerTextColor, // or `hintColor`
       );
 }

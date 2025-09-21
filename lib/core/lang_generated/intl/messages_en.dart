@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -34,11 +35,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Continue with Google",
     ),
+    "createYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Create your Account",
+    ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage(
+      "Forgot the password?",
+    ),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
+    "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Login to your Account",
+    ),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",
@@ -50,6 +62,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Let\'s fulfill your daily needs with Evira right now!",
     ),
     "or": MessageLookupByLibrary.simpleMessage("or"),
+    "orContinueWith": MessageLookupByLibrary.simpleMessage("or continue with"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "Sign in with password",

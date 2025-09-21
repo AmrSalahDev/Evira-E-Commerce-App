@@ -14,6 +14,16 @@
     "dontHaveAccount":"Don't have an account?",
     "alreadyHaveAccount":"Already have an account?",
     "signUp":"Sign up",
-    "signIn":"Sign in"
+    "signIn":"Sign in",
+    "email":"Email",
+    "password":"Password",
+    "fullName":"Full Name",
+    "confirmPassword":"Confirm Password",
+    "phoneNumber":"Phone Number",
+    "createYourAccount":"Create your Account",
+    "loginToYourAccount":"Login to your Account",
+    "rememberMe":"Remember me",
+    "orContinueWith":"or continue with",
+    "forgetPassword":"Forgot the password?"
 
 }

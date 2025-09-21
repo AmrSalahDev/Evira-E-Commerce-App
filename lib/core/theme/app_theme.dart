@@ -15,6 +15,11 @@ class AppTheme {
       },
     ),
     scaffoldBackgroundColor: AppColors.lightBackground,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.lightTextFieldBorder,
+      selectionColor: AppColors.lightTextFieldBorder.withAlpha(100),
+      selectionHandleColor: AppColors.lightTextFieldBorder,
+    ),
   );
 
   static ThemeData dark = ThemeData(
@@ -27,6 +32,11 @@ class AppTheme {
       },
     ),
     scaffoldBackgroundColor: AppColors.darkBackground,
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.darkTextFieldBorder,
+      selectionColor: AppColors.darkTextFieldBorder.withAlpha(100),
+      selectionHandleColor: AppColors.darkTextFieldBorder,
+    ),
   );
 }
 
@@ -56,4 +66,17 @@ extension AppColorContext on BuildContext {
   Color get buttonTextColor =>
       isDark ? AppColors.darkButtonText : AppColors.lightButtonText;
   Color get gray300 => isDark ? AppColors.darkGray300 : AppColors.lightGray300;
+  Color get textFieldBorderColor =>
+      isDark ? AppColors.darkTextFieldBorder : AppColors.lightTextFieldBorder;
+  Color get textFieldColor =>
+      isDark ? AppColors.darkTextField : AppColors.lightTextField;
+  Color get textHintColor =>
+      isDark ? AppColors.darkHintText : AppColors.lightHintText;
+  Color get hintColor => isDark ? AppColors.darkHint : AppColors.lightHint;
+  Color get checkBoxColor =>
+      isDark ? AppColors.darkCheckbox : AppColors.lightCheckbox;
+  Color get checkboxIconColor =>
+      isDark ? AppColors.darkCheckboxIcon : AppColors.lightCheckboxIcon;
+  Color get dividerTextColor =>
+      isDark ? AppColors.darkDividerText : AppColors.lightDividerText;
 }

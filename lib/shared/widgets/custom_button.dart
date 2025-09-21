@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
-  final VoidCallback onPressed;
+  final Function()? onPressed;
   final Color backgroundColor;
   final Color textColor;
 
@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: onPressed,
+      onPressed: onPressed ?? () {},
       minWidth: double.infinity,
       height: 65.h,
       color: backgroundColor,

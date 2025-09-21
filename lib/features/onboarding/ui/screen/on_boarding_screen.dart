@@ -2,23 +2,20 @@ import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/onboarding/data/models/onboarding_model.dart';
 import 'package:evira_e_commerce/features/onboarding/ui/widgets/next_button_part.dart';
 import 'package:evira_e_commerce/features/onboarding/ui/widgets/page_view_part.dart';
+import 'package:evira_e_commerce/shared/mixins/stateless_screen_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatelessWidget with StatelessScreenMixin {
   const OnBoardingScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
-          child: const BodySection(),
-        ),
-      ),
-    );
+  bool get showAppBar => false;
+
+  @override
+  Widget buildBody(BuildContext context) {
+    return const BodySection();
   }
 }
 

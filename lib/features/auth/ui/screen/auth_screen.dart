@@ -4,7 +4,7 @@ import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
-import 'package:evira_e_commerce/shared/widgets/base_stateful_screen.dart';
+import 'package:evira_e_commerce/shared/mixins/stateless_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_sign_button.dart';
 import 'package:flutter/gestures.dart';
@@ -16,49 +16,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 import 'package:my_flutter_toolkit/ui/widgets/custom_divider.dart';
 
-class AuthScreen extends BaseStatefulScreen {
+class AuthScreen extends StatelessWidget with StatelessScreenMixin {
   const AuthScreen({super.key});
 
   @override
-  BaseStatefulScreenState<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends BaseStatefulScreenState<AuthScreen> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: SafeArea(
-  //       child: Padding(
-  //         padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: const [HeaderSection(), BodySection()],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  @override
   Widget buildBody(BuildContext context) {
-    return const BodySection();
-  }
-}
-
-class HeaderSection extends StatelessWidget {
-  const HeaderSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.arrow_back),
-      alignment: Alignment.topLeft,
-      iconSize: 30.h,
-      color: context.iconColor,
-      onPressed: () {
-        context.pop();
-      },
-    );
+    return BodySection();
   }
 }
 
@@ -148,6 +111,7 @@ class BodySection extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

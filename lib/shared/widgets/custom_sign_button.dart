@@ -6,15 +6,17 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CustomSignButton extends StatelessWidget {
   final Widget icon;
-  final String title;
+  final String? title;
+  final bool fullWidth;
   final VoidCallback onPressed;
   final bool isLoading;
 
   const CustomSignButton({
     super.key,
-    required this.title,
+    this.title,
     required this.onPressed,
     this.isLoading = false,
+    this.fullWidth = true,
     required this.icon,
   });
 
@@ -22,8 +24,8 @@ class CustomSignButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: isLoading ? null : onPressed,
-      minWidth: double.infinity,
-      height: 65.h,
+      minWidth: fullWidth ? double.infinity : 100.w,
+      height: 70.h,
       color: context.containerColor,
       elevation: 0,
       splashColor: Colors.transparent,
@@ -39,10 +41,17 @@ class CustomSignButton extends StatelessWidget {
             )
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 icon,
-                SizedBox(width: 15.w),
-                Text(title, style: AppStyles.buttonTextStyle(context)),
+                title == null ? const SizedBox() : SizedBox(width: 15.w),
+                title == null
+                    ? const SizedBox()
+                    : Text(
+                        title ?? '',
+                        style: AppStyles.buttonTextStyle(context),
+                      ),
               ],
             ),
     );
