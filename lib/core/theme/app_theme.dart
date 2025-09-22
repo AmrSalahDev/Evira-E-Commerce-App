@@ -7,6 +7,8 @@ class AppTheme {
 
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
+    primaryColor: AppColors.lightBackground,
+    useMaterial3: true,
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: GoTransitions.fade,
@@ -24,6 +26,8 @@ class AppTheme {
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
+    primaryColor: AppColors.darkBackground,
+    useMaterial3: true,
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: GoTransitions.fade,

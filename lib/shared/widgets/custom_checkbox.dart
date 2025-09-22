@@ -14,19 +14,19 @@ class CustomCheckbox extends StatefulWidget {
 
 class _CustomCheckboxState extends State<CustomCheckbox> {
   bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        GestureDetector(
-          onTap: () {
-            setState(() => isChecked = !isChecked);
-            widget.onChecked?.call(isChecked);
-          },
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeInOut,
+    return GestureDetector(
+      onTap: () {
+        setState(() => isChecked = !isChecked);
+        widget.onChecked?.call(isChecked);
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            alignment: Alignment.center,
             width: 29.h,
             height: 29.h,
             decoration: BoxDecoration(
@@ -43,17 +43,18 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                   )
                 : null,
           ),
-        ),
-        SizedBox(width: 10.w),
-        Text(
-          widget.title ?? '',
-          style: GoogleFonts.urbanist(
-            color: context.textColor,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
+
+          SizedBox(width: 10.w),
+          Text(
+            widget.title ?? '',
+            style: GoogleFonts.urbanist(
+              color: context.textColor,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -54,6 +54,6 @@ final class AppStyles {
       GoogleFonts.urbanist(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
-        color: context.dividerTextColor, // or `hintColor`
+        color: context.dividerTextColor,
       );
 }
