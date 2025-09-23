@@ -1,6 +1,7 @@
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 mixin StatelessScreenMixin on StatelessWidget {
   /// Subclasses implement this instead of `build`
@@ -8,11 +9,33 @@ mixin StatelessScreenMixin on StatelessWidget {
 
   bool get showAppBar => true;
 
+  String get title => "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: showAppBar
           ? AppBar(
+              title: title.isNotEmpty
+                  ? Text(
+                      title,
+                      style: GoogleFonts.urbanist(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
+                        color: context.textColor,
+                      ),
+                    )
+                  : null,
+              leading: IconButton(
+                padding: EdgeInsets.zero,
+                iconSize: 30.h,
+
+                constraints: BoxConstraints(minWidth: 48.h, minHeight: 48.h),
+                color: context.iconColor,
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.pop(context),
+              ),
+
               backgroundColor: context.backgroundColor,
               elevation: 0,
               surfaceTintColor: context.backgroundColor,

@@ -35,6 +35,9 @@ dependencies:
   flutter_svg: ^2.2.1
   shared_preferences: ^2.5.3
   font_awesome_flutter: ^10.10.0
+  image_picker: ^1.2.0
+  country_picker: ^2.0.27
+  flutter_multi_formatter: ^2.13.10
 
 dev_dependencies:
   flutter_test:

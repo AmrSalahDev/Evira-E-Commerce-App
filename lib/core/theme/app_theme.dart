@@ -83,4 +83,8 @@ extension AppColorContext on BuildContext {
       isDark ? AppColors.darkCheckboxIcon : AppColors.lightCheckboxIcon;
   Color get dividerTextColor =>
       isDark ? AppColors.darkDividerText : AppColors.lightDividerText;
+  Color get profileBgColor =>
+      isDark ? AppColors.darkProfileBg : AppColors.lightProfileBg;
+  Color get profileIconColor =>
+      isDark ? AppColors.darkProfileIcon : AppColors.lightProfileIcon;
 }

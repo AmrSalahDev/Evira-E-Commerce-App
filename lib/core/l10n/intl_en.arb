@@ -24,6 +24,8 @@
     "loginToYourAccount":"Login to your Account",
     "rememberMe":"Remember me",
     "orContinueWith":"or continue with",
-    "forgetPassword":"Forgot the password?"
+    "forgetPassword":"Forgot the password?",
+    "fillYourProfile":"Fill Your Profile",
+    "search":"Search"
 
 }

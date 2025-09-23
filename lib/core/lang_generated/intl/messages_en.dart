@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "fillYourProfile": MessageLookupByLibrary.simpleMessage(
+      "Fill Your Profile",
+    ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
       "Forgot the password?",
     ),
@@ -66,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "Sign in with password",

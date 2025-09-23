@@ -24,6 +24,8 @@ final class AppColors {
   static const Color lightCheckbox = Color(0xFF101010);
   static const Color lightCheckboxIcon = Color(0xFF101010);
   static const Color lightDividerText = Color(0xFF646464);
+  static const Color lightProfileBg = Color(0xFFf5f5f7);
+  static const Color lightProfileIcon = Color(0xFFe9eaef);
 
   // Dark
   static const Color darkBackground = Color(0xFF191a1f);
@@ -46,4 +48,6 @@ final class AppColors {
   static const Color darkCheckbox = Color(0xFF393939);
   static const Color darkCheckboxIcon = Color(0xFFFFFFFF);
   static const Color darkDividerText = Color(0xFFFFFFFF);
+  static const Color darkProfileBg = Color(0xFF464648);
+  static const Color darkProfileIcon = Color(0xFF393939);
 }

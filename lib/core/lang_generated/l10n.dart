@@ -258,6 +258,21 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Fill Your Profile`
+  String get fillYourProfile {
+    return Intl.message(
+      'Fill Your Profile',
+      name: 'fillYourProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

@@ -10,8 +10,11 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? hintText;
   final IconData? perfixIcon;
+  final IconData? suffixIcon;
   final bool? obscureText;
+  final Function()? onSuffixTap;
   final TextInputType? keyboardType;
+  final bool? readOnly;
 
   const CustomTextField({
     super.key,
@@ -19,8 +22,11 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     this.hintText,
     this.perfixIcon,
+    this.suffixIcon,
     this.obscureText,
     this.keyboardType,
+    this.onSuffixTap,
+    this.readOnly,
   });
 
   @override
@@ -61,6 +67,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         : context.hintColor;
 
     return TextFormField(
+      readOnly: widget.readOnly ?? false,
       keyboardType: widget.keyboardType,
       style: GoogleFonts.urbanist(
         color: context.textColor,
@@ -105,6 +112,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   color: iconColor,
                   size: 27.h,
                 ),
+              )
+            : widget.suffixIcon != null
+            ? GestureDetector(
+                onTap: widget.onSuffixTap,
+                child: Icon(widget.suffixIcon, color: iconColor, size: 24.h),
               )
             : null,
       ),

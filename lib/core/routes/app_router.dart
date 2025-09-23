@@ -1,5 +1,6 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/features/auth/ui/screen/auth_screen.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/screen/fill_profile_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/screen/home_screen.dart';
 import 'package:evira_e_commerce/features/login/ui/screen/login_screen.dart';
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart';
@@ -16,11 +17,12 @@ class AppPaths {
   static final String home = '/home';
   static final String signUp = '/signUp';
   static final String login = '/login';
+  static final String fillProfile = '/fillProfile';
 }
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppPaths.onboarding,
+    initialLocation: AppPaths.fillProfile,
     routes: <RouteBase>[
       GoRoute(
         path: AppPaths.onboarding,
@@ -60,6 +62,12 @@ class AppRouter {
             create: (context) => getIt<TextFieldCubit>(),
             child: const LoginScreen(),
           );
+        },
+      ),
+      GoRoute(
+        path: AppPaths.fillProfile,
+        builder: (context, state) {
+          return const FillProfileScreen();
         },
       ),
     ],
