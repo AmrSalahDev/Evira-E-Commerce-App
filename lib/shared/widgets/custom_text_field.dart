@@ -1,6 +1,7 @@
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,10 +12,13 @@ class CustomTextField extends StatefulWidget {
   final String? hintText;
   final IconData? perfixIcon;
   final IconData? suffixIcon;
+  final Widget? suffix;
   final bool? obscureText;
   final Function()? onSuffixTap;
   final TextInputType? keyboardType;
   final bool? readOnly;
+  final List<TextInputFormatter>? inputFormatters;
+  final VoidCallback? onTap;
 
   const CustomTextField({
     super.key,
@@ -27,6 +31,9 @@ class CustomTextField extends StatefulWidget {
     this.keyboardType,
     this.onSuffixTap,
     this.readOnly,
+    this.suffix,
+    this.inputFormatters,
+    this.onTap,
   });
 
   @override
@@ -67,8 +74,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
         : context.hintColor;
 
     return TextFormField(
+      onTap: widget.onTap,
       readOnly: widget.readOnly ?? false,
       keyboardType: widget.keyboardType,
+      inputFormatters: widget.inputFormatters,
       style: GoogleFonts.urbanist(
         color: context.textColor,
         fontSize: 17.sp,
@@ -118,7 +127,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onTap: widget.onSuffixTap,
                 child: Icon(widget.suffixIcon, color: iconColor, size: 24.h),
               )
-            : null,
+            : widget.suffix,
       ),
     );
   }

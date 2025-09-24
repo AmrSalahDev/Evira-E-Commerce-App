@@ -36,14 +36,16 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
       controller: widget.controller,
       decoration: _buildInputBorder(context),
       keyboardType: TextInputType.phone,
-      maxLength: _initialCountryData?.phoneMaskWithoutCountryCode.length,
-      inputFormatters: [
-        PhoneInputFormatter(
-          allowEndlessPhone: false,
-          defaultCountryCode:
-              _initialCountryData?.countryCode ?? _defaultCountryCode,
-        ),
-      ],
+      maxLength: _initialCountryData?.countryCode == _defaultCountryCode
+          ? 11
+          : _initialCountryData?.phoneMaskWithoutCountryCode.length,
+      // inputFormatters: [
+      //   PhoneInputFormatter(
+      //     allowEndlessPhone: false,
+      //     defaultCountryCode:
+      //         _initialCountryData?.countryCode ?? _defaultCountryCode,
+      //   ),
+      // ],
     );
   }
 
@@ -59,7 +61,8 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
         borderSide: BorderSide(color: context.textFieldBorderColor),
         borderRadius: BorderRadius.circular(15.r),
       ),
-      hintText: _initialCountryData?.phoneMaskWithoutCountryCode,
+      //hintText: _initialCountryData?.phoneMaskWithoutCountryCode,
+      hintText: EviraLang.of(context).phoneNumber,
       hintStyle: GoogleFonts.urbanist(
         color: context.textHintColor,
         fontSize: 17.sp,
@@ -99,7 +102,7 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
   CountryListThemeData _buildCountryListThemeData(BuildContext context) {
     return CountryListThemeData(
       bottomSheetHeight: context.screenHeight * 0.8,
-      backgroundColor: context.backgroundColor,
+      backgroundColor: context.containerColor,
       textStyle: GoogleFonts.urbanist(
         color: context.textColor,
         fontSize: 18.sp,
@@ -164,6 +167,7 @@ class CountryDisplayPart extends StatelessWidget {
         Icon(Icons.keyboard_arrow_down, size: 27.sp),
         SizedBox(width: 10.w),
         Text(
+          textDirection: TextDirection.ltr,
           '+$phoneCode',
           style: GoogleFonts.urbanist(
             color: context.textColor,

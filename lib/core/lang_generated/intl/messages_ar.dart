@@ -23,31 +23,60 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
-      "لديك حساب بالفعل؟",
+      "هل لديك حساب بالفعل؟",
+    ),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
     ),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
-      "تابع باستخدام آبل",
+      "المتابعة باستخدام آبل",
     ),
     "continueWithFacebook": MessageLookupByLibrary.simpleMessage(
-      "تابع باستخدام فيسبوك",
+      "المتابعة باستخدام فيسبوك",
     ),
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
-      "تابع باستخدام جوجل",
+      "المتابعة باستخدام جوجل",
     ),
+    "continuee": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
+    "dateOfBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
+    "done": MessageLookupByLibrary.simpleMessage("تم"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
+    "fillYourProfile": MessageLookupByLibrary.simpleMessage("أكمل ملفك الشخصي"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "gender": MessageLookupByLibrary.simpleMessage("النوع"),
     "getStarted": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
-    "letsYouIn": MessageLookupByLibrary.simpleMessage("دعنا نُدخلك"),
+    "letsYouIn": MessageLookupByLibrary.simpleMessage("دعنا ندخلك"),
+    "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
+      "سجّل الدخول إلى حسابك",
+    ),
+    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "nickName": MessageLookupByLibrary.simpleMessage("الاسم المستعار"),
+    "ok": MessageLookupByLibrary.simpleMessage("موافق"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
-      "نوفّر منتجات عالية الجودة خصيصًا لك",
+      "نحن نوفر منتجات عالية الجودة خصيصًا لك",
     ),
     "onboarding_title_2": MessageLookupByLibrary.simpleMessage(
-      "رضاك هو أولويتنا رقم واحد",
+      "رضاك هو أولويتنا الأولى",
     ),
     "onboarding_title_3": MessageLookupByLibrary.simpleMessage(
       "لنلبّي احتياجاتك اليومية مع إيفيرا الآن!",
     ),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "orContinueWith": MessageLookupByLibrary.simpleMessage("أو تابع باستخدام"),
+    "other": MessageLookupByLibrary.simpleMessage("آخر"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "selectDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول بكلمة المرور",

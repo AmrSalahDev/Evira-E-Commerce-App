@@ -6,43 +6,49 @@ version: 1.0.0+1
 environment:
   sdk: ^3.9.0
 dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
   build_runner: ^2.7.0
   cached_network_image: ^3.4.1
   change_app_package_name: ^1.5.0
+  country_picker: ^2.0.27
+  cupertino_icons: ^1.0.8
   equatable: ^2.0.7
+  fade_shimmer: ^2.4.0
+  flutter:
+    sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_gen_runner: ^5.11.0
+  flutter_holo_date_picker: ^2.0.0
+  flutter_localization: ^0.3.3
+  flutter_multi_formatter: ^2.13.10
   flutter_native_splash: ^2.4.6
   flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.2.1
+  font_awesome_flutter: ^10.10.0
   get_it: ^8.2.0
   go_router: ^16.2.0
   go_transitions: ^0.8.2
   google_fonts: ^6.3.0
+  group_button: ^5.3.4
+  image_picker: ^1.2.0
   injectable: ^2.5.1
   injectable_generator: ^2.8.1
-  rename: ^3.1.0
+  intl: ^0.20.2
+  intl_utils: ^2.8.11
+  loading_animation_widget: ^1.3.0
   my_flutter_toolkit:
     git:
       url: https://github.com/AmrSalahDev/MyFlutterToolKit.git
       ref: main
-  flutter_localization: ^0.3.3
-  intl_utils: ^2.8.11
-  smooth_page_indicator: ^1.2.1
-  loading_animation_widget: ^1.3.0
-  flutter_svg: ^2.2.1
+  pattern_formatter: ^4.0.1
+  rename: ^3.1.0
   shared_preferences: ^2.5.3
-  font_awesome_flutter: ^10.10.0
-  image_picker: ^1.2.0
-  country_picker: ^2.0.27
-  flutter_multi_formatter: ^2.13.10
+  shimmer: ^3.0.0
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
 
 flutter_gen:
   output: lib/core/gen/
@@ -50,8 +56,8 @@ flutter_gen:
     image: true
     flutter_svg: true
     rive: false
-    lottie: 
-    
+    lottie: null
+
 flutter_intl:
   enabled: true # Required. Must be set to true to activate the package. Default: false
   class_name: EviraLang # Optional. Sets the name for the generated localization class. Default: S
@@ -68,13 +74,10 @@ flutter:
     - assets/images/onboarding/
     - assets/images/splash/
     - assets/icons/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

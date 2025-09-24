@@ -1,13 +1,16 @@
-import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/widgets/datetime_textfield_part.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/widgets/gender_textfield_part.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/widgets/phone_number_textfield_part.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/widgets/profile_image_part.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_flutter_toolkit/core/utils/text_field_utils/validators.dart';
 
 class FillProfileScreen extends StatefulWidget {
   const FillProfileScreen({super.key});
@@ -19,11 +22,15 @@ class FillProfileScreen extends StatefulWidget {
 class _FillProfileScreenState extends State<FillProfileScreen>
     with StatefulScreenMixin {
   late final TextEditingController phoneNumberController;
+  late final TextEditingController dateController;
+  late final TextEditingController genderController;
 
   @override
   void initState() {
     super.initState();
     phoneNumberController = TextEditingController();
+    dateController = TextEditingController();
+    genderController = TextEditingController();
   }
 
   @override
@@ -39,94 +46,61 @@ class _FillProfileScreenState extends State<FillProfileScreen>
   Widget buildBody(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 50.h),
-            ProfileImagePart(),
-            SizedBox(height: 30.h),
-            CustomTextField(hintText: "Full Name"),
-            SizedBox(height: 25.h),
-            CustomTextField(hintText: "Nickname"),
-            SizedBox(height: 25.h),
-            CustomTextField(
-              hintText: "Date of Birth",
-              suffixIcon: FontAwesomeIcons.calendar,
-            ),
-            SizedBox(height: 25.h),
-            CustomTextField(
-              hintText: "Email",
-              suffixIcon: FontAwesomeIcons.envelope,
-            ),
-            SizedBox(height: 25.h),
-            PhoneNumberTextFieldPart(controller: phoneNumberController),
-            SizedBox(height: 25.h),
-            CustomTextField(
-              readOnly: true,
-              hintText: "Gender",
-              suffixIcon: FontAwesomeIcons.caretDown,
-              onSuffixTap: () async {},
-            ),
-            SizedBox(height: 50.h),
-            CustomButton(
-              title: "Continue",
-              onPressed: () {},
-              backgroundColor: context.buttonInactiveColor,
-              textColor: context.textInactiveColor,
-            ),
-          ],
+        clipBehavior: Clip.none,
+        child: BodySection(
+          genderController: genderController,
+          dateController: dateController,
+          phoneNumberController: phoneNumberController,
         ),
       ),
     );
   }
 }
 
-class ProfileImagePart extends StatelessWidget {
-  const ProfileImagePart({super.key});
+class BodySection extends StatelessWidget {
+  const BodySection({
+    super.key,
+    required this.dateController,
+    required this.phoneNumberController,
+    required this.genderController,
+  });
+
+  final TextEditingController dateController;
+  final TextEditingController phoneNumberController;
+  final TextEditingController genderController;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 170.w,
-          height: 170.w,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: context.profileBgColor,
-          ),
-          child: Assets.icons.profile.svg(
-            width: 150.w,
-            height: 150.h,
-            fit: BoxFit.contain,
-            colorFilter: ColorFilter.mode(
-              context.profileIconColor,
-              BlendMode.srcIn,
-            ),
-          ),
+        SizedBox(height: 50.h),
+        ProfileImagePart(),
+        SizedBox(height: 30.h),
+        CustomTextField(hintText: EviraLang.of(context).fullName),
+        SizedBox(height: 25.h),
+        CustomTextField(hintText: EviraLang.of(context).nickName),
+        SizedBox(height: 25.h),
+        DateTimeTextFieldPart(dateController: dateController),
+        SizedBox(height: 25.h),
+        CustomTextField(
+          keyboardType: TextInputType.emailAddress,
+          validator: (value) => Validators.email(value: value),
+          hintText: EviraLang.of(context).email,
+          suffixIcon: FontAwesomeIcons.envelope,
         ),
-        Positioned(
-          right: 10.w,
-          bottom: 5.h,
-          child: GestureDetector(
-            child: Container(
-              width: 37.h,
-              height: 37.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: context.iconColor,
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: Icon(
-                FontAwesomeIcons.pen,
-                color: context.textActiveColor,
-                size: 22.h,
-              ),
-            ),
-          ),
+        SizedBox(height: 25.h),
+        PhoneNumberTextFieldPart(controller: phoneNumberController),
+        SizedBox(height: 25.h),
+        GenderTextFieldPart(controller: genderController),
+        SizedBox(height: 50.h),
+        CustomButton(
+          title: EviraLang.of(context).continuee,
+          onPressed: () {},
+          backgroundColor: context.buttonInactiveColor,
+          textColor: context.textInactiveColor,
         ),
+        SizedBox(height: 50.h),
       ],
     );
   }

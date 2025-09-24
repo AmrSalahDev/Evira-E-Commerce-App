@@ -26,6 +26,19 @@
     "orContinueWith":"or continue with",
     "forgetPassword":"Forgot the password?",
     "fillYourProfile":"Fill Your Profile",
-    "search":"Search"
+    "search":"Search",
+    "selectDate":"Select Date",
+    "cancel":"Cancel",
+    "done":"Done",
+    "ok":"OK",
+    "nickName":"Nickname",
+    "dateOfBirth":"Date of Birth",
+    "gender":"Gender",
+    "male":"Male",
+    "female":"Female",
+    "other":"Other",
+    "continuee":"Continue"
+    
+
 
 }

@@ -9,6 +9,9 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.lightBackground,
     useMaterial3: true,
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.lightIcon,
+    ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: GoTransitions.fade,
@@ -22,12 +25,29 @@ class AppTheme {
       selectionColor: AppColors.lightTextFieldBorder.withAlpha(100),
       selectionHandleColor: AppColors.lightTextFieldBorder,
     ),
+    datePickerTheme: DatePickerThemeData(
+      backgroundColor: AppColors.lightContainer,
+      surfaceTintColor: AppColors.lightContainer,
+      dayStyle: TextStyle(color: AppColors.lightText),
+      yearStyle: TextStyle(color: AppColors.lightText),
+      dividerColor: AppColors.lightDivider,
+
+      cancelButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.lightText),
+      ),
+      confirmButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.lightText),
+      ),
+    ),
   );
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
     primaryColor: AppColors.darkBackground,
     useMaterial3: true,
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.darkIcon,
+    ),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: GoTransitions.fade,
@@ -40,6 +60,22 @@ class AppTheme {
       cursorColor: AppColors.darkTextFieldBorder,
       selectionColor: AppColors.darkTextFieldBorder.withAlpha(100),
       selectionHandleColor: AppColors.darkTextFieldBorder,
+    ),
+    datePickerTheme: DatePickerThemeData(
+      todayBackgroundColor: WidgetStatePropertyAll(AppColors.lightBackground),
+      todayForegroundColor: WidgetStatePropertyAll(AppColors.lightText),
+
+      backgroundColor: AppColors.darkContainer,
+      surfaceTintColor: AppColors.darkContainer,
+      dayStyle: TextStyle(color: AppColors.darkText),
+      dividerColor: AppColors.darkDivider,
+      yearStyle: TextStyle(color: AppColors.darkText),
+      cancelButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.darkText),
+      ),
+      confirmButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(AppColors.darkText),
+      ),
     ),
   );
 }
@@ -87,4 +123,8 @@ extension AppColorContext on BuildContext {
       isDark ? AppColors.darkProfileBg : AppColors.lightProfileBg;
   Color get profileIconColor =>
       isDark ? AppColors.darkProfileIcon : AppColors.lightProfileIcon;
+  Color get shimmerBaseColor =>
+      isDark ? AppColors.darkShimmerBase : AppColors.lightShimmerBase;
+  Color get shimmerHighlightColor =>
+      isDark ? AppColors.darkShimmerHighlight : AppColors.lightShimmerHighlight;
 }

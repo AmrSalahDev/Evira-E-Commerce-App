@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
@@ -35,13 +36,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueWithGoogle": MessageLookupByLibrary.simpleMessage(
       "Continue with Google",
     ),
+    "continuee": MessageLookupByLibrary.simpleMessage("Continue"),
     "createYourAccount": MessageLookupByLibrary.simpleMessage(
       "Create your Account",
     ),
+    "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+    "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fillYourProfile": MessageLookupByLibrary.simpleMessage(
       "Fill Your Profile",
     ),
@@ -49,12 +54,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Forgot the password?",
     ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Account",
     ),
+    "male": MessageLookupByLibrary.simpleMessage("Male"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
+    "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",
     ),
@@ -66,10 +75,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "or": MessageLookupByLibrary.simpleMessage("or"),
     "orContinueWith": MessageLookupByLibrary.simpleMessage("or continue with"),
+    "other": MessageLookupByLibrary.simpleMessage("Other"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "Sign in with password",

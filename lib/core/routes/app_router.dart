@@ -1,5 +1,6 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/features/auth/ui/screen/auth_screen.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/screen/fill_profile_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/screen/home_screen.dart';
 import 'package:evira_e_commerce/features/login/ui/screen/login_screen.dart';
@@ -67,7 +68,13 @@ class AppRouter {
       GoRoute(
         path: AppPaths.fillProfile,
         builder: (context, state) {
-          return const FillProfileScreen();
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<TextFieldCubit>()),
+              BlocProvider(create: (context) => getIt<FillProfileCubit>()),
+            ],
+            child: const FillProfileScreen(),
+          );
         },
       ),
     ],

@@ -10,6 +10,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:evira_e_commerce/core/services/theme_service.dart' as _i193;
+import 'package:evira_e_commerce/features/fill_profile/data/repos/image_picker_repo_impl.dart'
+    as _i782;
+import 'package:evira_e_commerce/features/fill_profile/domain/repos/image_picker_repo.dart'
+    as _i1011;
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/image_picker_usecase.dart'
+    as _i49;
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/recover_lost_image_usecase.dart'
+    as _i419;
+import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart'
+    as _i179;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
@@ -37,10 +47,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i733.SetThemeModeUseCase>(
       () => _i733.SetThemeModeUseCase(gh<_i193.ThemeService>()),
     );
+    gh.lazySingleton<_i1011.ImagePickerRepo>(() => _i782.ImagePickerRepoImpl());
     gh.lazySingleton<_i436.ThemeCubit>(
       () => _i436.ThemeCubit(
         gh<_i820.GetThemeModeUseCase>(),
         gh<_i733.SetThemeModeUseCase>(),
+      ),
+    );
+    gh.factory<_i49.ImagePickerUsecase>(
+      () => _i49.ImagePickerUsecase(gh<_i1011.ImagePickerRepo>()),
+    );
+    gh.factory<_i419.RecoverLostImageUsecase>(
+      () => _i419.RecoverLostImageUsecase(gh<_i1011.ImagePickerRepo>()),
+    );
+    gh.factory<_i179.FillProfileCubit>(
+      () => _i179.FillProfileCubit(
+        gh<_i49.ImagePickerUsecase>(),
+        gh<_i419.RecoverLostImageUsecase>(),
       ),
     );
     return this;
