@@ -1,13 +1,11 @@
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
-import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/widgets/datetime_textfield_part.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/widgets/fill_profile_button_part.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/widgets/gender_textfield_part.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/widgets/phone_number_textfield_part.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/widgets/profile_image_part.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
-import 'package:evira_e_commerce/shared/cubits/text_field_state.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
-import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -119,6 +117,7 @@ class BodySection extends StatelessWidget {
           CustomTextField(
             controller: fullNameController,
             hintText: EviraLang.of(context).fullName,
+            keyboardType: TextInputType.name,
             fieldKey: 'name',
             validator: (value) => Validators.name(value: value),
           ),
@@ -127,6 +126,7 @@ class BodySection extends StatelessWidget {
             controller: nickNameController,
             hintText: EviraLang.of(context).nickName,
             fieldKey: 'nickName',
+            keyboardType: TextInputType.name,
             validator: (value) => Validators.name(value: value),
           ),
           SizedBox(height: 25.h),
@@ -149,43 +149,6 @@ class BodySection extends StatelessWidget {
           SizedBox(height: 50.h),
         ],
       ),
-    );
-  }
-}
-
-class FillProfileButton extends StatelessWidget {
-  const FillProfileButton({super.key, required this.formKey});
-
-  final GlobalKey<FormState> formKey;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TextFieldCubit, TextFieldState>(
-      builder: (context, state) {
-        final isEnabled = state is TextFieldsUpdated && state.allFieldsFilled;
-        return CustomButton(
-          title: EviraLang.of(context).continuee,
-          onPressed: isEnabled
-              ? () {
-                  if (formKey.currentState?.validate() ?? false) {
-                    // context.read<FillProfileCubit>().fillProfile(
-                    //     fullName: fullNameController.text,
-                    //     nickName: nickNameController.text,
-                    //     email: emailController.text,
-                    //     date: dateController.text,
-                    //     gender: genderController.text,
-                    //     phoneNumber: phoneNumberController.text);
-                  }
-                }
-              : null,
-          backgroundColor: isEnabled
-              ? context.buttonActiveColor
-              : context.buttonInactiveColor,
-          textColor: isEnabled
-              ? context.textActiveColor
-              : context.textInactiveColor,
-        );
-      },
     );
   }
 }
