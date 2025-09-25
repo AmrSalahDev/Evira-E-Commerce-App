@@ -26,3 +26,21 @@ class ProfileImageError extends FillProfileState {
   @override
   List<Object> get props => [message];
 }
+
+class ProfileShowDatePickerLoading extends FillProfileState {}
+
+class ProfileShowDatePickerLoaded extends FillProfileState {
+  final String datePicked;
+  const ProfileShowDatePickerLoaded(this.datePicked);
+
+  @override
+  List<Object> get props => [datePicked];
+}
+
+class ProfileShowDatePickerError extends FillProfileState {
+  final String message;
+  const ProfileShowDatePickerError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}

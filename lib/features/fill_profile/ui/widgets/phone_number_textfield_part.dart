@@ -2,7 +2,9 @@ import 'package:country_picker/country_picker.dart';
 import 'package:evira_e_commerce/core/extensions/string_extensions.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,6 +38,9 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
       controller: widget.controller,
       decoration: _buildInputBorder(context),
       keyboardType: TextInputType.phone,
+      onChanged: (value) {
+        context.read<TextFieldCubit>().updateField('phone', value);
+      },
       maxLength: _initialCountryData?.countryCode == _defaultCountryCode
           ? 11
           : _initialCountryData?.phoneMaskWithoutCountryCode.length,

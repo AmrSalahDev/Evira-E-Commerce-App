@@ -1,10 +1,12 @@
 import 'package:evira_e_commerce/core/enums/gender.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -17,24 +19,25 @@ class GenderTextFieldPart extends StatefulWidget {
 }
 
 class _GenderTextFieldPartState extends State<GenderTextFieldPart> {
-  Gender? selectedGender = Gender.male;
+  Gender? selectedGender = Gender.none;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      fieldKey: 'gender',
       controller: widget.controller,
       readOnly: true,
       hintText: EviraLang.of(context).gender,
       suffixIcon: FontAwesomeIcons.caretDown,
       onTap: () async {
-        await _showGenderSheet();
+        await _showGenderSheet(context);
       },
     );
   }
 
-  Future<void> _showGenderSheet() async {
+  Future<void> _showGenderSheet(BuildContext parentContext) async {
     await showModalBottomSheet(
-      context: context,
+      context: parentContext,
       backgroundColor: context.containerColor,
       showDragHandle: true,
       builder: (context) {
@@ -56,6 +59,10 @@ class _GenderTextFieldPartState extends State<GenderTextFieldPart> {
                         setModalState(() {
                           selectedGender = value;
                           widget.controller.text = selectedGender!.title;
+                          parentContext.read<TextFieldCubit>().updateField(
+                            'gender',
+                            selectedGender!.title,
+                          );
                         });
 
                         Navigator.pop(context);

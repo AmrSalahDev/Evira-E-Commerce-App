@@ -26,6 +26,7 @@ class SignupFormsPart extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
+            fieldKey: 'email',
             validator: (value) => Validators.email(value: value),
             controller: _emailController,
             hintText: EviraLang.of(context).email,
@@ -34,6 +35,7 @@ class SignupFormsPart extends StatelessWidget {
           ),
           SizedBox(height: 25.h),
           CustomTextField(
+            fieldKey: 'password',
             controller: _passwordController,
             validator: (value) => Validators.password(value: value),
             hintText: EviraLang.of(context).password,

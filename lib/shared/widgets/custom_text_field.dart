@@ -19,6 +19,9 @@ class CustomTextField extends StatefulWidget {
   final bool? readOnly;
   final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onTap;
+  final String? fieldKey;
+  final Widget? suffixLoading;
+  final bool? isSuffixLoading;
 
   const CustomTextField({
     super.key,
@@ -34,6 +37,9 @@ class CustomTextField extends StatefulWidget {
     this.suffix,
     this.inputFormatters,
     this.onTap,
+    this.fieldKey,
+    this.suffixLoading,
+    this.isSuffixLoading,
   });
 
   @override
@@ -42,25 +48,27 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool _obscureText = false;
+  late VoidCallback _listener;
   final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
     _focusNode.addListener(() {
-      setState(() {}); // Rebuild when focus changes
+      setState(() {});
     });
 
-    widget.controller?.addListener(() {
-      setState(() {}); // Rebuild when text changes
-      context.read<TextFieldCubit>().isEmpty(widget.controller!.text.isEmpty);
-    });
+    _listener = () {
+      setState(() {});
+    };
+
+    widget.controller?.addListener(_listener);
   }
 
   @override
   void dispose() {
     _focusNode.dispose();
-    widget.controller?.removeListener(() {});
+    widget.controller?.removeListener(_listener);
     super.dispose();
   }
 
@@ -80,13 +88,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
       inputFormatters: widget.inputFormatters,
       style: GoogleFonts.urbanist(
         color: context.textColor,
-        fontSize: 17.sp,
-        fontWeight: FontWeight.w400,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w500,
       ),
       focusNode: _focusNode,
       obscureText: widget.obscureText == true && !_obscureText,
       controller: widget.controller,
       validator: widget.validator,
+      onChanged: (value) {
+        if (widget.readOnly != true && widget.fieldKey != null) {
+          context.read<TextFieldCubit>().updateField(widget.fieldKey!, value);
+        }
+      },
       decoration: InputDecoration(
         filled: true,
         fillColor: context.textFieldColor,
@@ -122,6 +135,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   size: 27.h,
                 ),
               )
+            : widget.isSuffixLoading == true
+            ? widget.suffixLoading
             : widget.suffixIcon != null
             ? GestureDetector(
                 onTap: widget.onSuffixTap,

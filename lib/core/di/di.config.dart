@@ -10,14 +10,20 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:evira_e_commerce/core/services/theme_service.dart' as _i193;
+import 'package:evira_e_commerce/features/fill_profile/data/repos/fill_profile_repo_impl.dart'
+    as _i133;
 import 'package:evira_e_commerce/features/fill_profile/data/repos/image_picker_repo_impl.dart'
     as _i782;
+import 'package:evira_e_commerce/features/fill_profile/domain/repos/fill_profile_repo.dart'
+    as _i623;
 import 'package:evira_e_commerce/features/fill_profile/domain/repos/image_picker_repo.dart'
     as _i1011;
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/image_picker_usecase.dart'
     as _i49;
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/recover_lost_image_usecase.dart'
     as _i419;
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/show_date_picker_usecase.dart'
+    as _i494;
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart'
     as _i179;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
@@ -41,6 +47,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i672.OnboardingCubit>(() => _i672.OnboardingCubit());
     gh.factory<_i669.TextFieldCubit>(() => _i669.TextFieldCubit());
     gh.lazySingleton<_i193.ThemeService>(() => _i193.ThemeService());
+    gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.factory<_i820.GetThemeModeUseCase>(
       () => _i820.GetThemeModeUseCase(gh<_i193.ThemeService>()),
     );
@@ -60,10 +67,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i419.RecoverLostImageUsecase>(
       () => _i419.RecoverLostImageUsecase(gh<_i1011.ImagePickerRepo>()),
     );
+    gh.factory<_i494.ShowDatePickerUsecase>(
+      () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
+    );
     gh.factory<_i179.FillProfileCubit>(
       () => _i179.FillProfileCubit(
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
+        gh<_i494.ShowDatePickerUsecase>(),
       ),
     );
     return this;
