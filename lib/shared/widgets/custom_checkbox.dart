@@ -49,8 +49,8 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
             widget.title ?? '',
             style: GoogleFonts.urbanist(
               color: context.textColor,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
+              fontSize: 17.sp,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],

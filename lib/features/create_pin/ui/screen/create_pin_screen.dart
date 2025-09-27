@@ -61,9 +61,15 @@ class _CreatePinScreenState extends State<CreatePinScreen>
             SizedBox(height: 70.h),
             PinTextField(
               pinController: pinController,
-              onCompleted: (value) {
+              isObscureText: true,
+              onCompleted: (value) {},
+              onChanged: (value) {
                 setState(() {
-                  isPinCompleted = true;
+                  if (value.length == 4) {
+                    isPinCompleted = true;
+                  } else {
+                    isPinCompleted = false;
+                  }
                 });
               },
             ),

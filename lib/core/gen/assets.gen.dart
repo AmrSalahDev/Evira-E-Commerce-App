@@ -47,6 +47,14 @@ class $AssetsImagesGen {
     'assets/images/account_setup_successful_logo_light.png',
   );
 
+  /// File path: assets/images/forgot_password_logo_dark.png
+  AssetGenImage get forgotPasswordLogoDark =>
+      const AssetGenImage('assets/images/forgot_password_logo_dark.png');
+
+  /// File path: assets/images/forgot_password_logo_light.png
+  AssetGenImage get forgotPasswordLogoLight =>
+      const AssetGenImage('assets/images/forgot_password_logo_light.png');
+
   /// File path: assets/images/lets_you_in_dark.png
   AssetGenImage get letsYouInDark =>
       const AssetGenImage('assets/images/lets_you_in_dark.png');
@@ -66,6 +74,8 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     accountSetupSuccessfulLogoDark,
     accountSetupSuccessfulLogoLight,
+    forgotPasswordLogoDark,
+    forgotPasswordLogoLight,
     letsYouInDark,
     letsYouInLight,
   ];

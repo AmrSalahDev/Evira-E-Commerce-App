@@ -49,6 +49,13 @@
     "settings":"Settings",
     "tooManyAttempts":"Too many attempts. Try again after 30 seconds.",
     "accountIsReady":"Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..",
-    "congratulations":"Congratulations!"
+    "congratulations":"Congratulations!",
+    "forgetPasswordTitle":"Forget Password",
+    "forgetPasswordDescription":"Select which contact details should we use to reset your password",
+    "viaEmail":"via Email:",
+    "viaSMS":"via SMS:",
+    "codeHasBeenSend":"Code has been send to ",
+    "verify":"Verify"
+    
 
 }

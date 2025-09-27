@@ -1,6 +1,7 @@
 import 'package:evira_e_commerce/core/constants/app_styles.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/auth/ui/widgets/dont_have_account_part.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:evira_e_commerce/shared/widgets/custom_sign_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 import 'package:my_flutter_toolkit/ui/widgets/custom_divider.dart';
 
@@ -46,8 +48,9 @@ class _BodySection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 30.h),
         Image.asset(
-          Theme.of(context).brightness == Brightness.dark
+          context.isDark
               ? Assets.images.letsYouInDark.path
               : Assets.images.letsYouInLight.path,
           width: context.screenWidth * 0.75,
@@ -94,7 +97,7 @@ class _BodySection extends StatelessWidget {
           backgroundColor: context.buttonColor,
           textColor: context.buttonTextColor,
           onPressed: () async {
-            await context.read<ThemeCubit>().toggleTheme();
+            context.push(AppPaths.login);
           },
         ),
         SizedBox(height: 25.h),

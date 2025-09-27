@@ -28,6 +28,7 @@ final class AppColors {
   static const Color lightProfileIcon = Color(0xFFe9eaef);
   static const Color lightShimmerBase = Color(0xFFE0E0E0);
   static const Color lightShimmerHighlight = Color(0xFFF5F5F5);
+  static const Color lightGrayBackground = Color(0xFFececec);
 
   // Dark
   static const Color darkBackground = Color(0xFF191a1f);
@@ -54,4 +55,5 @@ final class AppColors {
   static const Color darkProfileIcon = Color(0xFF393939);
   static const Color darkShimmerBase = Color(0xFF424242);
   static const Color darkShimmerHighlight = Color(0xFF757575);
+  static const Color darkGrayBackground = Color(0xFF35383f);
 }

@@ -11,6 +11,8 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   String get title => "";
 
+  Widget? buildBottomNavigationBar() => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +49,13 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
           padding: EdgeInsets.only(left: 20.w, right: 20.w),
           child: buildBody(context),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom, // keyboard height
+        ),
+
+        child: buildBottomNavigationBar(),
       ),
     );
   }

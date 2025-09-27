@@ -2,7 +2,7 @@ import 'package:evira_e_commerce/core/constants/app_styles.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/dont_have_account_part.dart';
-import 'package:evira_e_commerce/features/login/ui/widgets/forget_password_part.dart';
+import 'package:evira_e_commerce/features/login/ui/widgets/forgot_password_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_button_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_buttons_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_forms_part.dart';
@@ -87,9 +87,9 @@ class _BodySection extends StatelessWidget {
         CustomCheckbox(title: EviraLang.of(context).rememberMe),
         SizedBox(height: 25.h),
         SignInButtonPart(formKey: _formKey),
+        SizedBox(height: 15.h),
+        ForgotPasswordPart(),
         SizedBox(height: 30.h),
-        ForgetPasswordPart(),
-        SizedBox(height: 40.h),
         CustomDivider(
           title: EviraLang.of(context).orContinueWith,
           color: context.dividerColor,
@@ -99,7 +99,7 @@ class _BodySection extends StatelessWidget {
         SignInButtonsPart(),
         SizedBox(height: 40.h),
         DontHaveAccountPart(),
-        SizedBox(height: 30.h),
+        SizedBox(height: 40.h),
       ],
     );
   }

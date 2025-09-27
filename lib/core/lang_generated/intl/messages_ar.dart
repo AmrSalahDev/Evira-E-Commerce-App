@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accountIsReady": MessageLookupByLibrary.simpleMessage(
+      "حسابك جاهز للاستخدام. سيتم تحويلك إلى الصفحة الرئيسية خلال\nثوانٍ قليلة..",
+    ),
     "addFingerprint": MessageLookupByLibrary.simpleMessage(
       "أضف بصمة إصبع لجعل حسابك\nأكثر أمانًا.",
     ),
@@ -41,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "congratulations": MessageLookupByLibrary.simpleMessage("تهانينا!"),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "المتابعة باستخدام آبل",
     ),

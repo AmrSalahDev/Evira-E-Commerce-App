@@ -86,7 +86,7 @@ class _SetFingerprintScreenState extends State<SetFingerprintScreen>
                     onPressed: () async {
                       await AccountSetupSuccessfulDialog.show(context);
                     },
-                    backgroundColor: context.textFieldColor,
+                    backgroundColor: context.grayBackgroundColor,
                     textColor: context.textColor,
                   ),
                 ),

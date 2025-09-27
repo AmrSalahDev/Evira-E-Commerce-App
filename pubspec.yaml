@@ -44,6 +44,7 @@ dependencies:
     git:
       url: https://github.com/AmrSalahDev/MyFlutterToolKit.git
       ref: main
+  otp_resend_timer: ^1.0.0
   pattern_formatter: ^4.0.1
   pin_input_text_field: ^4.5.2
   pinput: ^5.0.2

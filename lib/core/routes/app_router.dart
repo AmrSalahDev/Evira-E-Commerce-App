@@ -4,6 +4,8 @@ import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/screen/create_pin_screen.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/screen/fill_profile_screen.dart';
+import 'package:evira_e_commerce/features/forget_password/ui/screens/forgot_password_otp_screen.dart';
+import 'package:evira_e_commerce/features/forget_password/ui/screens/forgot_password_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/screen/home_screen.dart';
 import 'package:evira_e_commerce/features/login/ui/screen/login_screen.dart';
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart';
@@ -25,11 +27,13 @@ class AppPaths {
   static final String fillProfile = '/fillProfile';
   static final String createPin = '/createPin';
   static final String setFingerprint = '/setFingerprint';
+  static final String forgotPassword = '/forgotPassword';
+  static final String forgotPasswordVerify = '/forgotPasswordVerify';
 }
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppPaths.createPin,
+    initialLocation: AppPaths.auth,
     routes: <RouteBase>[
       GoRoute(
         path: AppPaths.onboarding,
@@ -102,6 +106,20 @@ class AppRouter {
             create: (context) => getIt<FingerprintCubit>(),
             child: const SetFingerprintScreen(),
           );
+        },
+      ),
+
+      GoRoute(
+        path: AppPaths.forgotPassword,
+        builder: (context, state) {
+          return const ForgetPasswordScreen();
+        },
+      ),
+
+      GoRoute(
+        path: AppPaths.forgotPasswordVerify,
+        builder: (context, state) {
+          return const ForgotPasswordOtpScreen();
         },
       ),
     ],

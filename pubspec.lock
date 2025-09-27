@@ -982,6 +982,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  otp_resend_timer:
+    dependency: "direct main"
+    description:
+      name: otp_resend_timer
+      sha256: ce41b21130ca32e216a2b420a6849d118370345ed607ef88f95ce969df3a46f1
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   package_config:
     dependency: transitive
     description:

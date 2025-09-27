@@ -43,6 +43,20 @@ final class AppStyles {
     color: context.textColor,
   );
 
+  static TextStyle smallTextStyle18(BuildContext context) =>
+      GoogleFonts.urbanist(
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w500,
+        color: context.textColor,
+      );
+
+  static TextStyle smallTextStyle16(BuildContext context) =>
+      GoogleFonts.urbanist(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w500,
+        color: context.textColor,
+      );
+
   static TextStyle buttonTextStyle(BuildContext context) =>
       GoogleFonts.urbanist(
         fontSize: 16.sp,

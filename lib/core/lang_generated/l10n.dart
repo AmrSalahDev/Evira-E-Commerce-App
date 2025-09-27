@@ -448,6 +448,51 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Forget Password`
+  String get forgetPasswordTitle {
+    return Intl.message(
+      'Forget Password',
+      name: 'forgetPasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select which contact details should we use to reset your password`
+  String get forgetPasswordDescription {
+    return Intl.message(
+      'Select which contact details should we use to reset your password',
+      name: 'forgetPasswordDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `via Email:`
+  String get viaEmail {
+    return Intl.message('via Email:', name: 'viaEmail', desc: '', args: []);
+  }
+
+  /// `via SMS:`
+  String get viaSMS {
+    return Intl.message('via SMS:', name: 'viaSMS', desc: '', args: []);
+  }
+
+  /// `Code has been send to `
+  String get codeHasBeenSend {
+    return Intl.message(
+      'Code has been send to ',
+      name: 'codeHasBeenSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message('Verify', name: 'verify', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

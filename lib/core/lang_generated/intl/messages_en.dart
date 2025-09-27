@@ -38,6 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Biometric aren\'t set up",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
+      "Code has been send to ",
+    ),
     "confirmBiometric": MessageLookupByLibrary.simpleMessage(
       "Confirm biometric",
     ),
@@ -69,6 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
       "Forgot the password?",
+    ),
+    "forgetPasswordDescription": MessageLookupByLibrary.simpleMessage(
+      "Select which contact details should we use to reset your password",
+    ),
+    "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
+      "Forget Password",
     ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
@@ -117,5 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
       "Too many attempts. Try again after 30 seconds.",
     ),
+    "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+    "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
+    "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
   };
 }

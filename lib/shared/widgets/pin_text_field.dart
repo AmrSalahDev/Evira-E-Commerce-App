@@ -6,11 +6,16 @@ import 'package:pinput/pinput.dart';
 
 class PinTextField extends StatelessWidget {
   final TextEditingController pinController;
-  final Function(String value) onCompleted;
+  final Function(String value)? onCompleted;
+  final Function(String value) onChanged;
+  final bool? isObscureText;
+
   const PinTextField({
     super.key,
     required this.pinController,
-    required this.onCompleted,
+    this.onCompleted,
+    required this.onChanged,
+    this.isObscureText,
   });
 
   @override
@@ -48,10 +53,10 @@ class PinTextField extends StatelessWidget {
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: focusedPinTheme,
       length: 4,
-
-      obscureText: true,
+      obscureText: isObscureText ?? false,
       obscuringCharacter: '●',
       onCompleted: onCompleted,
+      onChanged: onChanged,
     );
   }
 }
