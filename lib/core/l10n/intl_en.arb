@@ -37,8 +37,18 @@
     "male":"Male",
     "female":"Female",
     "other":"Other",
-    "continuee":"Continue"
-    
-
+    "continuee":"Continue",
+    "createNewPin":"Create New PIN",
+    "addPin":"Add a PIN number to make your account more secure.",
+    "setYourFingerprint":"Set Your Fingerprint",
+    "addFingerprint":"Add a fingerprint to make your account\nmore secure.",
+    "putYourFinger":"Please put your finger on the fingerprint\nscanner to get started",
+    "confirmBiometric":"Confirm biometric",
+    "biometricAreNotSetUpTitle":"Biometric aren't set up",
+    "setUpBiometricDescription":"To enable this feature, first set up face or fingerprint unlock in your device settings.",
+    "settings":"Settings",
+    "tooManyAttempts":"Too many attempts. Try again after 30 seconds.",
+    "accountIsReady":"Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..",
+    "congratulations":"Congratulations!"
 
 }

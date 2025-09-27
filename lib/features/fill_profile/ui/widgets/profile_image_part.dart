@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ProfileImagePart extends StatefulWidget {
   const ProfileImagePart({super.key});
@@ -37,7 +38,12 @@ class _ProfileImagePartState extends State<ProfileImagePart> {
           child: BlocBuilder<FillProfileCubit, FillProfileState>(
             builder: (context, state) {
               if (state is ProfileImageLoading) {
-                return Center(child: const CircularProgressIndicator());
+                return Center(
+                  child: LoadingAnimationWidget.threeRotatingDots(
+                    color: context.iconColor,
+                    size: 30.h,
+                  ),
+                );
               }
               if (state is ProfileImageLoaded) {
                 return ClipOval(

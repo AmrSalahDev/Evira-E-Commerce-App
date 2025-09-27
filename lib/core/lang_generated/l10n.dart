@@ -333,6 +333,121 @@ class EviraLang {
   String get continuee {
     return Intl.message('Continue', name: 'continuee', desc: '', args: []);
   }
+
+  /// `Create New PIN`
+  String get createNewPin {
+    return Intl.message(
+      'Create New PIN',
+      name: 'createNewPin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a PIN number to make your account more secure.`
+  String get addPin {
+    return Intl.message(
+      'Add a PIN number to make your account more secure.',
+      name: 'addPin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Your Fingerprint`
+  String get setYourFingerprint {
+    return Intl.message(
+      'Set Your Fingerprint',
+      name: 'setYourFingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a fingerprint to make your account\nmore secure.`
+  String get addFingerprint {
+    return Intl.message(
+      'Add a fingerprint to make your account\nmore secure.',
+      name: 'addFingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please put your finger on the fingerprint\nscanner to get started`
+  String get putYourFinger {
+    return Intl.message(
+      'Please put your finger on the fingerprint\nscanner to get started',
+      name: 'putYourFinger',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm biometric`
+  String get confirmBiometric {
+    return Intl.message(
+      'Confirm biometric',
+      name: 'confirmBiometric',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Biometric aren't set up`
+  String get biometricAreNotSetUpTitle {
+    return Intl.message(
+      'Biometric aren\'t set up',
+      name: 'biometricAreNotSetUpTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To enable this feature, first set up face or fingerprint unlock in your device settings.`
+  String get setUpBiometricDescription {
+    return Intl.message(
+      'To enable this feature, first set up face or fingerprint unlock in your device settings.',
+      name: 'setUpBiometricDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
+
+  /// `Too many attempts. Try again after 30 seconds.`
+  String get tooManyAttempts {
+    return Intl.message(
+      'Too many attempts. Try again after 30 seconds.',
+      name: 'tooManyAttempts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..`
+  String get accountIsReady {
+    return Intl.message(
+      'Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..',
+      name: 'accountIsReady',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations!`
+  String get congratulations {
+    return Intl.message(
+      'Congratulations!',
+      name: 'congratulations',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

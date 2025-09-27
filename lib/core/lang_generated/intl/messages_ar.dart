@@ -22,10 +22,22 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addFingerprint": MessageLookupByLibrary.simpleMessage(
+      "أضف بصمة إصبع لجعل حسابك\nأكثر أمانًا.",
+    ),
+    "addPin": MessageLookupByLibrary.simpleMessage(
+      "أضف رقم PIN لجعل حسابك أكثر أمانًا.",
+    ),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
+    "biometricAreNotSetUpTitle": MessageLookupByLibrary.simpleMessage(
+      "البيانات البيومترية غير مُعدّة",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "confirmBiometric": MessageLookupByLibrary.simpleMessage(
+      "تأكيد البيانات البيومترية",
+    ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -74,14 +86,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("آخر"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "putYourFinger": MessageLookupByLibrary.simpleMessage(
+      "من فضلك ضع إصبعك على قارئ البصمة\nللبدء",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "selectDate": MessageLookupByLibrary.simpleMessage("اختر التاريخ"),
+    "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(
+      "لتفعيل هذه الميزة، قم أولاً بإعداد قفل الوجه أو البصمة من إعدادات جهازك.",
+    ),
+    "setYourFingerprint": MessageLookupByLibrary.simpleMessage(
+      "قم بإعداد بصمتك",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول بكلمة المرور",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+    "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
+      "محاولات كثيرة جدًا. حاول مرة أخرى بعد 30 ثانية.",
+    ),
   };
 }

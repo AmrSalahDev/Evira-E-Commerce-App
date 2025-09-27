@@ -37,5 +37,15 @@
   "male": "ذكر",
   "female": "أنثى",
   "other": "آخر",
-  "continuee": "متابعة"
+  "continuee": "متابعة",
+  "addPin": "أضف رقم PIN لجعل حسابك أكثر أمانًا.",
+  "setYourFingerprint": "قم بإعداد بصمتك",
+  "addFingerprint": "أضف بصمة إصبع لجعل حسابك\nأكثر أمانًا.",
+  "putYourFinger": "من فضلك ضع إصبعك على قارئ البصمة\nللبدء",
+  "confirmBiometric": "تأكيد البيانات البيومترية",
+  "biometricAreNotSetUpTitle": "البيانات البيومترية غير مُعدّة",
+  "setUpBiometricDescription": "لتفعيل هذه الميزة، قم أولاً بإعداد قفل الوجه أو البصمة من إعدادات جهازك.",
+  "settings": "الإعدادات",
+  "tooManyAttempts": "محاولات كثيرة جدًا. حاول مرة أخرى بعد 30 ثانية."
+
 }

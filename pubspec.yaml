@@ -6,10 +6,12 @@ version: 1.0.0+1
 environment:
   sdk: ^3.9.0
 dependencies:
+  app_settings: ^6.1.1
   build_runner: ^2.7.0
   cached_network_image: ^3.4.1
   change_app_package_name: ^1.5.0
   country_picker: ^2.0.27
+  crypto: ^3.0.6
   cupertino_icons: ^1.0.8
   equatable: ^2.0.7
   fade_shimmer: ^2.4.0
@@ -22,6 +24,7 @@ dependencies:
   flutter_multi_formatter: ^2.13.10
   flutter_native_splash: ^2.4.6
   flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.1
   font_awesome_flutter: ^10.10.0
   get_it: ^8.2.0
@@ -35,15 +38,20 @@ dependencies:
   intl: ^0.20.2
   intl_utils: ^2.8.11
   loading_animation_widget: ^1.3.0
+  local_auth: ^2.3.0
+  lottie: ^3.3.2
   my_flutter_toolkit:
     git:
       url: https://github.com/AmrSalahDev/MyFlutterToolKit.git
       ref: main
   pattern_formatter: ^4.0.1
+  pin_input_text_field: ^4.5.2
+  pinput: ^5.0.2
   rename: ^3.1.0
   shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1
+  toastification: ^3.0.3
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -56,7 +64,7 @@ flutter_gen:
     image: true
     flutter_svg: true
     rive: false
-    lottie: null
+    lottie: true
 
 flutter_intl:
   enabled: true # Required. Must be set to true to activate the package. Default: false
@@ -74,6 +82,7 @@ flutter:
     - assets/images/onboarding/
     - assets/images/splash/
     - assets/icons/
+    - assets/lotties/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

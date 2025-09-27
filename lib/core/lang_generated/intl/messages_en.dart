@@ -22,11 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "accountIsReady": MessageLookupByLibrary.simpleMessage(
+      "Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..",
+    ),
+    "addFingerprint": MessageLookupByLibrary.simpleMessage(
+      "Add a fingerprint to make your account\nmore secure.",
+    ),
+    "addPin": MessageLookupByLibrary.simpleMessage(
+      "Add a PIN number to make your account more secure.",
+    ),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "biometricAreNotSetUpTitle": MessageLookupByLibrary.simpleMessage(
+      "Biometric aren\'t set up",
+    ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "confirmBiometric": MessageLookupByLibrary.simpleMessage(
+      "Confirm biometric",
+    ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "congratulations": MessageLookupByLibrary.simpleMessage("Congratulations!"),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -37,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Continue with Google",
     ),
     "continuee": MessageLookupByLibrary.simpleMessage("Continue"),
+    "createNewPin": MessageLookupByLibrary.simpleMessage("Create New PIN"),
     "createYourAccount": MessageLookupByLibrary.simpleMessage(
       "Create your Account",
     ),
@@ -78,14 +95,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("Other"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "putYourFinger": MessageLookupByLibrary.simpleMessage(
+      "Please put your finger on the fingerprint\nscanner to get started",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
+    "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(
+      "To enable this feature, first set up face or fingerprint unlock in your device settings.",
+    ),
+    "setYourFingerprint": MessageLookupByLibrary.simpleMessage(
+      "Set Your Fingerprint",
+    ),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "Sign in with password",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
+      "Too many attempts. Try again after 30 seconds.",
+    ),
   };
 }
