@@ -32,6 +32,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: 30.h),
             context.isDark
                 ? Assets.images.forgotPasswordLogoDark.image(
                     width: context.screenWidth * 0.8,

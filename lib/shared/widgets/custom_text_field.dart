@@ -83,6 +83,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return TextFormField(
       onTap: widget.onTap,
+      obscuringCharacter: '●',
+
       readOnly: widget.readOnly ?? false,
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
@@ -120,7 +122,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
         prefixIcon: widget.perfixIcon != null
-            ? Icon(widget.perfixIcon, color: iconColor, size: 24.h)
+            ? Icon(widget.perfixIcon, color: iconColor, size: 22.h)
             : null,
         suffixIcon: widget.obscureText != null
             ? GestureDetector(

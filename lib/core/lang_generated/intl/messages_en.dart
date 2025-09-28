@@ -56,9 +56,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Continue with Google",
     ),
     "continuee": MessageLookupByLibrary.simpleMessage("Continue"),
+    "createNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Create new password",
+    ),
     "createNewPin": MessageLookupByLibrary.simpleMessage("Create New PIN"),
     "createYourAccount": MessageLookupByLibrary.simpleMessage(
       "Create your Account",
+    ),
+    "createYourNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Create your new password",
     ),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "done": MessageLookupByLibrary.simpleMessage("Done"),
@@ -108,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "resendCode": MessageLookupByLibrary.simpleMessage("Resend code in"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(

@@ -5,10 +5,12 @@ import 'package:evira_e_commerce/features/signup/ui/widgets/already_have_account
 import 'package:evira_e_commerce/features/signup/ui/widgets/signup_button_part.dart';
 import 'package:evira_e_commerce/features/signup/ui/widgets/signup_buttons_part.dart';
 import 'package:evira_e_commerce/features/signup/ui/widgets/signup_forms_part.dart';
+import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_checkbox.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_flutter_toolkit/ui/widgets/custom_divider.dart';
 
@@ -31,6 +33,8 @@ class _SignupScreenState extends State<SignupScreen>
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
+
+    context.read<TextFieldCubit>().setRequiredFields(['email', 'password']);
   }
 
   @override

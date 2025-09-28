@@ -55,7 +55,11 @@
     "viaEmail":"via Email:",
     "viaSMS":"via SMS:",
     "codeHasBeenSend":"Code has been send to ",
-    "verify":"Verify"
+    "verify":"Verify",
+    "resendCode": "Resend code in",
+    "resend": "Resend",
+    "createNewPassword":"Create new password",
+    "createYourNewPassword":"Create your new password"
     
 
 }

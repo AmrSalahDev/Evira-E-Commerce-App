@@ -47,6 +47,14 @@ class $AssetsImagesGen {
     'assets/images/account_setup_successful_logo_light.png',
   );
 
+  /// File path: assets/images/create_new_password_logo_dark.png
+  AssetGenImage get createNewPasswordLogoDark =>
+      const AssetGenImage('assets/images/create_new_password_logo_dark.png');
+
+  /// File path: assets/images/create_new_password_logo_light.png
+  AssetGenImage get createNewPasswordLogoLight =>
+      const AssetGenImage('assets/images/create_new_password_logo_light.png');
+
   /// File path: assets/images/forgot_password_logo_dark.png
   AssetGenImage get forgotPasswordLogoDark =>
       const AssetGenImage('assets/images/forgot_password_logo_dark.png');
@@ -67,6 +75,16 @@ class $AssetsImagesGen {
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
 
+  /// File path: assets/images/reset_password_successful_logo_dark.png
+  AssetGenImage get resetPasswordSuccessfulLogoDark => const AssetGenImage(
+    'assets/images/reset_password_successful_logo_dark.png',
+  );
+
+  /// File path: assets/images/reset_password_successful_logo_light.png
+  AssetGenImage get resetPasswordSuccessfulLogoLight => const AssetGenImage(
+    'assets/images/reset_password_successful_logo_light.png',
+  );
+
   /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 
@@ -74,10 +92,14 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     accountSetupSuccessfulLogoDark,
     accountSetupSuccessfulLogoLight,
+    createNewPasswordLogoDark,
+    createNewPasswordLogoLight,
     forgotPasswordLogoDark,
     forgotPasswordLogoLight,
     letsYouInDark,
     letsYouInLight,
+    resetPasswordSuccessfulLogoDark,
+    resetPasswordSuccessfulLogoLight,
   ];
 }
 

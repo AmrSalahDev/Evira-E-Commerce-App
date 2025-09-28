@@ -6,10 +6,12 @@ import 'package:evira_e_commerce/features/login/ui/widgets/forgot_password_part.
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_button_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_buttons_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_forms_part.dart';
+import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_checkbox.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_flutter_toolkit/ui/widgets/custom_divider.dart';
 
@@ -32,6 +34,8 @@ class _LoginScreenState extends State<LoginScreen>
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
+
+    context.read<TextFieldCubit>().setRequiredFields(['email', 'password']);
   }
 
   @override

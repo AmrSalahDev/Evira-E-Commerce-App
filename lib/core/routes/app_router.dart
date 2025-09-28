@@ -1,5 +1,6 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/features/auth/ui/screen/auth_screen.dart';
+import 'package:evira_e_commerce/features/create_new_password/ui/screen/create_new_password_screen.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/screen/create_pin_screen.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
@@ -29,11 +30,12 @@ class AppPaths {
   static final String setFingerprint = '/setFingerprint';
   static final String forgotPassword = '/forgotPassword';
   static final String forgotPasswordVerify = '/forgotPasswordVerify';
+  static final String createNewPassword = '/createNewPassword';
 }
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppPaths.auth,
+    initialLocation: AppPaths.onboarding,
     routes: <RouteBase>[
       GoRoute(
         path: AppPaths.onboarding,
@@ -120,6 +122,16 @@ class AppRouter {
         path: AppPaths.forgotPasswordVerify,
         builder: (context, state) {
           return const ForgotPasswordOtpScreen();
+        },
+      ),
+
+      GoRoute(
+        path: AppPaths.createNewPassword,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) => getIt<TextFieldCubit>(),
+            child: const CreateNewPasswordScreen(),
+          );
         },
       ),
     ],

@@ -10,8 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 
-class AccountSetupSuccessfulDialog {
-  AccountSetupSuccessfulDialog._();
+class ResetPasswordSuccessfulDialog {
+  ResetPasswordSuccessfulDialog._();
 
   static FutureOr<void> show(BuildContext context) {
     showDialog(
@@ -39,11 +39,11 @@ class AccountSetupSuccessfulDialog {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               context.isDark
-                  ? Assets.images.accountSetupSuccessfulLogoDark.image(
+                  ? Assets.images.resetPasswordSuccessfulLogoDark.image(
                       height: context.screenHeight * 0.3,
                       width: context.screenWidth * 0.5,
                     )
-                  : Assets.images.accountSetupSuccessfulLogoLight.image(
+                  : Assets.images.resetPasswordSuccessfulLogoLight.image(
                       height: context.screenHeight * 0.3,
                       width: context.screenWidth * 0.5,
                     ),

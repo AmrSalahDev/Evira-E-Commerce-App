@@ -18,12 +18,6 @@ class SignInButtonPart extends StatelessWidget {
       bloc: context.read<TextFieldCubit>(),
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
-        if (state is TextFieldsInitial) {
-          context.read<TextFieldCubit>().setRequiredFields([
-            'email',
-            'password',
-          ]);
-        }
         return CustomButton(
           onPressed: state is TextFieldsUpdated && !state.allFieldsFilled
               ? null

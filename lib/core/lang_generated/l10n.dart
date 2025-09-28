@@ -493,6 +493,41 @@ class EviraLang {
   String get verify {
     return Intl.message('Verify', name: 'verify', desc: '', args: []);
   }
+
+  /// `Resend code in`
+  String get resendCode {
+    return Intl.message(
+      'Resend code in',
+      name: 'resendCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message('Resend', name: 'resend', desc: '', args: []);
+  }
+
+  /// `Create new password`
+  String get createNewPassword {
+    return Intl.message(
+      'Create new password',
+      name: 'createNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your new password`
+  String get createYourNewPassword {
+    return Intl.message(
+      'Create your new password',
+      name: 'createYourNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

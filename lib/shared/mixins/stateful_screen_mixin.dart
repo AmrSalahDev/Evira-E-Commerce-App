@@ -13,6 +13,15 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   Widget? buildBottomNavigationBar() => null;
 
+  void safeSetState(VoidCallback fn) {
+    if (!mounted) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(fn);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

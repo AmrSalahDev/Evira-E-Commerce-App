@@ -24,7 +24,7 @@ class _ForgotPasswordMethodBoxState extends State<ForgotPasswordMethodBox> {
             isEmailSelected = false;
           }),
           child: Container(
-            height: 150.h,
+            height: 130.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color: context.containerColor,
@@ -81,7 +81,7 @@ class _ForgotPasswordMethodBoxState extends State<ForgotPasswordMethodBox> {
             isEmailSelected = true;
           }),
           child: Container(
-            height: 150.h,
+            height: 130.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color: context.containerColor,

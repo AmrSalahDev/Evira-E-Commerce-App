@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
     return MaterialButton(
       onPressed: isLoading ? () {} : onPressed ?? () {},
       minWidth: double.infinity,
-      height: 70.h,
+      height: 65.h,
       color: backgroundColor,
       textColor: textColor,
       shape: RoundedRectangleBorder(
