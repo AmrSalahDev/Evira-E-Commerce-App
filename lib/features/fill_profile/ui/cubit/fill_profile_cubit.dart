@@ -1,8 +1,11 @@
 import 'dart:io';
 
+import 'package:evira_e_commerce/features/fill_profile/domain/entities/fill_profile_entity.dart';
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/fill_profile_usecase.dart';
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/image_picker_usecase.dart';
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/recover_lost_image_usecase.dart';
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/show_date_picker_usecase.dart';
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/upload_profile_image_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -15,11 +18,15 @@ class FillProfileCubit extends Cubit<FillProfileState> {
   final ImagePickerUsecase imagePickerUsecase;
   final RecoverLostImageUsecase recoverLostImageUsecase;
   final ShowDatePickerUsecase showDatePickerUsecase;
+  final FillProfileUsecase fillProfileUsecase;
+  final UploadprofileimageUsecase uploadProfileImageUsecase;
 
   FillProfileCubit(
     this.imagePickerUsecase,
     this.recoverLostImageUsecase,
     this.showDatePickerUsecase,
+    this.fillProfileUsecase,
+    this.uploadProfileImageUsecase,
   ) : super(FillProfileInitial());
 
   Future<void> pickImage() async {
@@ -57,6 +64,16 @@ class FillProfileCubit extends Cubit<FillProfileState> {
       emit(ProfileShowDatePickerLoaded(datePicked));
     } catch (e) {
       emit(ProfileShowDatePickerError(e.toString()));
+    }
+  }
+
+  Future<void> fillProfile(FillProfileEntity fillProfileEntity) async {
+    emit(FillProfileLoading());
+    try {
+      await fillProfileUsecase.call(fillProfileEntity);
+      emit(FillProfileSuccess());
+    } catch (e) {
+      emit(FillProfileError(e.toString()));
     }
   }
 }

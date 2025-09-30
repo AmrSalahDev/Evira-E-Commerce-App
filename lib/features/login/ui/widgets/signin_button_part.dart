@@ -18,19 +18,20 @@ class SignInButtonPart extends StatelessWidget {
       bloc: context.read<TextFieldCubit>(),
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
+        bool isActive = state is TextFieldsUpdated && state.allFieldsFilled;
         return CustomButton(
-          onPressed: state is TextFieldsUpdated && !state.allFieldsFilled
-              ? null
-              : () {
+          onPressed: isActive
+              ? () {
                   _formKey.currentState?.validate();
-                },
-          backgroundColor: state is TextFieldsUpdated && !state.allFieldsFilled
-              ? context.buttonInactiveColor
-              : context.buttonActiveColor,
+                }
+              : null,
+          backgroundColor: isActive
+              ? context.buttonActiveColor
+              : context.buttonInactiveColor,
           title: EviraLang.of(context).signIn,
-          textColor: state is TextFieldsUpdated && !state.allFieldsFilled
-              ? context.textInactiveColor
-              : context.textActiveColor,
+          textColor: isActive
+              ? context.textActiveColor
+              : context.textInactiveColor,
         );
       },
     );

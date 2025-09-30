@@ -528,6 +528,76 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Password too weak`
+  String get passwordTooWeak {
+    return Intl.message(
+      'Password too weak',
+      name: 'passwordTooWeak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email already in use`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'Email already in use',
+      name: 'emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Too many requests`
+  String get tooManyRequests {
+    return Intl.message(
+      'Too many requests',
+      name: 'tooManyRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email`
+  String get invalidEmail {
+    return Intl.message(
+      'Invalid email',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Operation not allowed`
+  String get operationNotAllowed {
+    return Intl.message(
+      'Operation not allowed',
+      name: 'operationNotAllowed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network error`
+  String get networkError {
+    return Intl.message(
+      'Network error',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

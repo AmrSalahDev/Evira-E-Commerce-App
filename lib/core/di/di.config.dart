@@ -11,6 +11,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:evira_e_commerce/core/services/biometrics_service.dart'
     as _i858;
+import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
+    as _i7;
 import 'package:evira_e_commerce/core/services/theme_service.dart' as _i193;
 import 'package:evira_e_commerce/core/services/toast_service.dart' as _i101;
 import 'package:evira_e_commerce/features/create_pin/data/repos/create_pin_repo_impl.dart'
@@ -31,18 +33,30 @@ import 'package:evira_e_commerce/features/fill_profile/domain/repos/fill_profile
     as _i623;
 import 'package:evira_e_commerce/features/fill_profile/domain/repos/image_picker_repo.dart'
     as _i1011;
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/fill_profile_usecase.dart'
+    as _i1013;
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/image_picker_usecase.dart'
     as _i49;
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/recover_lost_image_usecase.dart'
     as _i419;
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/show_date_picker_usecase.dart'
     as _i494;
+import 'package:evira_e_commerce/features/fill_profile/domain/usecases/upload_profile_image_usecase.dart'
+    as _i739;
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart'
     as _i179;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
     as _i418;
+import 'package:evira_e_commerce/features/signup/data/repos/signup_repo_impl.dart'
+    as _i280;
+import 'package:evira_e_commerce/features/signup/domain/repos/signup_repo.dart'
+    as _i962;
+import 'package:evira_e_commerce/features/signup/domain/usecases/signup_usecase.dart'
+    as _i109;
+import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart'
+    as _i630;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart' as _i436;
 import 'package:evira_e_commerce/shared/domain/usecases/get_theme_mode_usecase.dart'
@@ -63,6 +77,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i418.FingerprintCubit>(() => _i418.FingerprintCubit());
     gh.factory<_i669.TextFieldCubit>(() => _i669.TextFieldCubit());
     gh.lazySingleton<_i858.BiometricsService>(() => _i858.BiometricsService());
+    gh.lazySingleton<_i7.SharedPreferencesService>(
+      () => _i7.SharedPreferencesService(),
+    );
     gh.lazySingleton<_i193.ThemeService>(() => _i193.ThemeService());
     gh.lazySingleton<_i101.ToastService>(() => _i101.ToastService());
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
@@ -80,6 +97,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i733.SetThemeModeUseCase>(),
       ),
     );
+    gh.lazySingleton<_i962.SignupRepo>(() => _i280.SignupRepoImpl());
     gh.factory<_i49.ImagePickerUsecase>(
       () => _i49.ImagePickerUsecase(gh<_i1011.ImagePickerRepo>()),
     );
@@ -92,8 +110,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i831.VerifyPinUsecase>(
       () => _i831.VerifyPinUsecase(gh<_i1030.CreatePinRepo>()),
     );
+    gh.factory<_i1013.FillProfileUsecase>(
+      () => _i1013.FillProfileUsecase(gh<_i623.FillProfileRepo>()),
+    );
+    gh.factory<_i739.UploadprofileimageUsecase>(
+      () => _i739.UploadprofileimageUsecase(gh<_i623.FillProfileRepo>()),
+    );
     gh.factory<_i494.ShowDatePickerUsecase>(
       () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
+    );
+    gh.factory<_i109.SignupUsecase>(
+      () => _i109.SignupUsecase(signupRepo: gh<_i962.SignupRepo>()),
     );
     gh.factory<_i734.PinCubit>(
       () => _i734.PinCubit(
@@ -106,7 +133,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
         gh<_i494.ShowDatePickerUsecase>(),
+        gh<_i1013.FillProfileUsecase>(),
+        gh<_i739.UploadprofileimageUsecase>(),
       ),
+    );
+    gh.factory<_i630.SignupCubit>(
+      () => _i630.SignupCubit(gh<_i109.SignupUsecase>()),
     );
     return this;
   }

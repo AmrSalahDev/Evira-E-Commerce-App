@@ -15,9 +15,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   equatable: ^2.0.7
   fade_shimmer: ^2.4.0
+  firebase_core: ^4.1.1
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_dotenv: ^6.0.0
   flutter_gen_runner: ^5.11.0
   flutter_holo_date_picker: ^2.0.0
   flutter_localization: ^0.3.3
@@ -46,12 +48,12 @@ dependencies:
       ref: main
   otp_resend_timer: ^1.0.0
   pattern_formatter: ^4.0.1
-  pin_input_text_field: ^4.5.2
   pinput: ^5.0.2
   rename: ^3.1.0
   shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1
+  supabase_flutter: ^2.10.1
   toastification: ^3.0.3
 
 dev_dependencies:
@@ -84,6 +86,7 @@ flutter:
     - assets/images/splash/
     - assets/icons/
     - assets/lotties/
+    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

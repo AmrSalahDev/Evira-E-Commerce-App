@@ -36,6 +36,39 @@ class _CreatePinScreenState extends State<CreatePinScreen>
   }
 
   @override
+  Widget? buildBottomNavigationBar() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        BlocSelector<PinCubit, PinState, bool>(
+          selector: (state) => state is PinSaving,
+          builder: (context, state) {
+            return CustomButton(
+              isLoading: state,
+              backgroundColor: isPinCompleted
+                  ? context.buttonActiveColor
+                  : context.buttonInactiveColor,
+              textColor: isPinCompleted
+                  ? context.textActiveColor
+                  : context.textInactiveColor,
+              onPressed: () async {
+                if (isPinCompleted) {
+                  await context.read<PinCubit>().savePin(pinController.text);
+                  if (context.mounted && !state) {
+                    context.push(AppPaths.setFingerprint);
+                  }
+                }
+              },
+              title: EviraLang.of(context).continuee,
+            );
+          },
+        ),
+        SizedBox(height: 40.h),
+      ],
+    );
+  }
+
+  @override
   String get title => EviraLang.current.createNewPin;
 
   @override
@@ -75,31 +108,6 @@ class _CreatePinScreenState extends State<CreatePinScreen>
             ),
 
             SizedBox(height: 70.h),
-            BlocSelector<PinCubit, PinState, bool>(
-              selector: (state) => state is PinSaving,
-              builder: (context, state) {
-                return CustomButton(
-                  isLoading: state,
-                  backgroundColor: isPinCompleted
-                      ? context.buttonActiveColor
-                      : context.buttonInactiveColor,
-                  textColor: isPinCompleted
-                      ? context.textActiveColor
-                      : context.textInactiveColor,
-                  onPressed: () async {
-                    if (isPinCompleted) {
-                      await context.read<PinCubit>().savePin(
-                        pinController.text,
-                      );
-                      if (context.mounted && !state) {
-                        context.push(AppPaths.setFingerprint);
-                      }
-                    }
-                  },
-                  title: EviraLang.of(context).continuee,
-                );
-              },
-            ),
           ],
         ),
       ),

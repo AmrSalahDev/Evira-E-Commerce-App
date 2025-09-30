@@ -72,6 +72,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "Email already in use",
+    ),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fillYourProfile": MessageLookupByLibrary.simpleMessage(
       "Fill Your Profile",
@@ -88,11 +91,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Account",
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -105,10 +110,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "onboarding_title_3": MessageLookupByLibrary.simpleMessage(
       "Let\'s fulfill your daily needs with Evira right now!",
     ),
+    "operationNotAllowed": MessageLookupByLibrary.simpleMessage(
+      "Operation not allowed",
+    ),
     "or": MessageLookupByLibrary.simpleMessage("or"),
     "orContinueWith": MessageLookupByLibrary.simpleMessage("or continue with"),
     "other": MessageLookupByLibrary.simpleMessage("Other"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordTooWeak": MessageLookupByLibrary.simpleMessage(
+      "Password too weak",
+    ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
@@ -134,6 +145,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
       "Too many attempts. Try again after 30 seconds.",
     ),
+    "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+      "Too many requests",
+    ),
+    "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),

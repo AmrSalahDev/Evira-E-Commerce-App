@@ -27,6 +27,7 @@ class CustomButton extends StatelessWidget {
       onPressed: isLoading ? () {} : onPressed ?? () {},
       minWidth: double.infinity,
       height: 65.h,
+      elevation: 0,
       color: backgroundColor,
       textColor: textColor,
       shape: RoundedRectangleBorder(

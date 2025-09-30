@@ -26,6 +26,7 @@ class _SignupScreenState extends State<SignupScreen>
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final GlobalKey<FormState> _formKey;
+  bool remember = false;
 
   @override
   void initState() {
@@ -48,60 +49,48 @@ class _SignupScreenState extends State<SignupScreen>
   Widget buildBody(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: _BodySection(
-          formKey: _formKey,
-          emailController: _emailController,
-          passwordController: _passwordController,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              EviraLang.of(context).createYourAccount,
+              style: AppStyles.largeTextStyle(context),
+            ),
+            SizedBox(height: 50.h),
+            SignupFormsPart(
+              formKey: _formKey,
+              emailController: _emailController,
+              passwordController: _passwordController,
+            ),
+            SizedBox(height: 25.h),
+            CustomCheckbox(
+              title: EviraLang.of(context).rememberMe,
+              onChecked: (value) {
+                remember = value;
+                print(remember);
+              },
+            ),
+            SizedBox(height: 25.h),
+            SignupButtonPart(
+              formKey: _formKey,
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim(),
+              remember: remember,
+            ),
+            SizedBox(height: 50.h),
+            CustomDivider(
+              title: EviraLang.of(context).orContinueWith,
+              color: context.dividerColor,
+              textStyle: AppStyles.dividerTextStyle(context),
+            ),
+            SizedBox(height: 30.h),
+            SignupButtonsPart(),
+            SizedBox(height: 50.h),
+            AlreadyHaveAccountPart(),
+            SizedBox(height: 30.h),
+          ],
         ),
       ),
-    );
-  }
-}
-
-class _BodySection extends StatelessWidget {
-  const _BodySection({
-    required GlobalKey<FormState> formKey,
-    required TextEditingController emailController,
-    required TextEditingController passwordController,
-  }) : _formKey = formKey,
-       _emailController = emailController,
-       _passwordController = passwordController;
-
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController _emailController;
-  final TextEditingController _passwordController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          EviraLang.of(context).createYourAccount,
-          style: AppStyles.largeTextStyle(context),
-        ),
-        SizedBox(height: 50.h),
-        SignupFormsPart(
-          formKey: _formKey,
-          emailController: _emailController,
-          passwordController: _passwordController,
-        ),
-        SizedBox(height: 25.h),
-        CustomCheckbox(title: EviraLang.of(context).rememberMe),
-        SizedBox(height: 25.h),
-        SignupButtonPart(formKey: _formKey),
-        SizedBox(height: 50.h),
-        CustomDivider(
-          title: EviraLang.of(context).orContinueWith,
-          color: context.dividerColor,
-          textStyle: AppStyles.dividerTextStyle(context),
-        ),
-        SizedBox(height: 30.h),
-        SignupButtonsPart(),
-        SizedBox(height: 50.h),
-        AlreadyHaveAccountPart(),
-        SizedBox(height: 30.h),
-      ],
     );
   }
 }

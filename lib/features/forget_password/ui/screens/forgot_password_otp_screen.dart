@@ -48,24 +48,21 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen>
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: CustomButton(
-            title: EviraLang.of(context).verify,
-            onPressed: isPinCompleted
-                ? () {
-                    context.push(AppPaths.createNewPassword);
-                  }
-                : null,
-            backgroundColor: isPinCompleted
-                ? context.buttonActiveColor
-                : context.buttonInactiveColor,
-            textColor: isPinCompleted
-                ? context.textActiveColor
-                : context.textInactiveColor,
-          ),
+        CustomButton(
+          title: EviraLang.of(context).verify,
+          onPressed: isPinCompleted
+              ? () {
+                  context.push(AppPaths.createNewPassword);
+                }
+              : null,
+          backgroundColor: isPinCompleted
+              ? context.buttonActiveColor
+              : context.buttonInactiveColor,
+          textColor: isPinCompleted
+              ? context.textActiveColor
+              : context.textInactiveColor,
         ),
-        SizedBox(height: 50.h),
+        SizedBox(height: 40.h),
       ],
     );
   }

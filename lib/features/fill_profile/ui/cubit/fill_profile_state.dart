@@ -9,6 +9,15 @@ sealed class FillProfileState extends Equatable {
 
 final class FillProfileInitial extends FillProfileState {}
 
+final class FillProfileLoading extends FillProfileState {}
+
+final class FillProfileSuccess extends FillProfileState {}
+
+final class FillProfileError extends FillProfileState {
+  final String message;
+  const FillProfileError(this.message);
+}
+
 class ProfileImageLoading extends FillProfileState {}
 
 class ProfileImageLoaded extends FillProfileState {

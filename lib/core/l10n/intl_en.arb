@@ -59,7 +59,14 @@
     "resendCode": "Resend code in",
     "resend": "Resend",
     "createNewPassword":"Create new password",
-    "createYourNewPassword":"Create your new password"
+    "createYourNewPassword":"Create your new password",
+    "passwordTooWeak":"Password too weak",
+    "emailAlreadyInUse":"Email already in use",
+    "tooManyRequests":"Too many requests",
+    "invalidEmail":"Invalid email",
+    "operationNotAllowed":"Operation not allowed",
+    "networkError":"Network error",
+    "unknownError":"Unknown error"
     
 
 }

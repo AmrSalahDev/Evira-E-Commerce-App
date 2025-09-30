@@ -13,6 +13,7 @@ import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.d
 import 'package:evira_e_commerce/features/onboarding/ui/screen/on_boarding_screen.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/screen/set_fingerprint_screen.dart';
+import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart';
 import 'package:evira_e_commerce/features/signup/ui/screen/signup_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,7 @@ class AppPaths {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: AppPaths.onboarding,
+    initialLocation: AppPaths.signUp,
     routes: <RouteBase>[
       GoRoute(
         path: AppPaths.onboarding,
@@ -63,8 +64,11 @@ class AppRouter {
       GoRoute(
         path: AppPaths.signUp,
         builder: (context, state) {
-          return BlocProvider(
-            create: (context) => getIt<TextFieldCubit>(),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<TextFieldCubit>()),
+              BlocProvider(create: (context) => getIt<SignupCubit>()),
+            ],
             child: const SignupScreen(),
           );
         },
