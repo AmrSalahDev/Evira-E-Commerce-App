@@ -9,7 +9,6 @@ import 'package:evira_e_commerce/features/fill_profile/ui/widgets/profile_image_
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_text_field.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -112,10 +111,8 @@ class _FillProfileScreenState extends State<FillProfileScreen>
               SizedBox(height: 25.h),
               GenderTextFieldPart(controller: genderController),
               SizedBox(height: 50.h),
-
               FillProfileButton(
                 formKey: formKey,
-
                 onPressed: () {
                   final fillProfileEntity = FillProfileEntity(
                     fullname: fullNameController.text.trim(),
@@ -124,10 +121,8 @@ class _FillProfileScreenState extends State<FillProfileScreen>
                     phone: phoneNumberController.text.trim(),
                     gender: genderController.text.trim(),
                     dateOfBirth: dateController.text.trim(),
-                    uid: '',
                     profileImage: '',
                   );
-
                   context.read<FillProfileCubit>().fillProfile(
                     fillProfileEntity,
                   );

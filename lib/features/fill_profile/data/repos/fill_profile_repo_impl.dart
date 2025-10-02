@@ -9,9 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/date_picker.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 @LazySingleton(as: FillProfileRepo)
 class FillProfileRepoImpl extends FillProfileRepo {
+  final supabase = Supabase.instance.client;
+
   @override
   Future<String> showDatePicker(BuildContext context) async {
     DateTime? datePicked = await DatePicker.showSimpleDatePicker(
@@ -37,27 +40,44 @@ class FillProfileRepoImpl extends FillProfileRepo {
   }
 
   @override
-  Future<String> uploadProfileImage({
+  Future<String?> uploadProfileImage({
     required String uid,
     required File imageFile,
   }) async {
-    // final storageRef = FirebaseStorage.instance
-    //     .ref()
-    //     .child("profile_images")
-    //     .child("$uid.jpg");
+    try {
+      final String filePath = "$uid/profile.png";
 
-    // await storageRef.putFile(imageFile);
-    // final downloadUrl = await storageRef.getDownloadURL();
-    // return downloadUrl;
-    return "";
+      await supabase.storage
+          .from('users_profile_images')
+          .upload(
+            filePath,
+            imageFile,
+            fileOptions: const FileOptions(upsert: true),
+          );
+
+      // Get public URL
+      final String publicUrl = supabase.storage
+          .from('users_profile_images')
+          .getPublicUrl(filePath);
+
+      return publicUrl;
+    } catch (e) {
+      print("Upload error: $e");
+      return null;
+    }
   }
 
   @override
   Future<void> fillProfile(FillProfileEntity fillProfileEntity) async {
-    final model = FillProfileModel.fromEntity(fillProfileEntity);
-    // await firestore
-    //     .collection("users")
-    //     .doc(fillProfileEntity.uid)
-    //     .set(model.toMap());
+    final model = FillProfileModel(
+      fullname: fillProfileEntity.fullname,
+      nickname: fillProfileEntity.nickname,
+      dateOfBirth: fillProfileEntity.dateOfBirth,
+      anotherEmail: fillProfileEntity.anotherEmail,
+      phone: fillProfileEntity.phone,
+      gender: fillProfileEntity.gender,
+      profileImage: fillProfileEntity.profileImage,
+    );
+    await supabase.auth.updateUser(UserAttributes(data: model.toJson()));
   }
 }

@@ -4,6 +4,7 @@ import 'package:evira_e_commerce/features/create_new_password/ui/screen/create_n
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/screen/create_pin_screen.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cubit.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/screen/fill_profile_screen.dart';
 import 'package:evira_e_commerce/features/forget_password/ui/screens/forgot_password_otp_screen.dart';
 import 'package:evira_e_commerce/features/forget_password/ui/screens/forgot_password_screen.dart';
@@ -89,8 +90,9 @@ class AppRouter {
             providers: [
               BlocProvider(create: (context) => getIt<TextFieldCubit>()),
               BlocProvider(create: (context) => getIt<FillProfileCubit>()),
+              BlocProvider(create: (context) => getIt<ProfileImageCubit>()),
             ],
-            child: const FillProfileScreen(),
+            child: FillProfileScreen(),
           );
         },
       ),

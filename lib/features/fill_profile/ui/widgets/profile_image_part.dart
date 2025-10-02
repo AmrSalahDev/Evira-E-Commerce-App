@@ -1,6 +1,7 @@
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
+import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cubit.dart';
 import 'package:evira_e_commerce/shared/widgets/image_file_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,6 @@ class _ProfileImagePartState extends State<ProfileImagePart> {
   @override
   void initState() {
     super.initState();
-    context.read<FillProfileCubit>().recoverLostImage();
   }
 
   @override
@@ -35,7 +35,7 @@ class _ProfileImagePartState extends State<ProfileImagePart> {
             shape: BoxShape.circle,
             color: context.profileBgColor,
           ),
-          child: BlocBuilder<FillProfileCubit, FillProfileState>(
+          child: BlocBuilder<ProfileImageCubit, ProfileImageState>(
             builder: (context, state) {
               if (state is ProfileImageLoading) {
                 return Center(
@@ -46,6 +46,7 @@ class _ProfileImagePartState extends State<ProfileImagePart> {
                 );
               }
               if (state is ProfileImageLoaded) {
+                context.read<FillProfileCubit>().changeImage(state.file);
                 return ClipOval(
                   child: ImageFileLoading(
                     file: state.file,
@@ -92,7 +93,7 @@ class _ProfileImagePartState extends State<ProfileImagePart> {
           bottom: 5.h,
           child: GestureDetector(
             onTap: () async =>
-                await context.read<FillProfileCubit>().pickImage(),
+                await context.read<ProfileImageCubit>().pickImage(),
             child: Container(
               width: 37.h,
               height: 37.h,

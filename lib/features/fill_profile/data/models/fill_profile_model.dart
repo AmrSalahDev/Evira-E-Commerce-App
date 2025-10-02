@@ -2,7 +2,6 @@ import 'package:evira_e_commerce/features/fill_profile/domain/entities/fill_prof
 
 class FillProfileModel extends FillProfileEntity {
   FillProfileModel({
-    required super.uid,
     required super.fullname,
     required super.nickname,
     required super.dateOfBirth,
@@ -12,22 +11,9 @@ class FillProfileModel extends FillProfileEntity {
     required super.profileImage,
   });
 
-  factory FillProfileModel.fromMap(Map<String, dynamic> map) {
-    return FillProfileModel(
-      uid: map['uid'] ?? '',
-      fullname: map['fullname'] ?? '',
-      nickname: map['nickname'] ?? '',
-      dateOfBirth: map['dateOfBirth'] ?? '',
-      anotherEmail: map['anotherEmail'] ?? '',
-      phone: map['phone'] ?? '',
-      gender: map['gender'] ?? '',
-      profileImage: map['profileImage'] ?? '',
-    );
-  }
-
-  Map<String, dynamic> toMap() {
+  /// Convert Entity -> JSON (for Supabase `data`)
+  Map<String, dynamic> toJson() {
     return {
-      "uid": uid,
       "fullname": fullname,
       "nickname": nickname,
       "dateOfBirth": dateOfBirth,
@@ -38,15 +24,16 @@ class FillProfileModel extends FillProfileEntity {
     };
   }
 
-  factory FillProfileModel.fromEntity(FillProfileEntity entity) =>
-      FillProfileModel(
-        uid: entity.uid,
-        fullname: entity.fullname,
-        nickname: entity.nickname,
-        dateOfBirth: entity.dateOfBirth,
-        anotherEmail: entity.anotherEmail,
-        phone: entity.phone,
-        gender: entity.gender,
-        profileImage: entity.profileImage,
-      );
+  /// Convert JSON -> Entity (from Supabase `user_metadata`)
+  factory FillProfileModel.fromJson(Map<String, dynamic> json) {
+    return FillProfileModel(
+      fullname: json["fullname"] ?? "",
+      nickname: json["nickname"] ?? "",
+      dateOfBirth: json["dateOfBirth"] ?? "",
+      anotherEmail: json["anotherEmail"] ?? "",
+      phone: json["phone"] ?? "",
+      gender: json["gender"] ?? "",
+      profileImage: json["profileImage"] ?? "",
+    );
+  }
 }

@@ -1,7 +1,5 @@
+import 'package:evira_e_commerce/features/signup/domain/entities/signup_entity.dart';
+
 abstract class SignupRepo {
-  Future<String?> signup({
-    required String email,
-    required String password,
-    required bool remember,
-  });
+  Future<bool> signup({required SignupEntity signupEntity});
 }

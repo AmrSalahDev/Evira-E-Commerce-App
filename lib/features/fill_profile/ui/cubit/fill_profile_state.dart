@@ -18,24 +18,6 @@ final class FillProfileError extends FillProfileState {
   const FillProfileError(this.message);
 }
 
-class ProfileImageLoading extends FillProfileState {}
-
-class ProfileImageLoaded extends FillProfileState {
-  final File file;
-  const ProfileImageLoaded(this.file);
-
-  @override
-  List<Object> get props => [file];
-}
-
-class ProfileImageError extends FillProfileState {
-  final String message;
-  const ProfileImageError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
-
 class ProfileShowDatePickerLoading extends FillProfileState {}
 
 class ProfileShowDatePickerLoaded extends FillProfileState {

@@ -1,8 +1,10 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/routes/args/fill_profile_screen_args.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/signup/domain/entities/signup_entity.dart';
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_state.dart';
@@ -54,10 +56,18 @@ class SignupButtonPart extends StatelessWidget {
                   : () async {
                       if (_formKey.currentState?.validate() ?? false) {
                         await context.read<SignupCubit>().signup(
-                          remember: remember,
-                          email: email,
-                          password: password,
+                          signupEntity: SignupEntity(
+                            email: email,
+                            password: password,
+                          ),
                         );
+                        // context.push(
+                        //   AppPaths.fillProfile,
+                        //   extra: FillProfileScreenArgs(
+                        //     email: email,
+                        //     password: password,
+                        //   ),
+                        // );
                       }
                     },
               backgroundColor:

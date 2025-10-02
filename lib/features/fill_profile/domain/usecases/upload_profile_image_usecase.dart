@@ -9,6 +9,6 @@ class UploadprofileimageUsecase {
 
   UploadprofileimageUsecase(this.fillProfileRepo);
 
-  Future<String> call({required String uid, required File imageFile}) =>
+  Future<String?> call({required String uid, required File imageFile}) =>
       fillProfileRepo.uploadProfileImage(uid: uid, imageFile: imageFile);
 }

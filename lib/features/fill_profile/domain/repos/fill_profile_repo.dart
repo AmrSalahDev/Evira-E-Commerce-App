@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 abstract class FillProfileRepo {
   Future<String> showDatePicker(BuildContext context);
-  Future<String> uploadProfileImage({
+  Future<String?> uploadProfileImage({
     required String uid,
     required File imageFile,
   });

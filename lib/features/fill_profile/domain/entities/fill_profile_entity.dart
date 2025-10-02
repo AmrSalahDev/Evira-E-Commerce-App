@@ -1,5 +1,4 @@
 class FillProfileEntity {
-  final String uid;
   final String fullname;
   final String nickname;
   final String dateOfBirth;
@@ -9,7 +8,6 @@ class FillProfileEntity {
   final String profileImage;
 
   FillProfileEntity({
-    required this.uid,
     required this.fullname,
     required this.nickname,
     required this.dateOfBirth,
@@ -18,4 +16,24 @@ class FillProfileEntity {
     required this.gender,
     required this.profileImage,
   });
+
+  FillProfileEntity copyWith({
+    String? fullname,
+    String? nickname,
+    String? dateOfBirth,
+    String? anotherEmail,
+    String? phone,
+    String? gender,
+    String? profileImage,
+  }) {
+    return FillProfileEntity(
+      fullname: fullname ?? this.fullname,
+      nickname: nickname ?? this.nickname,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      anotherEmail: anotherEmail ?? this.anotherEmail,
+      phone: phone ?? this.phone,
+      gender: gender ?? this.gender,
+      profileImage: profileImage ?? this.profileImage,
+    );
+  }
 }

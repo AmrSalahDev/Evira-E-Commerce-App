@@ -24,10 +24,12 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: isLoading ? () {} : onPressed ?? () {},
+      onPressed: isLoading ? () {} : onPressed,
       minWidth: double.infinity,
       height: 65.h,
       elevation: 0,
+      disabledColor: backgroundColor,
+      disabledTextColor: textColor,
       color: backgroundColor,
       textColor: textColor,
       shape: RoundedRectangleBorder(

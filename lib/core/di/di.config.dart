@@ -45,6 +45,8 @@ import 'package:evira_e_commerce/features/fill_profile/domain/usecases/upload_pr
     as _i739;
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart'
     as _i179;
+import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cubit.dart'
+    as _i378;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
@@ -128,10 +130,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i831.VerifyPinUsecase>(),
       ),
     );
-    gh.factory<_i179.FillProfileCubit>(
-      () => _i179.FillProfileCubit(
+    gh.factory<_i378.ProfileImageCubit>(
+      () => _i378.ProfileImageCubit(
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
+      ),
+    );
+    gh.factory<_i179.FillProfileCubit>(
+      () => _i179.FillProfileCubit(
         gh<_i494.ShowDatePickerUsecase>(),
         gh<_i1013.FillProfileUsecase>(),
         gh<_i739.UploadprofileimageUsecase>(),
