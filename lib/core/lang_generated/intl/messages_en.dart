@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
       "Code has been send to ",
     ),
+    "comingSoon": MessageLookupByLibrary.simpleMessage("Coming soon"),
     "confirmBiometric": MessageLookupByLibrary.simpleMessage(
       "Confirm biometric",
     ),
@@ -75,6 +76,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
       "Email already in use",
     ),
+    "errorverifyingPIN": MessageLookupByLibrary.simpleMessage(
+      "Error verifying PIN",
+    ),
+    "failedToSavePIN": MessageLookupByLibrary.simpleMessage(
+      "Failed to save PIN",
+    ),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "fillYourProfile": MessageLookupByLibrary.simpleMessage(
       "Fill Your Profile",
@@ -91,7 +98,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
+    "invalid_credentials": MessageLookupByLibrary.simpleMessage(
+      "Email or password is incorrect",
+    ),
     "letsYouIn": MessageLookupByLibrary.simpleMessage("Let\'s you in"),
     "loginToYourAccount": MessageLookupByLibrary.simpleMessage(
       "Login to your Account",

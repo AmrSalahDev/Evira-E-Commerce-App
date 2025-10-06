@@ -1,8 +1,10 @@
+import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/features/create_pin/domain/usecases/save_pin_usecase.dart';
 import 'package:evira_e_commerce/features/create_pin/domain/usecases/verify_pin_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'pin_state.dart';
 
@@ -12,14 +14,23 @@ class PinCubit extends Cubit<PinState> {
   final VerifyPinUsecase verifyPinUsecase;
   PinCubit(this.savePinUsecase, this.verifyPinUsecase) : super(PinInitial());
 
+  Future<void> registerPin() async {
+    final user = Supabase.instance.client.auth.currentUser;
+    if (user != null) {
+      await Supabase.instance.client
+          .from('users')
+          .update({'has_pin': true})
+          .eq('id', user.id);
+    }
+  }
+
   Future<void> savePin(String pin) async {
     emit(PinSaving());
     try {
       await savePinUsecase.call(pin);
-      print("Pin saved");
       emit(PinSaved());
     } catch (e) {
-      emit(PinError("Failed to save PIN"));
+      emit(PinError(EviraLang.current.failedToSavePIN));
     }
   }
 
@@ -30,10 +41,10 @@ class PinCubit extends Cubit<PinState> {
       if (storedPin) {
         emit(PinSaved());
       } else {
-        emit(PinError("Incorrect PIN"));
+        emit(PinError(EviraLang.current.incorrectPIN));
       }
     } catch (e) {
-      emit(PinError("Error verifying PIN"));
+      emit(PinError(EviraLang.current.errorverifyingPIN));
     }
   }
 }

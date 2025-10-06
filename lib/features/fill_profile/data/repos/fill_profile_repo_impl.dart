@@ -48,7 +48,7 @@ class FillProfileRepoImpl extends FillProfileRepo {
       final String filePath = "$uid/profile.png";
 
       await supabase.storage
-          .from('users_profile_images')
+          .from('profile_images')
           .upload(
             filePath,
             imageFile,
@@ -57,7 +57,7 @@ class FillProfileRepoImpl extends FillProfileRepo {
 
       // Get public URL
       final String publicUrl = supabase.storage
-          .from('users_profile_images')
+          .from('profile_images')
           .getPublicUrl(filePath);
 
       return publicUrl;
@@ -79,5 +79,13 @@ class FillProfileRepoImpl extends FillProfileRepo {
       profileImage: fillProfileEntity.profileImage,
     );
     await supabase.auth.updateUser(UserAttributes(data: model.toJson()));
+
+    final user = supabase.auth.currentUser;
+    if (user != null) {
+      await supabase
+          .from('users')
+          .update({'is_profile_filled': true})
+          .eq('id', user.id);
+    }
   }
 }

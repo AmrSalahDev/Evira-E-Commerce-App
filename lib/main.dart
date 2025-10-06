@@ -3,6 +3,7 @@ import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/firebase_options.dart';
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +31,20 @@ void main() async {
 
   configureDependencies();
 
+  final appFlowCubit = getIt<AppFlowCubit>();
+
   runApp(
-    BlocProvider.value(value: getIt<ThemeCubit>(), child: const EviraApp()),
+    BlocProvider.value(
+      value: getIt<ThemeCubit>(),
+      child: EviraApp(appFlowCubit: appFlowCubit),
+    ),
   );
-  FlutterNativeSplash.remove();
+  // FlutterNativeSplash.remove();
 }
 
 class EviraApp extends StatelessWidget {
-  const EviraApp({super.key});
+  final AppFlowCubit appFlowCubit;
+  const EviraApp({super.key, required this.appFlowCubit});
   @override
   Widget build(BuildContext context) {
     /// Set default transition values for all `GoTransition`.
@@ -57,35 +64,48 @@ class EviraApp extends StatelessWidget {
             data: theme,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              routerConfig: AppRouter.router,
-              locale: const Locale('en'),
-              localizationsDelegates: [
-                EviraLang.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: EviraLang.delegate.supportedLocales,
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              themeMode: ThemeMode.light,
-              builder: (context, child) {
-                final isDark = Theme.of(context).brightness == Brightness.dark;
+            child: BlocProvider.value(
+              value: appFlowCubit,
+              child: BlocSelector<AppFlowCubit, AppFlowState, String>(
+                selector: (state) {
+                  return state is AppFlowPathState
+                      ? state.path
+                      : AppPaths.onboarding;
+                },
+                builder: (context, path) {
+                  return MaterialApp.router(
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: AppRouter.createRouter(appFlowCubit, path),
+                    locale: const Locale('en'),
+                    localizationsDelegates: [
+                      EviraLang.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: EviraLang.delegate.supportedLocales,
+                    theme: AppTheme.light,
+                    darkTheme: AppTheme.dark,
+                    themeMode: ThemeMode.light,
+                    builder: (context, child) {
+                      final isDark =
+                          Theme.of(context).brightness == Brightness.dark;
 
-                return SystemUIWrapper(
-                  statusBarColor: context.backgroundColor,
-                  statusBarIconBrightness: isDark
-                      ? Brightness.light
-                      : Brightness.dark,
-                  navigationBarColor: context.backgroundColor,
-                  navigationBarIconBrightness: isDark
-                      ? Brightness.light
-                      : Brightness.dark,
-                  child: child!,
-                );
-              },
+                      return SystemUIWrapper(
+                        statusBarColor: context.backgroundColor,
+                        statusBarIconBrightness: isDark
+                            ? Brightness.light
+                            : Brightness.dark,
+                        navigationBarColor: context.backgroundColor,
+                        navigationBarIconBrightness: isDark
+                            ? Brightness.light
+                            : Brightness.dark,
+                        child: child!,
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           );
         },

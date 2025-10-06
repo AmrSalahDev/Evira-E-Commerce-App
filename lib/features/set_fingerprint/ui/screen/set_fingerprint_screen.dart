@@ -6,6 +6,7 @@ import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/dialogs/account_setup_successful_dialog.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/dialogs/go_settings_dialog.dart';
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +85,17 @@ class _SetFingerprintScreenState extends State<SetFingerprintScreen>
                   child: CustomButton(
                     title: EviraLang.of(context).skip,
                     onPressed: () async {
-                      await AccountSetupSuccessfulDialog.show(context);
+                      await AccountSetupSuccessfulDialog.show(
+                        context,
+                        onDone: () async {
+                          await context
+                              .read<FingerprintCubit>()
+                              .saveFingerprint();
+                          if (context.mounted) {
+                            context.read<AppFlowCubit>().checkUserState();
+                          }
+                        },
+                      );
                     },
                     backgroundColor: context.grayBackgroundColor,
                     textColor: context.textColor,
@@ -108,7 +119,17 @@ class _SetFingerprintScreenState extends State<SetFingerprintScreen>
                           message: state.message,
                         );
                       } else if (state is FingerprintSuccess) {
-                        AccountSetupSuccessfulDialog.show(context);
+                        AccountSetupSuccessfulDialog.show(
+                          context,
+                          onDone: () async {
+                            await context
+                                .read<FingerprintCubit>()
+                                .saveFingerprint();
+                            if (context.mounted) {
+                              context.read<AppFlowCubit>().checkUserState();
+                            }
+                          },
+                        );
                       }
                     },
                     builder: (context, state) {

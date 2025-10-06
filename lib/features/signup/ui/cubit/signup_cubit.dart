@@ -46,7 +46,6 @@ class SignupCubit extends Cubit<SignupState> {
       // case 'network-request-failed':
       //   return EviraLang.current.networkError;
       default:
-        print(code);
         return EviraLang.current.unknownError;
     }
   }

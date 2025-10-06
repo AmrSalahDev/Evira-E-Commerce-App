@@ -10,6 +10,8 @@ class ProfileImageInitial extends ProfileImageState {}
 
 class ProfileImageLoading extends ProfileImageState {}
 
+class ProfileImageCancelled extends ProfileImageState {}
+
 class ProfileImageLoaded extends ProfileImageState {
   final File file;
   const ProfileImageLoaded(this.file);

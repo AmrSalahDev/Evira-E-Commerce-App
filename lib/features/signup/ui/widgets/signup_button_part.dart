@@ -1,17 +1,15 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
-import 'package:evira_e_commerce/core/routes/app_router.dart';
-import 'package:evira_e_commerce/core/routes/args/fill_profile_screen_args.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/signup/domain/entities/signup_entity.dart';
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_state.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class SignupButtonPart extends StatelessWidget {
   const SignupButtonPart({
@@ -33,7 +31,7 @@ class SignupButtonPart extends StatelessWidget {
       bloc: context.read<SignupCubit>(),
       listener: (context, state) {
         if (state is SignupSuccess) {
-          context.push(AppPaths.fillProfile);
+          context.read<AppFlowCubit>().checkUserState();
         } else if (state is SignupError) {
           getIt<ToastService>().showErrorToast(
             context: context,
@@ -61,13 +59,6 @@ class SignupButtonPart extends StatelessWidget {
                             password: password,
                           ),
                         );
-                        // context.push(
-                        //   AppPaths.fillProfile,
-                        //   extra: FillProfileScreenArgs(
-                        //     email: email,
-                        //     password: password,
-                        //   ),
-                        // );
                       }
                     },
               backgroundColor:

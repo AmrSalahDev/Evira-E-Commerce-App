@@ -13,6 +13,8 @@ import 'package:evira_e_commerce/core/services/biometrics_service.dart'
     as _i858;
 import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
     as _i7;
+import 'package:evira_e_commerce/core/services/social_auth_service.dart'
+    as _i769;
 import 'package:evira_e_commerce/core/services/theme_service.dart' as _i193;
 import 'package:evira_e_commerce/core/services/toast_service.dart' as _i101;
 import 'package:evira_e_commerce/features/create_pin/data/repos/create_pin_repo_impl.dart'
@@ -47,6 +49,14 @@ import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cub
     as _i179;
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cubit.dart'
     as _i378;
+import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
+    as _i1036;
+import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
+    as _i890;
+import 'package:evira_e_commerce/features/login/domain/usecases/login_usecase.dart'
+    as _i516;
+import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart'
+    as _i166;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
@@ -59,6 +69,8 @@ import 'package:evira_e_commerce/features/signup/domain/usecases/signup_usecase.
     as _i109;
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart'
     as _i630;
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart' as _i170;
+import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart' as _i149;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart' as _i436;
 import 'package:evira_e_commerce/shared/domain/usecases/get_theme_mode_usecase.dart'
@@ -82,8 +94,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i7.SharedPreferencesService>(
       () => _i7.SharedPreferencesService(),
     );
+    gh.lazySingleton<_i769.SocialAuthService>(() => _i769.SocialAuthService());
     gh.lazySingleton<_i193.ThemeService>(() => _i193.ThemeService());
     gh.lazySingleton<_i101.ToastService>(() => _i101.ToastService());
+    gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
+    gh.factory<_i149.SocialAuthCubit>(
+      () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
+    );
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
     gh.factory<_i820.GetThemeModeUseCase>(
@@ -100,6 +117,7 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.lazySingleton<_i962.SignupRepo>(() => _i280.SignupRepoImpl());
+    gh.lazySingleton<_i890.LoginRepo>(() => _i1036.LoginRepoImpl());
     gh.factory<_i49.ImagePickerUsecase>(
       () => _i49.ImagePickerUsecase(gh<_i1011.ImagePickerRepo>()),
     );
@@ -130,6 +148,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i831.VerifyPinUsecase>(),
       ),
     );
+    gh.factory<_i516.LoginUsecase>(
+      () => _i516.LoginUsecase(gh<_i890.LoginRepo>()),
+    );
     gh.factory<_i378.ProfileImageCubit>(
       () => _i378.ProfileImageCubit(
         gh<_i49.ImagePickerUsecase>(),
@@ -142,6 +163,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1013.FillProfileUsecase>(),
         gh<_i739.UploadprofileimageUsecase>(),
       ),
+    );
+    gh.factory<_i166.LoginCubit>(
+      () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
     );
     gh.factory<_i630.SignupCubit>(
       () => _i630.SignupCubit(gh<_i109.SignupUsecase>()),

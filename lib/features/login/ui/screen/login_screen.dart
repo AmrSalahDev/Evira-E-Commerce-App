@@ -1,6 +1,8 @@
 import 'package:evira_e_commerce/core/constants/app_styles.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/login/domain/entities/login_entity.dart';
+import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/dont_have_account_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/forgot_password_part.dart';
 import 'package:evira_e_commerce/features/login/ui/widgets/signin_button_part.dart';
@@ -49,62 +51,50 @@ class _LoginScreenState extends State<LoginScreen>
   Widget buildBody(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: _BodySection(
-          formKey: _formKey,
-          emailController: _emailController,
-          passwordController: _passwordController,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              EviraLang.of(context).loginToYourAccount,
+              style: AppStyles.largeTextStyle(context),
+            ),
+            SizedBox(height: 50.h),
+            SignInFormsPart(
+              formKey: _formKey,
+              emailController: _emailController,
+              passwordController: _passwordController,
+            ),
+            SizedBox(height: 25.h),
+            CustomCheckbox(title: EviraLang.of(context).rememberMe),
+            SizedBox(height: 25.h),
+            SignInButtonPart(
+              onSignInPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  context.read<LoginCubit>().login(
+                    loginEntity: LoginEntity(
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                    ),
+                  );
+                }
+              },
+            ),
+            SizedBox(height: 15.h),
+            ForgotPasswordPart(),
+            SizedBox(height: 30.h),
+            CustomDivider(
+              title: EviraLang.of(context).orContinueWith,
+              color: context.dividerColor,
+              textStyle: AppStyles.dividerTextStyle(context),
+            ),
+            SizedBox(height: 30.h),
+            SignInButtonsPart(),
+            SizedBox(height: 40.h),
+            DontHaveAccountPart(),
+            SizedBox(height: 40.h),
+          ],
         ),
       ),
-    );
-  }
-}
-
-class _BodySection extends StatelessWidget {
-  const _BodySection({
-    required GlobalKey<FormState> formKey,
-    required TextEditingController emailController,
-    required TextEditingController passwordController,
-  }) : _formKey = formKey,
-       _emailController = emailController,
-       _passwordController = passwordController;
-
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController _emailController;
-  final TextEditingController _passwordController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          EviraLang.of(context).loginToYourAccount,
-          style: AppStyles.largeTextStyle(context),
-        ),
-        SizedBox(height: 50.h),
-        SignInFormsPart(
-          formKey: _formKey,
-          emailController: _emailController,
-          passwordController: _passwordController,
-        ),
-        SizedBox(height: 25.h),
-        CustomCheckbox(title: EviraLang.of(context).rememberMe),
-        SizedBox(height: 25.h),
-        SignInButtonPart(formKey: _formKey),
-        SizedBox(height: 15.h),
-        ForgotPasswordPart(),
-        SizedBox(height: 30.h),
-        CustomDivider(
-          title: EviraLang.of(context).orContinueWith,
-          color: context.dividerColor,
-          textStyle: AppStyles.dividerTextStyle(context),
-        ),
-        SizedBox(height: 30.h),
-        SignInButtonsPart(),
-        SizedBox(height: 40.h),
-        DontHaveAccountPart(),
-        SizedBox(height: 40.h),
-      ],
     );
   }
 }

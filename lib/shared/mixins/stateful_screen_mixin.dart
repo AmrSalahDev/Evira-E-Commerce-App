@@ -44,7 +44,9 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
                 constraints: BoxConstraints(minWidth: 48.h, minHeight: 48.h),
                 color: context.iconColor,
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  if (Navigator.canPop(context)) Navigator.pop(context);
+                },
               ),
 
               backgroundColor: context.backgroundColor,

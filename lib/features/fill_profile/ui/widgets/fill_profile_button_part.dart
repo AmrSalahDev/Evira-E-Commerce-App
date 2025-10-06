@@ -3,6 +3,7 @@ import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_state.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
@@ -31,7 +32,7 @@ class FillProfileButton extends StatelessWidget {
             message: state.message,
           );
         } else if (state is FillProfileSuccess) {
-          print('fill profile success');
+          context.read<AppFlowCubit>().checkUserState();
         }
       },
       builder: (context, state) {

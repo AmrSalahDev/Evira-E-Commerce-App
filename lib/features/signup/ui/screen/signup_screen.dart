@@ -67,7 +67,6 @@ class _SignupScreenState extends State<SignupScreen>
               title: EviraLang.of(context).rememberMe,
               onChecked: (value) {
                 remember = value;
-                print(remember);
               },
             ),
             SizedBox(height: 25.h),

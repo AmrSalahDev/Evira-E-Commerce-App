@@ -1,14 +1,13 @@
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
-import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:evira_e_commerce/shared/widgets/pin_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CreatePinScreen extends StatefulWidget {
@@ -54,8 +53,11 @@ class _CreatePinScreenState extends State<CreatePinScreen>
               onPressed: () async {
                 if (isPinCompleted) {
                   await context.read<PinCubit>().savePin(pinController.text);
+                  if (context.mounted) {
+                    await context.read<PinCubit>().registerPin();
+                  }
                   if (context.mounted && !state) {
-                    context.push(AppPaths.setFingerprint);
+                    await context.read<AppFlowCubit>().checkUserState();
                   }
                 }
               },

@@ -16,7 +16,7 @@ class ImagePickerRepoImpl extends ImagePickerRepo {
     if (image != null) {
       selectedFile = File(image.path);
     } else {
-      debugPrint("No image selected");
+      return null;
     }
     return selectedFile;
   }

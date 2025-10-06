@@ -28,7 +28,6 @@ class FillProfileCubit extends Cubit<FillProfileState> {
 
   void changeImage(File? image) {
     this.image = image;
-    print(this.image);
   }
 
   Future<void> showDatePicker(BuildContext context) async {
@@ -50,10 +49,7 @@ class FillProfileCubit extends Cubit<FillProfileState> {
           imageFile: image!,
           uid: supabase.auth.currentUser!.id,
         );
-        print(supabase.auth.currentUser!.id);
-        print(image);
         if (url != null) {
-          print(url);
           fillProfileEntity = fillProfileEntity.copyWith(profileImage: url);
         }
       }

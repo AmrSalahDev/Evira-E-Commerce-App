@@ -12,7 +12,13 @@ import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 
 class PhoneNumberTextFieldPart extends StatefulWidget {
   final TextEditingController controller;
-  const PhoneNumberTextFieldPart({super.key, required this.controller});
+  final Function(String phoneCode, String countryCode, String phoneNumber)
+  onCountrySelected;
+  const PhoneNumberTextFieldPart({
+    super.key,
+    required this.controller,
+    required this.onCountrySelected,
+  });
 
   @override
   State<PhoneNumberTextFieldPart> createState() =>
@@ -92,6 +98,11 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
                       country.countryCode,
                     );
               });
+              widget.onCountrySelected(
+                _initialCountryData?.phoneCode ?? _defaultPhoneCode,
+                _initialCountryData?.countryCode ?? _defaultCountryCode,
+                widget.controller.text,
+              );
             },
             countryListTheme: _buildCountryListThemeData(context),
           );

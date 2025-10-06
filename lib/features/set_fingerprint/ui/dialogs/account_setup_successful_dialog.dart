@@ -13,7 +13,10 @@ import 'package:my_flutter_toolkit/core/extensions/context_extensions.dart';
 class AccountSetupSuccessfulDialog {
   AccountSetupSuccessfulDialog._();
 
-  static FutureOr<void> show(BuildContext context) {
+  static FutureOr<void> show(
+    BuildContext context, {
+    required VoidCallback onDone,
+  }) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -78,5 +81,15 @@ class AccountSetupSuccessfulDialog {
         ),
       ),
     );
+
+    // Auto-close after 5 seconds
+    Future.delayed(const Duration(seconds: 5), () {
+      if (context.mounted) {
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop(); // Close the dialog
+          onDone(); // Callback to go to home screen
+        }
+      }
+    });
   }
 }

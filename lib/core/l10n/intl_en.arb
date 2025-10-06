@@ -66,7 +66,12 @@
     "invalidEmail":"Invalid email",
     "operationNotAllowed":"Operation not allowed",
     "networkError":"Network error",
-    "unknownError":"Unknown error"
+    "unknownError":"Unknown error",
+    "invalid_credentials":"Email or password is incorrect",
+    "comingSoon":"Coming soon",
+    "incorrectPIN":"Incorrect PIN",
+    "errorverifyingPIN":"Error verifying PIN",
+    "failedToSavePIN":"Failed to save PIN"
     
 
 }

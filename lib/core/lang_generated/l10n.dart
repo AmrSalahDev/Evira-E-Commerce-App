@@ -598,6 +598,51 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Email or password is incorrect`
+  String get invalid_credentials {
+    return Intl.message(
+      'Email or password is incorrect',
+      name: 'invalid_credentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Coming soon`
+  String get comingSoon {
+    return Intl.message('Coming soon', name: 'comingSoon', desc: '', args: []);
+  }
+
+  /// `Incorrect PIN`
+  String get incorrectPIN {
+    return Intl.message(
+      'Incorrect PIN',
+      name: 'incorrectPIN',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error verifying PIN`
+  String get errorverifyingPIN {
+    return Intl.message(
+      'Error verifying PIN',
+      name: 'errorverifyingPIN',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to save PIN`
+  String get failedToSavePIN {
+    return Intl.message(
+      'Failed to save PIN',
+      name: 'failedToSavePIN',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

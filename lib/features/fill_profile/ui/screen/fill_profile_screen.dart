@@ -31,6 +31,7 @@ class _FillProfileScreenState extends State<FillProfileScreen>
   late final TextEditingController nickNameController;
   late final TextEditingController emailController;
   late final GlobalKey<FormState> formKey;
+  String phoneCode = '';
 
   @override
   void initState() {
@@ -107,7 +108,12 @@ class _FillProfileScreenState extends State<FillProfileScreen>
                 suffixIcon: FontAwesomeIcons.envelope,
               ),
               SizedBox(height: 25.h),
-              PhoneNumberTextFieldPart(controller: phoneNumberController),
+              PhoneNumberTextFieldPart(
+                controller: phoneNumberController,
+                onCountrySelected: (phoneCode, countryCode, phoneNumber) {
+                  this.phoneCode = '+$phoneCode';
+                },
+              ),
               SizedBox(height: 25.h),
               GenderTextFieldPart(controller: genderController),
               SizedBox(height: 50.h),
@@ -118,7 +124,7 @@ class _FillProfileScreenState extends State<FillProfileScreen>
                     fullname: fullNameController.text.trim(),
                     nickname: nickNameController.text.trim(),
                     anotherEmail: emailController.text.trim(),
-                    phone: phoneNumberController.text.trim(),
+                    phone: phoneCode + phoneNumberController.text.trim(),
                     gender: genderController.text.trim(),
                     dateOfBirth: dateController.text.trim(),
                     profileImage: '',

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:equatable/equatable.dart';
 import 'package:evira_e_commerce/features/fill_profile/domain/usecases/image_picker_usecase.dart';
@@ -30,6 +31,7 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
         emit(ProfileImageLoaded(image));
       } else {
         this.image = null;
+        emit(ProfileImageCancelled());
         return;
       }
     } catch (e) {
@@ -46,6 +48,7 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
         emit(ProfileImageLoaded(image));
       } else {
         this.image = null;
+        emit(ProfileImageCancelled());
         return;
       }
     } catch (e) {
