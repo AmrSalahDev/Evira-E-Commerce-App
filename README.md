@@ -64,17 +64,24 @@ lib
 ├───core
 │   ├───constants
 │   ├───di
+│   ├───enums
 │   ├───extensions
 │   ├───gen
 │   ├───l10n
 │   ├───lang_generated
 │   │   └───intl
 │   ├───routes
+│   │   └───args
 │   ├───services
 │   ├───theme
 │   └───utils
 ├───features
-│   ├───auth
+│   ├───create_new_password
+│   │   └───ui
+│   │       ├───dialogs
+│   │       ├───screen
+│   │       └───widgets
+│   ├───create_pin
 │   │   ├───data
 │   │   │   └───repos
 │   │   ├───domain
@@ -82,14 +89,25 @@ lib
 │   │   │   └───usecases
 │   │   └───ui
 │   │       ├───cubit
-│   │       ├───screen
-│   │       └───widgets
+│   │       └───screen
+│   ├───error
+│   │   └───ui
+│   │       └───screen
 │   ├───fill_profile
 │   │   ├───data
+│   │   │   ├───models
+│   │   │   └───repos
 │   │   ├───domain
+│   │   │   ├───entities
+│   │   │   ├───repos
+│   │   │   └───usecases
 │   │   └───ui
 │   │       ├───cubit
 │   │       ├───screen
+│   │       └───widgets
+│   ├───forget_password
+│   │   └───ui
+│   │       ├───screens
 │   │       └───widgets
 │   ├───home
 │   │   └───ui
@@ -106,6 +124,9 @@ lib
 │   │       ├───cubit
 │   │       ├───screen
 │   │       └───widgets
+│   ├───no_internet
+│   │   └───ui
+│   │       └───screen
 │   ├───onboarding
 │   │   ├───data
 │   │   │   ├───models
@@ -118,12 +139,32 @@ lib
 │   │       ├───cubit
 │   │       ├───screen
 │   │       └───widgets
-│   └───signup
+│   ├───set_fingerprint
+│   │   ├───data
+│   │   │   └───repos
+│   │   ├───domain
+│   │   │   ├───repos
+│   │   │   └───usecases
+│   │   └───ui
+│   │       ├───cubit
+│   │       ├───dialogs
+│   │       └───screen
+│   ├───signup
+│   │   ├───data
+│   │   │   ├───models
+│   │   │   └───repos
+│   │   ├───domain
+│   │   │   ├───entities
+│   │   │   ├───repos
+│   │   │   └───usecases
+│   │   └───ui
+│   │       ├───cubit
+│   │       ├───screen
+│   │       └───widgets
+│   └───social_auth
 │       ├───data
-│       │   ├───models
 │       │   └───repos
 │       ├───domain
-│       │   ├───entities
 │       │   ├───repos
 │       │   └───usecases
 │       └───ui
@@ -132,10 +173,13 @@ lib
 │           └───widgets
 └───shared
     ├───cubits
+    ├───data
+    │   ├───models
+    │   └───repos
     ├───domain
+    │   ├───repos
     │   └───usecases
     ├───mixins
-    ├───models
     └───widgets
 ```
 ---

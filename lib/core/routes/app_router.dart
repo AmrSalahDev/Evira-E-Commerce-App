@@ -44,14 +44,14 @@ class AppPaths {
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
+  late final StreamSubscription<dynamic> _subscription;
+
   GoRouterRefreshStream(Stream<dynamic> stream) {
     notifyListeners();
     _subscription = stream.asBroadcastStream().listen((_) {
       notifyListeners();
     });
   }
-
-  late final StreamSubscription<dynamic> _subscription;
 
   @override
   void dispose() {
@@ -63,7 +63,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: path,
+      initialLocation: AppPaths.noInternet,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         GoRoute(
