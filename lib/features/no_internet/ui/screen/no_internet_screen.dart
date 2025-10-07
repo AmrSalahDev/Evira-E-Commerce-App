@@ -1,12 +1,19 @@
 import 'dart:async';
 
 import 'package:evira_e_commerce/core/di/di.dart';
+import 'package:evira_e_commerce/core/gen/assets.gen.dart';
+import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
+import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
+import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:lottie/lottie.dart';
 
 class NoInternetScreen extends StatefulWidget {
   const NoInternetScreen({super.key});
@@ -20,7 +27,7 @@ class _NoInternetScreenState extends State<NoInternetScreen>
   bool _checking = false;
 
   @override
-  String get title => "No Internet";
+  String get title => EviraLang.current.noInternetTitle;
 
   Future<void> _tryAgain() async {
     setState(() => _checking = true);
@@ -32,57 +39,60 @@ class _NoInternetScreenState extends State<NoInternetScreen>
     setState(() => _checking = false);
 
     if (hasAccess) {
-      // Pop back → AppFlowCubit will re-check and redirect
-      context.read<AppFlowCubit>().checkUserState();
+      await context.read<AppFlowCubit>().checkUserState();
     } else {
       getIt<ToastService>().showErrorToast(
         context: context,
-        message: "Still no internet connection.",
+        message: EviraLang.of(context).stillNoInternetConnection,
       );
     }
   }
 
   @override
   Widget buildBody(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Center(
+    return Center(
+      child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.wifi_off, size: 80, color: Colors.redAccent),
-            const SizedBox(height: 16),
-            const Text(
-              "No Internet Connection",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "Please check your Wi-Fi or mobile data and try again.",
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: _checking ? null : _tryAgain,
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                  vertical: 14,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
+            Assets.lotties.noInternet.lottie(
+              width: 400.w,
+              height: 330.h,
+              fit: BoxFit.contain,
+              delegates: LottieDelegates(
+                values: [
+                  ValueDelegate.colorFilter(
+                    const ['**'],
+                    value: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
+                  ),
+                ],
               ),
-              child: _checking
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    )
-                  : const Text("Try Again"),
             ),
+            SizedBox(height: 25.h),
+            Text(
+              EviraLang.of(context).noInternetConnection,
+              style: GoogleFonts.urbanist(
+                fontSize: 27.sp,
+                fontWeight: FontWeight.bold,
+                color: context.textColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 15.h),
+            Text(
+              EviraLang.of(context).noInternetDescription,
+              style: TextStyle(fontSize: 18.sp, color: context.textHintColor),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 50.h),
+            CustomButton(
+              title: EviraLang.of(context).tryAgain,
+              onPressed: _tryAgain,
+              isLoading: _checking,
+              backgroundColor: context.buttonColor,
+              textColor: context.buttonTextColor,
+            ),
+            SizedBox(height: 50.h),
           ],
         ),
       ),

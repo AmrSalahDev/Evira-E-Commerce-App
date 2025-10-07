@@ -673,6 +673,51 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `No Internet`
+  String get noInternetTitle {
+    return Intl.message(
+      'No Internet',
+      name: 'noInternetTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Still no internet connection.`
+  String get stillNoInternetConnection {
+    return Intl.message(
+      'Still no internet connection.',
+      name: 'stillNoInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Internet Connection!`
+  String get noInternetConnection {
+    return Intl.message(
+      'No Internet Connection!',
+      name: 'noInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your Wi-Fi or mobile data and try again.`
+  String get noInternetDescription {
+    return Intl.message(
+      'Please check your Wi-Fi or mobile data and try again.',
+      name: 'noInternetDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

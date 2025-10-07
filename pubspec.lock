@@ -21,10 +21,10 @@ packages:
     dependency: transitive
     description:
       name: animated_digit
-      sha256: d39c4a23269d02452cd82397cce627d158294dd96a4bd2199f8f0f5922b1db34
+      sha256: e0935e46d8cd281184a5867a0666088e7b10f495a57eebd8f9e57c08bbcb2b84
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1+2"
+    version: "3.3.2"
   ansicolor:
     dependency: transitive
     description:
@@ -1170,7 +1170,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: f49f7bdd92a7a1a5bcac8878c94d711270a29644
+      resolved-ref: "9b9eae566117a3b055b67d8143bd2e6c33fb837b"
       url: "https://github.com/AmrSalahDev/MyFlutterToolKit.git"
     source: git
     version: "0.0.1"
@@ -1314,10 +1314,10 @@ packages:
     dependency: transitive
     description:
       name: phone_numbers_parser
-      sha256: "87b2c344e1ae28bc92ee9e534b30ef85a16d4e7279a770c222aaefe2eeac6f02"
+      sha256: f95f15494536712cf6c5c4303bd7c4dae788863184d2dff03fda5e084a623c01
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.11"
+    version: "9.0.15"
   pinput:
     dependency: "direct main"
     description:

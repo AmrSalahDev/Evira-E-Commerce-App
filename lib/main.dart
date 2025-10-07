@@ -87,7 +87,7 @@ class EviraApp extends StatelessWidget {
                     supportedLocales: EviraLang.delegate.supportedLocales,
                     theme: AppTheme.light,
                     darkTheme: AppTheme.dark,
-                    themeMode: ThemeMode.light,
+                    themeMode: themeMode,
                     builder: (context, child) {
                       final isDark =
                           Theme.of(context).brightness == Brightness.dark;

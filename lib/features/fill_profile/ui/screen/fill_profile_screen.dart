@@ -14,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_flutter_toolkit/core/utils/text_field_utils/validators.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class FillProfileScreen extends StatefulWidget {
   const FillProfileScreen({super.key});
@@ -103,7 +104,10 @@ class _FillProfileScreenState extends State<FillProfileScreen>
                 fieldKey: 'email',
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                validator: (value) => Validators.email(value: value),
+                validator: (value) => Validators.checkDuplicateEmail(
+                  firstEmail: value,
+                  secondEmail: Supabase.instance.client.auth.currentUser!.email,
+                ),
                 hintText: EviraLang.of(context).email,
                 suffixIcon: FontAwesomeIcons.envelope,
               ),

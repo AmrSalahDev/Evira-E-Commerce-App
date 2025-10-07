@@ -42,10 +42,6 @@ dependencies:
   loading_animation_widget: ^1.3.0
   local_auth: ^2.3.0
   lottie: ^3.3.2
-  my_flutter_toolkit:
-    git:
-      url: https://github.com/AmrSalahDev/MyFlutterToolKit.git
-      ref: main
   otp_resend_timer: ^1.0.0
   pattern_formatter: ^4.0.1
   pinput: ^5.0.2
@@ -59,6 +55,10 @@ dependencies:
   app_links: ^6.4.1
   google_sign_in: ^7.2.0
   internet_connection_checker_plus: ^2.9.0
+  my_flutter_toolkit:
+    git:
+      url: https://github.com/AmrSalahDev/MyFlutterToolKit.git
+      ref: main
 
 dev_dependencies:
   flutter_lints: ^5.0.0

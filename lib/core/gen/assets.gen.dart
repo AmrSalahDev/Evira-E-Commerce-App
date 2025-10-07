@@ -110,6 +110,10 @@ class $AssetsLottiesGen {
   LottieGenImage get fingerprint =>
       const LottieGenImage('assets/lotties/fingerprint.json');
 
+  /// File path: assets/lotties/no_internet.json
+  LottieGenImage get noInternet =>
+      const LottieGenImage('assets/lotties/no_internet.json');
+
   /// File path: assets/lotties/success_fingerprint.json
   LottieGenImage get successFingerprint =>
       const LottieGenImage('assets/lotties/success_fingerprint.json');
@@ -121,6 +125,7 @@ class $AssetsLottiesGen {
   /// List of all assets
   List<LottieGenImage> get values => [
     fingerprint,
+    noInternet,
     successFingerprint,
     wrongFingerprint,
   ];

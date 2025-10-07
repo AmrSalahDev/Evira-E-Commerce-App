@@ -43,6 +43,11 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
     return TextFormField(
       controller: widget.controller,
       decoration: _buildInputBorder(context),
+      style: GoogleFonts.urbanist(
+        color: context.textColor,
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w500,
+      ),
       keyboardType: TextInputType.phone,
       onChanged: (value) {
         context.read<TextFieldCubit>().updateField('phone', value);
@@ -64,6 +69,7 @@ class _PhoneNumberTextFieldPartState extends State<PhoneNumberTextFieldPart> {
     return InputDecoration(
       filled: true,
       fillColor: context.textFieldColor,
+
       border: OutlineInputBorder(
         borderSide: BorderSide.none,
         borderRadius: BorderRadius.circular(15.r),

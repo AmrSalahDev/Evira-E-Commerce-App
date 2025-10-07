@@ -34,6 +34,7 @@ class _CustomButtonState extends State<CustomButton> {
   bool _checking = false; // local state for internet check
 
   Future<void> _handlePress() async {
+    if (widget.onPressed == null) return;
     if (_checking || widget.isLoading) return;
 
     setState(() => _checking = true);

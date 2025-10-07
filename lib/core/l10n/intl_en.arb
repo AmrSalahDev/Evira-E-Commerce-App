@@ -74,7 +74,12 @@
     "failedToSavePIN":"Failed to save PIN",
     "noInternet":"Oops! No internet!",
     "backOnline":"You're back online!",
-    "connectedWithoutInternet":"Connected but no internet!"
+    "connectedWithoutInternet":"Connected but no internet!",
+    "noInternetTitle":"No Internet",
+    "stillNoInternetConnection":"Still no internet connection.",
+    "noInternetConnection":"No Internet Connection!",
+    "noInternetDescription":"Please check your Wi-Fi or mobile data and try again.",
+    "tryAgain":"Try Again"            
     
 
 }

@@ -63,7 +63,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.noInternet,
+      initialLocation: path,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         GoRoute(

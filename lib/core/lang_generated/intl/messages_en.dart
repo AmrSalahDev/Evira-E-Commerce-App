@@ -116,6 +116,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
     "noInternet": MessageLookupByLibrary.simpleMessage("Oops! No internet!"),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "No Internet Connection!",
+    ),
+    "noInternetDescription": MessageLookupByLibrary.simpleMessage(
+      "Please check your Wi-Fi or mobile data and try again.",
+    ),
+    "noInternetTitle": MessageLookupByLibrary.simpleMessage("No Internet"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",
@@ -158,12 +165,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "Still no internet connection.",
+    ),
     "tooManyAttempts": MessageLookupByLibrary.simpleMessage(
       "Too many attempts. Try again after 30 seconds.",
     ),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many requests",
     ),
+    "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
