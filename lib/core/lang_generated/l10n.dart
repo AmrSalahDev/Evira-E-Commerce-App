@@ -643,6 +643,36 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Oops! No internet!`
+  String get noInternet {
+    return Intl.message(
+      'Oops! No internet!',
+      name: 'noInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You're back online!`
+  String get backOnline {
+    return Intl.message(
+      'You\'re back online!',
+      name: 'backOnline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connected but no internet!`
+  String get connectedWithoutInternet {
+    return Intl.message(
+      'Connected but no internet!',
+      name: 'connectedWithoutInternet',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

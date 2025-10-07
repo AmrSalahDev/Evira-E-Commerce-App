@@ -58,6 +58,7 @@ dependencies:
   flutter_facebook_auth: ^7.1.2
   app_links: ^6.4.1
   google_sign_in: ^7.2.0
+  internet_connection_checker_plus: ^2.9.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

@@ -64,6 +64,7 @@ class SocialAuthScreen extends StatelessWidget with StatelessScreenMixin {
                   isLoading: isLoading,
                   title: EviraLang.of(context).continueWithFacebook,
                   icon: Assets.icons.facebook.svg(width: 30.w, height: 30.h),
+
                   onPressed: () async {
                     await context.read<SocialAuthCubit>().signInWithFacebook();
                   },

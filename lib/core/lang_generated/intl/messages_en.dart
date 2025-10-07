@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "backOnline": MessageLookupByLibrary.simpleMessage("You\'re back online!"),
     "biometricAreNotSetUpTitle": MessageLookupByLibrary.simpleMessage(
       "Biometric aren\'t set up",
     ),
@@ -47,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "congratulations": MessageLookupByLibrary.simpleMessage("Congratulations!"),
+    "connectedWithoutInternet": MessageLookupByLibrary.simpleMessage(
+      "Connected but no internet!",
+    ),
     "continueWithApple": MessageLookupByLibrary.simpleMessage(
       "Continue with Apple",
     ),
@@ -111,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),
+    "noInternet": MessageLookupByLibrary.simpleMessage("Oops! No internet!"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",

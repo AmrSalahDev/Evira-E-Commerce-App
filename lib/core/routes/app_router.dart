@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
+import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
 import 'package:evira_e_commerce/features/social_auth/ui/screen/social_auth_screen.dart';
 import 'package:evira_e_commerce/features/create_new_password/ui/screen/create_new_password_screen.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
@@ -39,6 +40,7 @@ class AppPaths {
   static final String forgotPassword = '/forgotPassword';
   static final String forgotPasswordVerify = '/forgotPasswordVerify';
   static final String createNewPassword = '/createNewPassword';
+  static final String noInternet = '/noInternet';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -78,6 +80,13 @@ class AppRouter {
           path: AppPaths.home,
           builder: (context, state) {
             return const HomeScreen();
+          },
+        ),
+
+        GoRoute(
+          path: AppPaths.noInternet,
+          builder: (context, state) {
+            return const NoInternetScreen();
           },
         ),
 

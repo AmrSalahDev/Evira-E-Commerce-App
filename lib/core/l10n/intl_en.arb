@@ -71,7 +71,10 @@
     "comingSoon":"Coming soon",
     "incorrectPIN":"Incorrect PIN",
     "errorverifyingPIN":"Error verifying PIN",
-    "failedToSavePIN":"Failed to save PIN"
+    "failedToSavePIN":"Failed to save PIN",
+    "noInternet":"Oops! No internet!",
+    "backOnline":"You're back online!",
+    "connectedWithoutInternet":"Connected but no internet!"
     
 
 }

@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -11,13 +13,43 @@ part 'app_flow_state.dart';
 @lazySingleton
 class AppFlowCubit extends Cubit<AppFlowState> {
   final SupabaseClient _supabase = Supabase.instance.client;
-  late final StreamSubscription<AuthState> _authSub;
+  StreamSubscription<AuthState>? _authSub;
+  late final StreamSubscription<InternetStatus> _internetSub;
+  late final AppLifecycleListener _listener;
 
   AppFlowCubit() : super(AppFlowInitial()) {
-    checkUserState(); // initial check
-    _authSub = _supabase.auth.onAuthStateChange.listen((_) {
-      checkUserState();
+    _internetSub = InternetConnection().onStatusChange.listen((status) async {
+      switch (status) {
+        case InternetStatus.disconnected:
+          emit(AppFlowPathState(AppPaths.noInternet));
+          FlutterNativeSplash.remove();
+          break;
+
+        case InternetStatus.connected:
+          final hasAccess = await InternetConnection().hasInternetAccess;
+          if (hasAccess) {
+            // Always re-check state immediately
+            await checkUserState();
+
+            // Attach auth listener only once
+            _authSub ??= _supabase.auth.onAuthStateChange.listen((_) {
+              checkUserState();
+            });
+          } else {
+            // Connected to WiFi/4G but no internet (e.g. captive portal)
+            emit(AppFlowPathState(AppPaths.noInternet));
+            FlutterNativeSplash.remove();
+          }
+
+          break;
+      }
     });
+
+    _listener = AppLifecycleListener(
+      onResume: () => _internetSub.resume(),
+      onHide: () => _internetSub.pause(),
+      onPause: () => _internetSub.pause(),
+    );
   }
 
   Future<void> checkUserState() async {
@@ -57,7 +89,9 @@ class AppFlowCubit extends Cubit<AppFlowState> {
 
   @override
   Future<void> close() {
-    _authSub.cancel();
+    _authSub?.cancel();
+    _internetSub.cancel();
+    _listener.dispose();
     return super.close();
   }
 }

@@ -45,6 +45,7 @@ void main() async {
 class EviraApp extends StatelessWidget {
   final AppFlowCubit appFlowCubit;
   const EviraApp({super.key, required this.appFlowCubit});
+
   @override
   Widget build(BuildContext context) {
     /// Set default transition values for all `GoTransition`.
