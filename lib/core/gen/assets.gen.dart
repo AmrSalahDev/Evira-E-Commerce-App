@@ -30,8 +30,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
+  /// File path: assets/icons/sliders-simple.svg
+  SvgGenImage get slidersSimple =>
+      const SvgGenImage('assets/icons/sliders-simple.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [apple, facebook, google, profile];
+  List<SvgGenImage> get values => [
+    apple,
+    facebook,
+    google,
+    profile,
+    slidersSimple,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -62,6 +72,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/forgot_password_logo_light.png
   AssetGenImage get forgotPasswordLogoLight =>
       const AssetGenImage('assets/images/forgot_password_logo_light.png');
+
+  /// File path: assets/images/home_slider_image.png
+  AssetGenImage get homeSliderImage =>
+      const AssetGenImage('assets/images/home_slider_image.png');
 
   /// File path: assets/images/lets_you_in_dark.png
   AssetGenImage get letsYouInDark =>
@@ -96,6 +110,7 @@ class $AssetsImagesGen {
     createNewPasswordLogoLight,
     forgotPasswordLogoDark,
     forgotPasswordLogoLight,
+    homeSliderImage,
     letsYouInDark,
     letsYouInLight,
     resetPasswordSuccessfulLogoDark,

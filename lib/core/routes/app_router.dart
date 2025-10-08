@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:evira_e_commerce/core/di/di.dart';
+import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
 import 'package:evira_e_commerce/features/social_auth/ui/screen/social_auth_screen.dart';
@@ -21,6 +22,7 @@ import 'package:evira_e_commerce/features/set_fingerprint/ui/screen/set_fingerpr
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart';
 import 'package:evira_e_commerce/features/signup/ui/screen/signup_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +81,13 @@ class AppRouter {
         GoRoute(
           path: AppPaths.home,
           builder: (context, state) {
-            return const HomeScreen();
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => getIt<HomeAppBarCubit>()),
+                BlocProvider(create: (context) => getIt<GreetingCubit>()),
+              ],
+              child: const HomeScreen(),
+            );
           },
         ),
 

@@ -79,7 +79,13 @@
     "stillNoInternetConnection":"Still no internet connection.",
     "noInternetConnection":"No Internet Connection!",
     "noInternetDescription":"Please check your Wi-Fi or mobile data and try again.",
-    "tryAgain":"Try Again"            
+    "tryAgain":"Try Again",
+    "goodMorning":"Good Morning 👋",
+    "goodAfternoon":"Good Afternoon 👋",
+    "goodEvening":"Good Evening 👋",
+    "seeAll":"See All",
+    "specialOffers":"Special Offers"
+    
     
 
 }

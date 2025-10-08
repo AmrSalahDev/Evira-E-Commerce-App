@@ -102,6 +102,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon 👋"),
+    "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening 👋"),
+    "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning 👋"),
     "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
     "invalid_credentials": MessageLookupByLibrary.simpleMessage(
@@ -151,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend code in"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
     "setUpBiometricDescription": MessageLookupByLibrary.simpleMessage(
       "To enable this feature, first set up face or fingerprint unlock in your device settings.",
@@ -165,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "specialOffers": MessageLookupByLibrary.simpleMessage("Special Offers"),
     "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Still no internet connection.",
     ),

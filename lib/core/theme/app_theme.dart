@@ -129,4 +129,5 @@ extension AppColorContext on BuildContext {
       isDark ? AppColors.darkShimmerHighlight : AppColors.lightShimmerHighlight;
   Color get grayBackgroundColor =>
       isDark ? AppColors.darkGrayBackground : AppColors.lightGrayBackground;
+  Color get cardColor => isDark ? AppColors.darkCard : AppColors.lightCard;
 }

@@ -718,6 +718,51 @@ class EviraLang {
   String get tryAgain {
     return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
   }
+
+  /// `Good Morning 👋`
+  String get goodMorning {
+    return Intl.message(
+      'Good Morning 👋',
+      name: 'goodMorning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Afternoon 👋`
+  String get goodAfternoon {
+    return Intl.message(
+      'Good Afternoon 👋',
+      name: 'goodAfternoon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good Evening 👋`
+  String get goodEvening {
+    return Intl.message(
+      'Good Evening 👋',
+      name: 'goodEvening',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See All`
+  String get seeAll {
+    return Intl.message('See All', name: 'seeAll', desc: '', args: []);
+  }
+
+  /// `Special Offers`
+  String get specialOffers {
+    return Intl.message(
+      'Special Offers',
+      name: 'specialOffers',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {
