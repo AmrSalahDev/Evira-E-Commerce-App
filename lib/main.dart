@@ -4,6 +4,7 @@ import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/firebase_options.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,11 @@ void main() async {
   final appFlowCubit = getIt<AppFlowCubit>();
 
   runApp(
-    BlocProvider.value(
-      value: getIt<ThemeCubit>(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: getIt<ThemeCubit>()),
+        BlocProvider.value(value: getIt<NetworkCubit>()),
+      ],
       child: EviraApp(appFlowCubit: appFlowCubit),
     ),
   );

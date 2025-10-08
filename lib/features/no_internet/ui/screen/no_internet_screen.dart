@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
@@ -11,12 +12,14 @@ import 'package:evira_e_commerce/shared/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:lottie/lottie.dart';
 
 class NoInternetScreen extends StatefulWidget {
-  const NoInternetScreen({super.key});
+  final NoInternetScreenArgs? args;
+  const NoInternetScreen({super.key, required this.args});
 
   @override
   State<NoInternetScreen> createState() => _NoInternetScreenState();
@@ -36,10 +39,14 @@ class _NoInternetScreenState extends State<NoInternetScreen>
 
     if (!mounted) return;
 
-    setState(() => _checking = false);
-
     if (hasAccess) {
-      await context.read<AppFlowCubit>().checkUserState();
+      if (widget.args == null) {
+        await context.read<AppFlowCubit>().checkUserState();
+        setState(() => _checking = false);
+      } else {
+        context.go(widget.args!.targetPath);
+        setState(() => _checking = false);
+      }
     } else {
       getIt<ToastService>().showErrorToast(
         context: context,
@@ -87,7 +94,9 @@ class _NoInternetScreenState extends State<NoInternetScreen>
             SizedBox(height: 50.h),
             CustomButton(
               title: EviraLang.of(context).tryAgain,
-              onPressed: _tryAgain,
+              onPressed: () async {
+                await _tryAgain();
+              },
               isLoading: _checking,
               backgroundColor: context.buttonColor,
               textColor: context.buttonTextColor,

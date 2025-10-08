@@ -51,12 +51,20 @@ import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cu
     as _i378;
 import 'package:evira_e_commerce/features/home/data/repos/home_app_bar_repo_impl.dart'
     as _i603;
+import 'package:evira_e_commerce/features/home/data/repos/home_banner_repo_impl.dart'
+    as _i170;
 import 'package:evira_e_commerce/features/home/domain/repos/home_app_bar_repo.dart'
     as _i771;
+import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart'
+    as _i487;
+import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart'
+    as _i167;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_user_info_usecase.dart'
     as _i965;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart'
     as _i329;
+import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
+    as _i1000;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
     as _i1036;
 import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
@@ -79,6 +87,7 @@ import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart'
     as _i630;
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart' as _i170;
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart' as _i795;
+import 'package:evira_e_commerce/shared/cubits/network_cubit.dart' as _i969;
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart' as _i149;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart' as _i436;
@@ -108,11 +117,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i101.ToastService>(() => _i101.ToastService());
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
+    gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
+    gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
     gh.factory<_i820.GetThemeModeUseCase>(
       () => _i820.GetThemeModeUseCase(gh<_i193.ThemeService>()),
@@ -135,6 +146,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i419.RecoverLostImageUsecase>(
       () => _i419.RecoverLostImageUsecase(gh<_i1011.ImagePickerRepo>()),
     );
+    gh.factory<_i167.GetHomeBannersUseCase>(
+      () => _i167.GetHomeBannersUseCase(gh<_i487.HomeBannerRepo>()),
+    );
     gh.factory<_i965.GetUserInfoUsecase>(
       () => _i965.GetUserInfoUsecase(gh<_i771.HomeAppBarRepo>()),
     );
@@ -143,6 +157,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i831.VerifyPinUsecase>(
       () => _i831.VerifyPinUsecase(gh<_i1030.CreatePinRepo>()),
+    );
+    gh.factory<_i1000.HomeBannerCubit>(
+      () => _i1000.HomeBannerCubit(gh<_i167.GetHomeBannersUseCase>()),
     );
     gh.factory<_i1013.FillProfileUsecase>(
       () => _i1013.FillProfileUsecase(gh<_i623.FillProfileRepo>()),
