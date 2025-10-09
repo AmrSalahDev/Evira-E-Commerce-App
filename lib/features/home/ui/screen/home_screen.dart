@@ -3,8 +3,10 @@ import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
+import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_banner_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_app_bar_part.dart';
+import 'package:evira_e_commerce/features/home/ui/widgets/home_category_grid_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_search_bar_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/see_all_widget_part.dart';
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart';
@@ -29,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
     context.read<HomeAppBarCubit>().loadUserInfo();
     context.read<GreetingCubit>().startGreeting();
     context.read<HomeBannerCubit>().loadBanners();
+    context.read<HomeCategoryCubit>().loadCategories();
   }
 
   @override
@@ -56,6 +59,11 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
             SeeAllWidgetPart(title: EviraLang.of(context).specialOffers),
             SizedBox(height: 30.h),
             HomeBannerPart(),
+            SizedBox(height: 30.h),
+            HomeCategoryGridPart(),
+            SizedBox(height: 30.h),
+            SeeAllWidgetPart(title: EviraLang.of(context).mostPopular),
+            SizedBox(height: 30.h),
           ],
         ),
       ),

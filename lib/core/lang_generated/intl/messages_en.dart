@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Login to your Account",
     ),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "mostPopular": MessageLookupByLibrary.simpleMessage("Most Popular"),
     "networkError": MessageLookupByLibrary.simpleMessage("Network error"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "nickName": MessageLookupByLibrary.simpleMessage("Nickname"),

@@ -53,18 +53,26 @@ import 'package:evira_e_commerce/features/home/data/repos/home_app_bar_repo_impl
     as _i603;
 import 'package:evira_e_commerce/features/home/data/repos/home_banner_repo_impl.dart'
     as _i170;
+import 'package:evira_e_commerce/features/home/data/repos/home_category_repo_impl.dart'
+    as _i293;
 import 'package:evira_e_commerce/features/home/domain/repos/home_app_bar_repo.dart'
     as _i771;
 import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart'
     as _i487;
+import 'package:evira_e_commerce/features/home/domain/repos/home_category_repo.dart'
+    as _i868;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart'
     as _i167;
+import 'package:evira_e_commerce/features/home/domain/usecases/get_home_categories_usecase.dart'
+    as _i462;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_user_info_usecase.dart'
     as _i965;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart'
     as _i329;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
     as _i1000;
+import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart'
+    as _i444;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
     as _i1036;
 import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
@@ -118,11 +126,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
+    gh.lazySingleton<_i868.HomeCategoryRepo>(
+      () => _i293.HomeCategoryRepoImpl(),
+    );
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
+    gh.factory<_i462.GetHomeCategoriesUseCase>(
+      () => _i462.GetHomeCategoriesUseCase(gh<_i868.HomeCategoryRepo>()),
+    );
     gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
     gh.factory<_i820.GetThemeModeUseCase>(
@@ -190,6 +204,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
       ),
+    );
+    gh.factory<_i444.HomeCategoryCubit>(
+      () => _i444.HomeCategoryCubit(gh<_i462.GetHomeCategoriesUseCase>()),
     );
     gh.factory<_i179.FillProfileCubit>(
       () => _i179.FillProfileCubit(

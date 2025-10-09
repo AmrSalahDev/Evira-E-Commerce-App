@@ -17,7 +17,7 @@ class HomeBannerCubit extends Cubit<HomeBannerState> {
       final banners = await getHomeBannersUseCase(limit);
       emit(HomeBannerLoaded(banners));
     } catch (e) {
-      emit(BannerError(e.toString()));
+      emit(HomeBannerError(e.toString()));
     }
   }
 }

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:evira_e_commerce/core/constants/app_styles.dart';
+import 'package:evira_e_commerce/core/di/di.dart';
+import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +17,15 @@ class HomeBannerPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBannerCubit, HomeBannerState>(
+    return BlocConsumer<HomeBannerCubit, HomeBannerState>(
+      listener: (context, state) {
+        if (state is HomeBannerError) {
+          getIt<ToastService>().showErrorToast(
+            context: context,
+            message: state.message,
+          );
+        }
+      },
       builder: (context, state) {
         if (state is HomeBannerLoading) {
           return Shimmer.fromColors(

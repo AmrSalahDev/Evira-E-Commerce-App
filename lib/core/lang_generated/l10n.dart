@@ -763,6 +763,16 @@ class EviraLang {
       args: [],
     );
   }
+
+  /// `Most Popular`
+  String get mostPopular {
+    return Intl.message(
+      'Most Popular',
+      name: 'mostPopular',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

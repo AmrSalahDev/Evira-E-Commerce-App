@@ -17,9 +17,9 @@ class HomeBannerLoaded extends HomeBannerState {
   List<Object?> get props => [banners];
 }
 
-class BannerError extends HomeBannerState {
+class HomeBannerError extends HomeBannerState {
   final String message;
-  BannerError(this.message);
+  HomeBannerError(this.message);
 
   @override
   List<Object?> get props => [message];
