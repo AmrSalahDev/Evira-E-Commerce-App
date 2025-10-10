@@ -65,12 +65,12 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
             HomeSearchBarPart(),
             SizedBox(height: 30.h),
             SeeAllWidgetPart(title: EviraLang.of(context).specialOffers),
-            // SizedBox(height: 30.h),
-            // HomeBannerPart(),
-            // SizedBox(height: 30.h),
-            // HomeCategoryGridPart(),
-            // SizedBox(height: 30.h),
-            // SeeAllWidgetPart(title: EviraLang.of(context).mostPopular),
+            SizedBox(height: 30.h),
+            HomeBannerPart(),
+            SizedBox(height: 30.h),
+            HomeCategoryGridPart(),
+            SizedBox(height: 30.h),
+            SeeAllWidgetPart(title: EviraLang.of(context).mostPopular),
             HomeCategoryBarPart(
               onCategorySelected: (categoryId) async {
                 await context.read<HomeProductCubit>().getProductsByCategoryId(
