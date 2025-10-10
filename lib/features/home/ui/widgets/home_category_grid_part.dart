@@ -25,9 +25,11 @@ class HomeCategoryGridPart extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is HomeCategoryLoading) {
-          return _ShimmerGridView();
+          return _ShimmerGridViewPart();
         } else if (state is HomeCategoryLoaded) {
-          return _CategoryGridView(state: state);
+          return _CategoryGridViewPart(state: state);
+        } else if (state is HomeCategoryError) {
+          return const SizedBox.shrink();
         }
         return SizedBox.shrink();
       },
@@ -35,14 +37,15 @@ class HomeCategoryGridPart extends StatelessWidget {
   }
 }
 
-class _CategoryGridView extends StatelessWidget {
+class _CategoryGridViewPart extends StatelessWidget {
   final HomeCategoryLoaded state;
-  const _CategoryGridView({required this.state});
+  const _CategoryGridViewPart({required this.state});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
+      clipBehavior: Clip.none,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
@@ -58,7 +61,7 @@ class _CategoryGridView extends StatelessWidget {
               height: 75.h,
               width: 75.h,
               alignment: Alignment.center,
-              padding: EdgeInsets.all(20.h),
+              padding: EdgeInsets.all(21.h),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: context.cardColor,
@@ -101,13 +104,14 @@ class _CategoryGridView extends StatelessWidget {
   }
 }
 
-class _ShimmerGridView extends StatelessWidget {
-  const _ShimmerGridView();
+class _ShimmerGridViewPart extends StatelessWidget {
+  const _ShimmerGridViewPart();
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
+      clipBehavior: Clip.none,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,

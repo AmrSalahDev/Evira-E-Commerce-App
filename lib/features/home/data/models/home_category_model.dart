@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:evira_e_commerce/features/home/domain/entities/home_category_entity.dart';
 
 class HomeCategoryModel extends Equatable {
-  final String id;
+  final int id;
   final String name;
   final String iconUrl;
 
@@ -17,7 +17,7 @@ class HomeCategoryModel extends Equatable {
 
   factory HomeCategoryModel.fromJson(Map<String, dynamic> json) {
     return HomeCategoryModel(
-      id: json['id'].toString(),
+      id: json['id'] ?? 0,
       name: json['name'] ?? '',
       iconUrl: json['icon_url'] ?? '',
     );

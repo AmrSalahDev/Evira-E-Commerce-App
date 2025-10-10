@@ -9,6 +9,8 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   bool get showAppBar => true;
 
+  bool get applyPaddingForBottomNavigationBar => true;
+
   String get title => "";
 
   Widget? buildBottomNavigationBar() => null;
@@ -61,15 +63,19 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
           child: buildBody(context),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(
-          left: 20.w,
-          right: 20.w,
-          bottom: MediaQuery.of(context).viewInsets.bottom, // keyboard height
-        ),
+      bottomNavigationBar: applyPaddingForBottomNavigationBar
+          ? Padding(
+              padding: EdgeInsets.only(
+                left: 20.w,
+                right: 20.w,
+                bottom: MediaQuery.of(
+                  context,
+                ).viewInsets.bottom, // keyboard height
+              ),
 
-        child: buildBottomNavigationBar(),
-      ),
+              child: buildBottomNavigationBar(),
+            )
+          : buildBottomNavigationBar(),
     );
   }
 }

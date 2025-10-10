@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPin": MessageLookupByLibrary.simpleMessage(
       "Add a PIN number to make your account more secure.",
     ),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Biometric aren\'t set up",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
       "Code has been send to ",
     ),
@@ -105,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon 👋"),
     "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening 👋"),
     "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning 👋"),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
     "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),
     "invalid_credentials": MessageLookupByLibrary.simpleMessage(
@@ -142,12 +145,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "or": MessageLookupByLibrary.simpleMessage("or"),
     "orContinueWith": MessageLookupByLibrary.simpleMessage("or continue with"),
+    "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "other": MessageLookupByLibrary.simpleMessage("Other"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordTooWeak": MessageLookupByLibrary.simpleMessage(
       "Password too weak",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
@@ -170,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "sold": MessageLookupByLibrary.simpleMessage("sold"),
     "specialOffers": MessageLookupByLibrary.simpleMessage("Special Offers"),
     "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Still no internet connection.",
@@ -185,5 +191,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
+    "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
   };
 }

@@ -85,7 +85,14 @@
     "goodEvening":"Good Evening 👋",
     "seeAll":"See All",
     "specialOffers":"Special Offers",
-    "mostPopular":"Most Popular"
+    "mostPopular":"Most Popular",
+    "home":"Home",
+    "cart":"Cart",
+    "orders":"Orders",
+    "profile":"Profile",
+    "wallet":"Wallet",
+    "all":"All",
+    "sold":"sold"
     
     
 

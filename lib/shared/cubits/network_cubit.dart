@@ -16,13 +16,13 @@ class NetworkCubit extends Cubit<NetworkState> {
   bool _firstCheck = true;
 
   NetworkCubit() : super(NetworkInitial()) {
-    startChecking();
+    startMonitoring();
   }
 
-  void startChecking() {
+  void startMonitoring() {
     _subscription ??= InternetConnection().onStatusChange.listen((status) {
       _debounceTimer?.cancel();
-      _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
+      _debounceTimer = Timer(const Duration(milliseconds: 1000), () async {
         await _onStatusChange(status);
       });
     });
@@ -64,7 +64,7 @@ class NetworkCubit extends Cubit<NetworkState> {
     _firstCheck = false;
   }
 
-  void stopChecking() {
+  void stopMonitoring() {
     _subscription?.cancel();
     _listener?.dispose();
     _debounceTimer?.cancel();
@@ -72,7 +72,7 @@ class NetworkCubit extends Cubit<NetworkState> {
 
   @override
   Future<void> close() {
-    stopChecking();
+    stopMonitoring();
     return super.close();
   }
 }

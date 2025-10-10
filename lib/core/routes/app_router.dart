@@ -6,6 +6,7 @@ import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
+import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
 import 'package:evira_e_commerce/features/social_auth/ui/screen/social_auth_screen.dart';
@@ -92,6 +93,7 @@ class AppRouter {
                 BlocProvider(create: (context) => getIt<GreetingCubit>()),
                 BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
                 BlocProvider(create: (context) => getIt<HomeCategoryCubit>()),
+                BlocProvider(create: (context) => getIt<HomeProductCubit>()),
               ],
               child: const HomeScreen(),
             );

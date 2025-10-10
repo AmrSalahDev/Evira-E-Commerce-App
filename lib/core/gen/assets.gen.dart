@@ -21,11 +21,39 @@ class $AssetsIconsGen {
   /// File path: assets/icons/apple.svg
   SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
 
+  /// File path: assets/icons/cart.png
+  AssetGenImage get cart => const AssetGenImage('assets/icons/cart.png');
+
+  /// File path: assets/icons/cart_active.png
+  AssetGenImage get cartActive =>
+      const AssetGenImage('assets/icons/cart_active.png');
+
   /// File path: assets/icons/facebook.svg
   SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
 
   /// File path: assets/icons/google.svg
   SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
+
+  /// File path: assets/icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/home_active.png
+  AssetGenImage get homeActive =>
+      const AssetGenImage('assets/icons/home_active.png');
+
+  /// File path: assets/icons/orders.png
+  AssetGenImage get orders => const AssetGenImage('assets/icons/orders.png');
+
+  /// File path: assets/icons/orders_active.png
+  AssetGenImage get ordersActive =>
+      const AssetGenImage('assets/icons/orders_active.png');
+
+  /// File path: assets/icons/person.png
+  AssetGenImage get person => const AssetGenImage('assets/icons/person.png');
+
+  /// File path: assets/icons/person_active.png
+  AssetGenImage get personActive =>
+      const AssetGenImage('assets/icons/person_active.png');
 
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
@@ -34,13 +62,30 @@ class $AssetsIconsGen {
   SvgGenImage get slidersSimple =>
       const SvgGenImage('assets/icons/sliders-simple.svg');
 
+  /// File path: assets/icons/wallet.png
+  AssetGenImage get wallet => const AssetGenImage('assets/icons/wallet.png');
+
+  /// File path: assets/icons/wallet_active.png
+  AssetGenImage get walletActive =>
+      const AssetGenImage('assets/icons/wallet_active.png');
+
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
     apple,
+    cart,
+    cartActive,
     facebook,
     google,
+    home,
+    homeActive,
+    orders,
+    ordersActive,
+    person,
+    personActive,
     profile,
     slidersSimple,
+    wallet,
+    walletActive,
   ];
 }
 

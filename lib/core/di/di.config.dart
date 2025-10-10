@@ -55,16 +55,24 @@ import 'package:evira_e_commerce/features/home/data/repos/home_banner_repo_impl.
     as _i170;
 import 'package:evira_e_commerce/features/home/data/repos/home_category_repo_impl.dart'
     as _i293;
+import 'package:evira_e_commerce/features/home/data/repos/home_product_repo_impl.dart'
+    as _i99;
 import 'package:evira_e_commerce/features/home/domain/repos/home_app_bar_repo.dart'
     as _i771;
 import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart'
     as _i487;
 import 'package:evira_e_commerce/features/home/domain/repos/home_category_repo.dart'
     as _i868;
+import 'package:evira_e_commerce/features/home/domain/repos/home_product_repo.dart'
+    as _i424;
+import 'package:evira_e_commerce/features/home/domain/usecases/get_all_products_usecase.dart'
+    as _i350;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart'
     as _i167;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_categories_usecase.dart'
     as _i462;
+import 'package:evira_e_commerce/features/home/domain/usecases/get_products_by_category_id_usecase.dart'
+    as _i685;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_user_info_usecase.dart'
     as _i965;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart'
@@ -73,6 +81,8 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
     as _i1000;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart'
     as _i444;
+import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart'
+    as _i385;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
     as _i1036;
 import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
@@ -145,6 +155,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i733.SetThemeModeUseCase>(
       () => _i733.SetThemeModeUseCase(gh<_i193.ThemeService>()),
     );
+    gh.lazySingleton<_i424.HomeProductRepo>(() => _i99.HomeProductRepoImpl());
     gh.lazySingleton<_i1011.ImagePickerRepo>(() => _i782.ImagePickerRepoImpl());
     gh.lazySingleton<_i436.ThemeCubit>(
       () => _i436.ThemeCubit(
@@ -159,6 +170,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i419.RecoverLostImageUsecase>(
       () => _i419.RecoverLostImageUsecase(gh<_i1011.ImagePickerRepo>()),
+    );
+    gh.factory<_i685.GetProductsByCategoryIdUsecase>(
+      () => _i685.GetProductsByCategoryIdUsecase(gh<_i424.HomeProductRepo>()),
+    );
+    gh.factory<_i350.GetAllProductsUsecase>(
+      () => _i350.GetAllProductsUsecase(gh<_i424.HomeProductRepo>()),
     );
     gh.factory<_i167.GetHomeBannersUseCase>(
       () => _i167.GetHomeBannersUseCase(gh<_i487.HomeBannerRepo>()),
@@ -217,6 +234,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i166.LoginCubit>(
       () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
+    );
+    gh.factory<_i385.HomeProductCubit>(
+      () => _i385.HomeProductCubit(
+        gh<_i685.GetProductsByCategoryIdUsecase>(),
+        gh<_i350.GetAllProductsUsecase>(),
+      ),
     );
     gh.factory<_i630.SignupCubit>(
       () => _i630.SignupCubit(gh<_i109.SignupUsecase>()),
