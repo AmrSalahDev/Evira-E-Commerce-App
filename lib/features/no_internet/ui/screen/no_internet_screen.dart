@@ -39,13 +39,13 @@ class _NoInternetScreenState extends State<NoInternetScreen>
 
     if (!mounted) return;
 
+    setState(() => _checking = false);
+
     if (hasAccess) {
       if (widget.args == null) {
         await context.read<AppFlowCubit>().checkUserState();
-        setState(() => _checking = false);
       } else {
         context.go(widget.args!.targetPath);
-        setState(() => _checking = false);
       }
     } else {
       getIt<ToastService>().showErrorToast(

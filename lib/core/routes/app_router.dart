@@ -9,6 +9,8 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dar
 import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
+import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart';
+import 'package:evira_e_commerce/features/notification/ui/screens/notificaton_screen.dart';
 import 'package:evira_e_commerce/features/social_auth/ui/screen/social_auth_screen.dart';
 import 'package:evira_e_commerce/features/create_new_password/ui/screen/create_new_password_screen.dart';
 import 'package:evira_e_commerce/features/create_pin/ui/cubit/pin_cubit.dart';
@@ -49,6 +51,7 @@ class AppPaths {
   static final String createNewPassword = '/createNewPassword';
   static final String noInternet = '/noInternet';
   static final String error = '/error';
+  static final String notification = '/notification';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -94,10 +97,19 @@ class AppRouter {
                 BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
                 BlocProvider(create: (context) => getIt<HomeCategoryCubit>()),
                 BlocProvider(create: (context) => getIt<HomeProductCubit>()),
+                BlocProvider.value(value: getIt<NotificationBloc>()),
               ],
               child: const HomeScreen(),
             );
           },
+        ),
+
+        GoRoute(
+          path: AppPaths.notification,
+          builder: (context, state) => BlocProvider.value(
+            value: getIt<NotificationBloc>(),
+            child: const NotificationScreen(),
+          ),
         ),
 
         GoRoute(

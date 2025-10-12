@@ -27,8 +27,8 @@ class ShimmerBox extends StatelessWidget {
       baseColor: shimmerBaseColor ?? context.shimmerBaseColor,
       highlightColor: shimmerHighlightColor ?? context.shimmerHighlightColor,
       child: Container(
-        height: height.h,
-        width: width.w,
+        height: height,
+        width: width,
         margin: margin,
         decoration: BoxDecoration(
           color: shimmerBaseColor ?? context.shimmerBaseColor,

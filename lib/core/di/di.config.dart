@@ -91,6 +91,26 @@ import 'package:evira_e_commerce/features/login/domain/usecases/login_usecase.da
     as _i516;
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart'
     as _i166;
+import 'package:evira_e_commerce/features/notification/data/datasources/notification_remote_data_source.dart'
+    as _i251;
+import 'package:evira_e_commerce/features/notification/data/repo/notification_repo_impl.dart'
+    as _i583;
+import 'package:evira_e_commerce/features/notification/domain/repo/notification_repo.dart'
+    as _i305;
+import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart'
+    as _i306;
+import 'package:evira_e_commerce/features/notification/domain/usecases/clear_all_notificatons_usecase.dart'
+    as _i289;
+import 'package:evira_e_commerce/features/notification/domain/usecases/get_notifications_usecase.dart'
+    as _i168;
+import 'package:evira_e_commerce/features/notification/domain/usecases/get_unseen_notifications_count_usecase.dart'
+    as _i29;
+import 'package:evira_e_commerce/features/notification/domain/usecases/listen_notifications_changes_usecase.dart'
+    as _i302;
+import 'package:evira_e_commerce/features/notification/domain/usecases/mark_notifications_as_seen_usecase.dart'
+    as _i629;
+import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart'
+    as _i529;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
@@ -171,11 +191,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i419.RecoverLostImageUsecase>(
       () => _i419.RecoverLostImageUsecase(gh<_i1011.ImagePickerRepo>()),
     );
-    gh.factory<_i685.GetProductsByCategoryIdUsecase>(
-      () => _i685.GetProductsByCategoryIdUsecase(gh<_i424.HomeProductRepo>()),
+    gh.lazySingleton<_i251.NotificationRemoteDataSource>(
+      () => _i251.NotificationRemoteDataSourceImpl(),
     );
     gh.factory<_i350.GetAllProductsUsecase>(
       () => _i350.GetAllProductsUsecase(gh<_i424.HomeProductRepo>()),
+    );
+    gh.factory<_i685.GetProductsByCategoryIdUsecase>(
+      () => _i685.GetProductsByCategoryIdUsecase(gh<_i424.HomeProductRepo>()),
     );
     gh.factory<_i167.GetHomeBannersUseCase>(
       () => _i167.GetHomeBannersUseCase(gh<_i487.HomeBannerRepo>()),
@@ -225,6 +248,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i444.HomeCategoryCubit>(
       () => _i444.HomeCategoryCubit(gh<_i462.GetHomeCategoriesUseCase>()),
     );
+    gh.lazySingleton<_i306.NotificationService>(
+      () => _i306.NotificationService(gh<_i251.NotificationRemoteDataSource>()),
+    );
     gh.factory<_i179.FillProfileCubit>(
       () => _i179.FillProfileCubit(
         gh<_i494.ShowDatePickerUsecase>(),
@@ -235,14 +261,45 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i166.LoginCubit>(
       () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
     );
+    gh.lazySingleton<_i305.NotificationRepo>(
+      () =>
+          _i583.NotificationRepoImpl(gh<_i251.NotificationRemoteDataSource>()),
+    );
     gh.factory<_i385.HomeProductCubit>(
       () => _i385.HomeProductCubit(
         gh<_i685.GetProductsByCategoryIdUsecase>(),
         gh<_i350.GetAllProductsUsecase>(),
       ),
     );
+    gh.factory<_i29.GetUnseenNotificationsCountUseCase>(
+      () =>
+          _i29.GetUnseenNotificationsCountUseCase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i629.MarkNotificationsAsSeenUsecase>(
+      () => _i629.MarkNotificationsAsSeenUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i302.ListenNotificationsChangesUsecase>(
+      () =>
+          _i302.ListenNotificationsChangesUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i168.GetNotificationsUsecase>(
+      () => _i168.GetNotificationsUsecase(gh<_i305.NotificationRepo>()),
+    );
     gh.factory<_i630.SignupCubit>(
       () => _i630.SignupCubit(gh<_i109.SignupUsecase>()),
+    );
+    gh.factory<_i289.ClearAllNotificatonsUsecase>(
+      () => _i289.ClearAllNotificatonsUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.lazySingleton<_i529.NotificationBloc>(
+      () => _i529.NotificationBloc(
+        gh<_i306.NotificationService>(),
+        gh<_i168.GetNotificationsUsecase>(),
+        gh<_i289.ClearAllNotificatonsUsecase>(),
+        gh<_i629.MarkNotificationsAsSeenUsecase>(),
+        gh<_i29.GetUnseenNotificationsCountUseCase>(),
+        gh<_i302.ListenNotificationsChangesUsecase>(),
+      ),
     );
     return this;
   }

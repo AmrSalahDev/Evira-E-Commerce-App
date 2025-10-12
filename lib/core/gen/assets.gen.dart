@@ -58,6 +58,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile.svg
   SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
 
+  /// File path: assets/icons/round_menu.svg
+  SvgGenImage get roundMenu => const SvgGenImage('assets/icons/round_menu.svg');
+
   /// File path: assets/icons/sliders-simple.svg
   SvgGenImage get slidersSimple =>
       const SvgGenImage('assets/icons/sliders-simple.svg');
@@ -83,6 +86,7 @@ class $AssetsIconsGen {
     person,
     personActive,
     profile,
+    roundMenu,
     slidersSimple,
     wallet,
     walletActive,

@@ -15,6 +15,8 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   Widget? buildBottomNavigationBar() => null;
 
+  List<Widget>? buildActions() => null;
+
   void safeSetState(VoidCallback fn) {
     if (!mounted) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -50,6 +52,7 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
                   if (Navigator.canPop(context)) Navigator.pop(context);
                 },
               ),
+              actions: buildActions(),
 
               backgroundColor: context.backgroundColor,
               elevation: 0,

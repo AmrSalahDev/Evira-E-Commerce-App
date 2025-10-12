@@ -28,6 +28,7 @@ class AppFlowCubit extends Cubit<AppFlowState> {
 
       if (user == null || session == null) {
         emit(AppFlowPathState(AppPaths.onboarding));
+        //await getIt<NotificationService>().close();
         FlutterNativeSplash.remove();
         return;
       }

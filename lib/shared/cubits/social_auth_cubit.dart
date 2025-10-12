@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 import 'package:equatable/equatable.dart';
+import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/services/social_auth_service.dart';
+import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';

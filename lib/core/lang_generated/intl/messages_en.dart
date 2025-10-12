@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "accountIsReady": MessageLookupByLibrary.simpleMessage(
       "Your account is ready to use. You will be redirected to the Home page in a\nfew seconds..",
     ),
+    "acountSetupSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Account setup successful!",
+    ),
     "addFingerprint": MessageLookupByLibrary.simpleMessage(
       "Add a fingerprint to make your account\nmore secure.",
     ),
@@ -130,6 +133,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please check your Wi-Fi or mobile data and try again.",
     ),
     "noInternetTitle": MessageLookupByLibrary.simpleMessage("No Internet"),
+    "noNotifications": MessageLookupByLibrary.simpleMessage(
+      "No notifications yet.",
+    ),
+    "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
       "We provide high quality products just for you",
@@ -192,5 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
     "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+    "yourAccountHasBeenCreated": MessageLookupByLibrary.simpleMessage(
+      "Your account has been created!",
+    ),
   };
 }

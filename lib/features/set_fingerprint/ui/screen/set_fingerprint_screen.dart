@@ -1,8 +1,11 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
+import 'package:evira_e_commerce/features/notification/ui/screens/notificaton_screen.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/dialogs/account_setup_successful_dialog.dart';
 import 'package:evira_e_commerce/features/set_fingerprint/ui/dialogs/go_settings_dialog.dart';
@@ -92,7 +95,7 @@ class _SetFingerprintScreenState extends State<SetFingerprintScreen>
                               .read<FingerprintCubit>()
                               .saveFingerprint();
                           if (context.mounted) {
-                            context.read<AppFlowCubit>().checkUserState();
+                            await context.read<AppFlowCubit>().checkUserState();
                           }
                         },
                       );

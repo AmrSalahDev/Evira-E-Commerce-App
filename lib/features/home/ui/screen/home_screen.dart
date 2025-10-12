@@ -1,4 +1,6 @@
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
@@ -11,13 +13,14 @@ import 'package:evira_e_commerce/features/home/ui/widgets/home_category_grid_par
 import 'package:evira_e_commerce/features/home/ui/widgets/home_product_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_search_bar_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/see_all_widget_part.dart';
+import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart';
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,16 +30,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
-  final userId = Supabase.instance.client.auth.currentUser?.id;
-
   @override
   void initState() {
     super.initState();
     context.read<HomeAppBarCubit>().loadUserInfo();
     context.read<GreetingCubit>().startGreeting();
+    context.read<NotificationBloc>().add(ListenNotificationChanges());
     context.read<HomeBannerCubit>().loadBanners();
     context.read<HomeCategoryCubit>().loadCategories();
-    context.read<HomeProductCubit>().loadAllProducts(userId ?? '');
+    context.read<HomeProductCubit>().loadAllProducts('');
   }
 
   @override
@@ -49,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
   Widget buildBody(BuildContext context) {
     return BlocListener<NetworkCubit, NetworkState>(
       listener: (context, state) {
-        // if (state is NetworkDisconnected) {
-        //   context.go(
-        //     AppPaths.noInternet,
-        //     extra: NoInternetScreenArgs(targetPath: AppPaths.home),
-        //   );
-        // }
+        if (state is NetworkDisconnected) {
+          context.go(
+            AppPaths.noInternet,
+            extra: NoInternetScreenArgs(targetPath: AppPaths.home),
+          );
+        }
       },
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
@@ -75,12 +77,11 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
               onCategorySelected: (categoryId) async {
                 await context.read<HomeProductCubit>().getProductsByCategoryId(
                   categoryId: categoryId,
-                  userId: userId ?? '',
+                  userId: '',
                 );
               },
-              onAllSelected: () async => await context
-                  .read<HomeProductCubit>()
-                  .loadAllProducts(userId ?? ''),
+              onAllSelected: () async =>
+                  await context.read<HomeProductCubit>().loadAllProducts(''),
             ),
             SizedBox(height: 10.h),
             HomeProductPart(),

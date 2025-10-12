@@ -808,6 +808,46 @@ class EviraLang {
   String get sold {
     return Intl.message('sold', name: 'sold', desc: '', args: []);
   }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account setup successful!`
+  String get acountSetupSuccessfully {
+    return Intl.message(
+      'Account setup successful!',
+      name: 'acountSetupSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account has been created!`
+  String get yourAccountHasBeenCreated {
+    return Intl.message(
+      'Your account has been created!',
+      name: 'yourAccountHasBeenCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No notifications yet.`
+  String get noNotifications {
+    return Intl.message(
+      'No notifications yet.',
+      name: 'noNotifications',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

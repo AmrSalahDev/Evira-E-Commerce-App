@@ -92,7 +92,12 @@
     "profile":"Profile",
     "wallet":"Wallet",
     "all":"All",
-    "sold":"sold"
+    "sold":"sold",
+    "notification":"Notification",
+    "acountSetupSuccessfully":"Account setup successful!",
+    "yourAccountHasBeenCreated":"Your account has been created!",
+    "noNotifications":"No notifications yet."
+    
     
     
 
