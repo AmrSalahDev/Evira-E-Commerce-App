@@ -38,6 +38,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "areYouSureToDelete": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete?",
+    ),
     "backOnline": MessageLookupByLibrary.simpleMessage("You\'re back online!"),
     "biometricAreNotSetUpTitle": MessageLookupByLibrary.simpleMessage(
       "Biometric aren\'t set up",
@@ -48,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Code has been send to ",
     ),
     "comingSoon": MessageLookupByLibrary.simpleMessage("Coming soon"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmBiometric": MessageLookupByLibrary.simpleMessage(
       "Confirm biometric",
     ),
@@ -77,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create your new password",
     ),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
@@ -107,9 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
-    "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon 👋"),
-    "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening 👋"),
-    "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning 👋"),
+    "goodAfternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon "),
+    "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening "),
+    "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning "),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "incorrectPIN": MessageLookupByLibrary.simpleMessage("Incorrect PIN"),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Invalid email"),

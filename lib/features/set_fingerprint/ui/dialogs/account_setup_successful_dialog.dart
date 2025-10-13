@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
+import 'package:evira_e_commerce/shared/widgets/custom_system_ui_overlay_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,18 +22,7 @@ class AccountSetupSuccessfulDialog {
       context: context,
       barrierDismissible: false,
       barrierColor: Colors.black38,
-      builder: (context) => AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: context.isDark
-              ? Brightness.light
-              : Brightness.dark,
-          systemNavigationBarColor: Colors.black38,
-          systemNavigationBarIconBrightness: context.isDark
-              ? Brightness.light
-              : Brightness.dark,
-        ),
-
+      builder: (context) => CustomSystemUiOverlayDialog(
         child: AlertDialog(
           insetPadding: EdgeInsets.symmetric(horizontal: 35.w),
           backgroundColor: context.containerColor,

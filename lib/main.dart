@@ -1,8 +1,6 @@
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
-import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
-import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 
 import 'package:evira_e_commerce/firebase_options.dart';
@@ -16,7 +14,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_transitions/go_transitions.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:my_flutter_toolkit/ui/system/system_ui_wrapper.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -42,7 +39,7 @@ void main() async {
   configureDependencies();
 
   // initialize hive
-  await Hive.initFlutter();
+  //await Hive.initFlutter();
 
   final appFlowCubit = getIt<AppFlowCubit>();
 
@@ -103,7 +100,7 @@ class EviraApp extends StatelessWidget {
                     supportedLocales: EviraLang.delegate.supportedLocales,
                     theme: AppTheme.light,
                     darkTheme: AppTheme.dark,
-                    themeMode: ThemeMode.light,
+                    themeMode: themeMode,
                     builder: (context, child) {
                       final isDark =
                           Theme.of(context).brightness == Brightness.dark;

@@ -3,8 +3,6 @@ import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/services/social_auth_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
-import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
-import 'package:evira_e_commerce/features/notification/ui/screens/notificaton_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';

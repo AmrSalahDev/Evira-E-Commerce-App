@@ -217,27 +217,27 @@ class _ShimmerProductPart extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ShimmerBox(
-            height: 200,
+            height: 200.h,
             width: double.infinity,
             borderRadius: 30.r,
             shimmerBaseColor: context.cardColor,
           ),
           SizedBox(height: 10.h),
           ShimmerBox(
-            height: 15,
+            height: 15.h,
             width: double.infinity,
             shimmerBaseColor: context.cardColor,
           ),
           SizedBox(height: 10.h),
           ShimmerBox(
-            height: 15,
-            width: 100,
+            height: 15.h,
+            width: 100.w,
             shimmerBaseColor: context.cardColor,
           ),
           SizedBox(height: 10.h),
           ShimmerBox(
-            height: 15,
-            width: 50,
+            height: 15.h,
+            width: 50.w,
             shimmerBaseColor: context.cardColor,
           ),
         ],

@@ -26,6 +26,7 @@ class NotificationModel extends NotificationEntity {
     'title': title,
     'message': message,
     'icon': icon,
+    'date': date.toIso8601String(),
     'is_seen': isSeen,
   };
 }

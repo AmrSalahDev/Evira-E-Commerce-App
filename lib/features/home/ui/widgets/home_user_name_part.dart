@@ -1,7 +1,7 @@
-import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeUserNamePart extends StatelessWidget {
   final String? name;
@@ -9,15 +9,20 @@ class HomeUserNamePart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      name ?? '',
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+    return DefaultTextStyle(
       style: GoogleFonts.urbanist(
         fontSize: 23.sp,
-        color: context.textColor,
+        color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
+      child: name == null
+          ? const SizedBox.shrink()
+          : Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.grey.shade500,
+              period: const Duration(seconds: 2),
+              child: Text(name!),
+            ),
     );
   }
 }

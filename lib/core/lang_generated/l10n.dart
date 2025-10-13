@@ -719,30 +719,30 @@ class EviraLang {
     return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
   }
 
-  /// `Good Morning 👋`
+  /// `Good Morning `
   String get goodMorning {
     return Intl.message(
-      'Good Morning 👋',
+      'Good Morning ',
       name: 'goodMorning',
       desc: '',
       args: [],
     );
   }
 
-  /// `Good Afternoon 👋`
+  /// `Good Afternoon `
   String get goodAfternoon {
     return Intl.message(
-      'Good Afternoon 👋',
+      'Good Afternoon ',
       name: 'goodAfternoon',
       desc: '',
       args: [],
     );
   }
 
-  /// `Good Evening 👋`
+  /// `Good Evening `
   String get goodEvening {
     return Intl.message(
-      'Good Evening 👋',
+      'Good Evening ',
       name: 'goodEvening',
       desc: '',
       args: [],
@@ -847,6 +847,26 @@ class EviraLang {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Are you sure you want to delete?`
+  String get areYouSureToDelete {
+    return Intl.message(
+      'Are you sure you want to delete?',
+      name: 'areYouSureToDelete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get confirm {
+    return Intl.message('Confirm', name: 'confirm', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
 }
 

@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:evira_e_commerce/core/services/biometrics_service.dart'
     as _i858;
+import 'package:evira_e_commerce/core/services/dialog_service.dart' as _i873;
 import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
     as _i7;
 import 'package:evira_e_commerce/core/services/social_auth_service.dart'
@@ -101,6 +102,8 @@ import 'package:evira_e_commerce/features/notification/domain/service/notificati
     as _i306;
 import 'package:evira_e_commerce/features/notification/domain/usecases/clear_all_notificatons_usecase.dart'
     as _i289;
+import 'package:evira_e_commerce/features/notification/domain/usecases/delete_notification_usecase.dart'
+    as _i819;
 import 'package:evira_e_commerce/features/notification/domain/usecases/get_notifications_usecase.dart'
     as _i168;
 import 'package:evira_e_commerce/features/notification/domain/usecases/get_unseen_notifications_count_usecase.dart'
@@ -156,6 +159,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
+    gh.lazySingleton<_i873.DialogService>(() => _i873.DialogService());
     gh.lazySingleton<_i868.HomeCategoryRepo>(
       () => _i293.HomeCategoryRepoImpl(),
     );
@@ -271,6 +275,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i350.GetAllProductsUsecase>(),
       ),
     );
+    gh.factory<_i819.DeleteNotificationUsecase>(
+      () => _i819.DeleteNotificationUsecase(
+        notificationRepo: gh<_i305.NotificationRepo>(),
+      ),
+    );
     gh.factory<_i29.GetUnseenNotificationsCountUseCase>(
       () =>
           _i29.GetUnseenNotificationsCountUseCase(gh<_i305.NotificationRepo>()),
@@ -299,6 +308,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i629.MarkNotificationsAsSeenUsecase>(),
         gh<_i29.GetUnseenNotificationsCountUseCase>(),
         gh<_i302.ListenNotificationsChangesUsecase>(),
+        gh<_i819.DeleteNotificationUsecase>(),
       ),
     );
     return this;

@@ -19,3 +19,11 @@ class MarkNotificationsAsSeen extends NotificationEvent {}
 class GetUnseenCount extends NotificationEvent {}
 
 class ListenNotificationChanges extends NotificationEvent {}
+
+class DeleteNotification extends NotificationEvent {
+  final int id;
+  DeleteNotification(this.id);
+
+  @override
+  List<Object?> get props => [id];
+}

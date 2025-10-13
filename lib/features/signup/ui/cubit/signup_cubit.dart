@@ -1,8 +1,4 @@
-import 'package:evira_e_commerce/core/di/di.dart';
-import 'package:evira_e_commerce/core/gen/assets.gen.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
-import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
-import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
 import 'package:evira_e_commerce/features/signup/domain/entities/signup_entity.dart';
 import 'package:evira_e_commerce/features/signup/domain/usecases/signup_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

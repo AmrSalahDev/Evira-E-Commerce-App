@@ -80,9 +80,9 @@
     "noInternetConnection":"No Internet Connection!",
     "noInternetDescription":"Please check your Wi-Fi or mobile data and try again.",
     "tryAgain":"Try Again",
-    "goodMorning":"Good Morning 👋",
-    "goodAfternoon":"Good Afternoon 👋",
-    "goodEvening":"Good Evening 👋",
+    "goodMorning":"Good Morning ",
+    "goodAfternoon":"Good Afternoon ",
+    "goodEvening":"Good Evening ",
     "seeAll":"See All",
     "specialOffers":"Special Offers",
     "mostPopular":"Most Popular",
@@ -96,7 +96,11 @@
     "notification":"Notification",
     "acountSetupSuccessfully":"Account setup successful!",
     "yourAccountHasBeenCreated":"Your account has been created!",
-    "noNotifications":"No notifications yet."
+    "noNotifications":"No notifications yet.",
+    "areYouSureToDelete":"Are you sure you want to delete?",
+    "confirm":"Confirm",
+    
+    "delete":"Delete"
     
     
     

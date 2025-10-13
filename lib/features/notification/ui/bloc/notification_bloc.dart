@@ -5,6 +5,7 @@ import 'package:evira_e_commerce/features/notification/domain/enitites/notificat
 import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
 import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/clear_all_notificatons_usecase.dart';
+import 'package:evira_e_commerce/features/notification/domain/usecases/delete_notification_usecase.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/get_notifications_usecase.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/get_unseen_notifications_count_usecase.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/listen_notifications_changes_usecase.dart';
@@ -23,6 +24,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final ClearAllNotificatonsUsecase clearAllNotificatonsUsecase;
   final MarkNotificationsAsSeenUsecase markNotificationsAsSeenUsecase;
   final GetUnseenNotificationsCountUseCase getUnseenNotificationsCountUsecase;
+  final DeleteNotificationUsecase deleteNotificationUsecase;
   final ListenNotificationsChangesUsecase listenChanges;
   StreamSubscription? _sub;
 
@@ -33,6 +35,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     this.markNotificationsAsSeenUsecase,
     this.getUnseenNotificationsCountUsecase,
     this.listenChanges,
+    this.deleteNotificationUsecase,
   ) : super(NotificationInitial()) {
     // Load notifications
     on<LoadNotifications>((event, emit) async {
@@ -76,6 +79,16 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       try {
         final count = await getUnseenNotificationsCountUsecase.call();
         emit(NotificationCountLoaded(count));
+      } catch (e) {
+        emit(NotificationError(message: e.toString()));
+      }
+    });
+
+    on<DeleteNotification>((event, emit) async {
+      debugPrint('Delete notification');
+      try {
+        await deleteNotificationUsecase.call(event.id);
+        add(LoadNotifications());
       } catch (e) {
         emit(NotificationError(message: e.toString()));
       }

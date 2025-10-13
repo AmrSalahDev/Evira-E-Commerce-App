@@ -22,7 +22,10 @@ class NotificationRemoteDataSourceImpl implements NotificationRemoteDataSource {
 
   @override
   Future<List<NotificationModel>> getNotifications() async {
-    final res = await client.from(tableName).select();
+    final res = await client
+        .from(tableName)
+        .select()
+        .order('date', ascending: false);
     return (res as List).map((e) => NotificationModel.fromJson(e)).toList();
   }
 

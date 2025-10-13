@@ -25,6 +25,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.2"
+  animated_emoji:
+    dependency: "direct main"
+    description:
+      name: animated_emoji
+      sha256: "2876d590db470baf6e660df125bdbe889eade7df6c0e7d79c56ad2fcbf5af890"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1"
+  animated_text_kit:
+    dependency: "direct main"
+    description:
+      name: animated_text_kit
+      sha256: "1d41486860885321972dd332179357a535d50d4780fc2ba5e1805bde085c81f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.3.0"
   ansicolor:
     dependency: transitive
     description:
@@ -707,6 +723,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  flutter_shake_animated:
+    dependency: "direct main"
+    description:
+      name: flutter_shake_animated
+      sha256: "93ce87fa31467c28f10f11147243172a7692df846589b30ff16e592de20341b2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
+  flutter_staggered_animations:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_animations
+      sha256: "81d3c816c9bb0dca9e8a5d5454610e21ffb068aedb2bde49d2f8d04f75538351"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1795,6 +1827,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.11"
+  thanos_snap_effect:
+    dependency: "direct main"
+    description:
+      name: thanos_snap_effect
+      sha256: "728595a48480c58244d9851f2182b6d43f78470074697c61e1ffc061f8a1234f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.9"
   time:
     dependency: transitive
     description:
@@ -1827,6 +1867,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  typewritertext:
+    dependency: "direct main"
+    description:
+      name: typewritertext
+      sha256: c6b90cdc9f7fd7ae3235d9c926012000f7a1765cd49d67b78370dc61123212b2
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.9"
   universal_io:
     dependency: transitive
     description:

@@ -4,22 +4,30 @@ import 'package:evira_e_commerce/features/notification/domain/service/notificati
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
 import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart';
+import 'package:evira_e_commerce/shared/animations/shake_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeActionMenuPart extends StatelessWidget {
-  const HomeActionMenuPart({super.key});
+  HomeActionMenuPart({super.key});
+
+  final GlobalKey<ShakeAnimationState> _shakeKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        BlocSelector<NotificationBloc, NotificationState, int>(
-          selector: (state) =>
-              state is NotificationLoaded ? state.unSeenCount : 0,
-          builder: (context, count) {
+        BlocConsumer<NotificationBloc, NotificationState>(
+          listenWhen: (previous, current) => previous != current,
+          listener: (context, count) =>
+              count is NotificationLoaded && count.unSeenCount != 0
+              ? _shakeKey.currentState?.shake()
+              : null,
+          buildWhen: (previous, current) => previous != current,
+          builder: (context, state) {
+            int count = state is NotificationLoaded ? state.unSeenCount : 0;
             return Badge.count(
               isLabelVisible: count != 0,
               count: count,
@@ -27,7 +35,13 @@ class HomeActionMenuPart extends StatelessWidget {
               textColor: Colors.white,
               offset: Offset(-8.w, 12.h),
               child: IconButton(
-                icon: const Icon(Icons.notifications_outlined),
+                icon: ShakeAnimation(
+                  key: _shakeKey,
+                  shakes: 5,
+                  amplitude: 5.0,
+                  duration: Duration(milliseconds: 700),
+                  child: Icon(Icons.notifications_outlined),
+                ),
                 iconSize: 32.h,
                 color: context.iconColor,
                 onPressed: () {
@@ -44,8 +58,8 @@ class HomeActionMenuPart extends StatelessWidget {
           onPressed: () async {
             await getIt<NotificationService>().addNotification(
               NotificationModel(
-                title: 'Notification Title',
-                message: 'Notification Message',
+                title: 'Notification Title 1',
+                message: 'Notification Message 1',
                 icon: 'assets/images/evira.png',
                 date: DateTime.now(),
               ),
