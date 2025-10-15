@@ -1,4 +1,18 @@
 
+# 🛍️ Evira E-Commerce App
+
+**Evira** is a premium **Flutter E-Commerce & Online Shopping app** built with **Bloc**, **Supabase**, and **Clean Architecture**.  
+It delivers a complete and modern shopping experience — from product discovery and filtering to checkout, wallet payments, and order tracking — all with elegant light and dark themes.  
+
+📱 Designed for performance, scalability, and beautiful UI across Android devices.  
+⭐ Built with over **190+ responsive screens** and crafted for developers who want a ready-to-use, production-quality Flutter E-Commerce template.  
+
+[![GitHub Stars](https://img.shields.io/github/stars/AmrSalahDev/Evira-E-Commerce?style=social)](https://github.com/AmrSalahDev/Evira-E-Commerce/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/AmrSalahDev/Evira-E-Commerce?style=social)](https://github.com/AmrSalahDev/Evira-E-Commerce/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/AmrSalahDev/Evira-E-Commerce?style=social)](https://github.com/AmrSalahDev/Evira-E-Commerce/issues)
+
+---
+
 ## ✨ Badges
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=flutter&logoColor=white)
@@ -6,14 +20,10 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Android-blue.svg?style=for-the-badge)
 ![State Management: Bloc](https://img.shields.io/badge/State%20Management-Bloc-purple.svg?style=for-the-badge)
-![Supabase](https://img.shields.io/badge/Backend-Supabase-green?style=for-the-badge&logo=supabase&logoColor=white)  
-![Sentry](https://img.shields.io/badge/Monitoring-Sentry-red?style=for-the-badge&logo=sentry&logoColor=white)  
+![Supabase](https://img.shields.io/badge/Backend-Supabase-green?style=for-the-badge&logo=supabase&logoColor=white)
+![Sentry](https://img.shields.io/badge/Monitoring-Sentry-red?style=for-the-badge&logo=sentry&logoColor=white)
 
----
 
-## 🛒 Evira E-Commerce & Online Shop App
-
-Evira is a premium and modern E-Commerce & Online Shopping app that brings a complete shopping experience in one place. With a stylish design, light & dark themes, and 190+ beautifully crafted screens, Evira makes online shopping easier, faster, and more enjoyable.  Shop by categories, search and filter products, add items to your wishlist or cart,
 ---
 
 [![Figma Design](screenshots/figma_thumbnail.png)](https://www.figma.com/community/file/1216043752712853958/evira-e-commerce-online-shop-app-ui-kit)
