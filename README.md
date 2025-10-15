@@ -1,4 +1,8 @@
 
+[![Figma Design](screenshots/figma_thumbnail.png)](https://www.figma.com/community/file/1216043752712853958/evira-e-commerce-online-shop-app-ui-kit)
+
+---
+
 # 🛍️ Evira E-Commerce App
 
 **Evira** is a premium **Flutter E-Commerce & Online Shopping app** built with **Bloc**, **Supabase**, and **Clean Architecture**.  
@@ -25,8 +29,6 @@ It delivers a complete and modern shopping experience — from product discovery
 
 
 ---
-
-[![Figma Design](screenshots/figma_thumbnail.png)](https://www.figma.com/community/file/1216043752712853958/evira-e-commerce-online-shop-app-ui-kit)
 
 
 > ⚠️ **Project Status: In Development**  
