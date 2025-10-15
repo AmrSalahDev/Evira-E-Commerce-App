@@ -18,7 +18,6 @@ Evira is a premium and modern E-Commerce & Online Shopping app that brings a com
 
 [![Figma Design](screenshots/figma_thumbnail.png)](https://www.figma.com/community/file/1216043752712853958/evira-e-commerce-online-shop-app-ui-kit)
 
-📌 Click the image to view the live Figma prototype.
 
 > ⚠️ **Project Status: In Development**  
 >
