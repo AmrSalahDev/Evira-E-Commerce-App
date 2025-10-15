@@ -100,11 +100,19 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     on<OnFavoritesChanges>((event, emit) async {
       await AppUtils.handleCode(
         code: () async {
-          add(GetProductsFromWishlist());
+          if (event.categoryId == 0) {
+            add(GetProductsFromWishlist());
+          } else {
+            add(GetProductsFromWishlistByCategory(event.categoryId));
+          }
           await _sub?.cancel();
           _sub = onFavoritesChangesUsecase.call().listen((_) async {
             debugPrint("OnFavoritesChanges");
-            add(GetProductsFromWishlist());
+            if (event.categoryId == 0) {
+              add(GetProductsFromWishlist());
+            } else {
+              add(GetProductsFromWishlistByCategory(event.categoryId));
+            }
           });
         },
         onNoInternet: (message) {

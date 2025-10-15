@@ -10,7 +10,7 @@ class HomeBannerInitial extends HomeBannerState {}
 class HomeBannerLoading extends HomeBannerState {}
 
 class HomeBannerLoaded extends HomeBannerState {
-  final List<HomeBannerEntity> banners;
+  final List<BannerEntity> banners;
   HomeBannerLoaded(this.banners);
 
   @override

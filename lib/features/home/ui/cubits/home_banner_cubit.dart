@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:evira_e_commerce/features/home/domain/entities/home_banner_entity.dart';
+import 'package:evira_e_commerce/shared/domain/entities/banner_entity.dart';
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';

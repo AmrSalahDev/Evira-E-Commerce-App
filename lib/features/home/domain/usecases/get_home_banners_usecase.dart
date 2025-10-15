@@ -1,4 +1,4 @@
-import 'package:evira_e_commerce/features/home/domain/entities/home_banner_entity.dart';
+import 'package:evira_e_commerce/shared/domain/entities/banner_entity.dart';
 import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,7 +8,7 @@ class GetHomeBannersUseCase {
 
   GetHomeBannersUseCase(this.repo);
 
-  Future<List<HomeBannerEntity>> call(int limit) {
+  Future<List<BannerEntity>> call(int limit) {
     return repo.getBanners(limit);
   }
 }

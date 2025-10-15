@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:evira_e_commerce/features/home/domain/entities/home_banner_entity.dart';
+import 'package:evira_e_commerce/shared/domain/entities/banner_entity.dart';
 
 class HomeBannerModel extends Equatable {
   final String id;
@@ -29,7 +29,7 @@ class HomeBannerModel extends Equatable {
     );
   }
 
-  HomeBannerEntity toEntity() => HomeBannerEntity(
+  BannerEntity toEntity() => BannerEntity(
     id: id,
     title: title,
     description: description,

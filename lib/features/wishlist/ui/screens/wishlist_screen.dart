@@ -47,7 +47,7 @@ class _WishlistScreenState extends State<WishlistScreen>
   void initState() {
     super.initState();
     context.read<CategoryCubit>().loadCategories();
-    context.read<WishlistBloc>().add(OnFavoritesChanges());
+    context.read<WishlistBloc>().add(OnFavoritesChanges(categoryId));
   }
 
   @override
@@ -73,13 +73,19 @@ class _WishlistScreenState extends State<WishlistScreen>
                 CategoryBar(
                   onCategorySelected: (categoryId) {
                     this.categoryId = categoryId;
+                    // context.read<WishlistBloc>().add(
+                    //   GetProductsFromWishlistByCategory(categoryId),
+                    // );
                     context.read<WishlistBloc>().add(
-                      GetProductsFromWishlistByCategory(categoryId),
+                      OnFavoritesChanges(categoryId),
                     );
                   },
                   onAllSelected: () {
                     categoryId = 0;
-                    context.read<WishlistBloc>().add(GetProductsFromWishlist());
+                    // context.read<WishlistBloc>().add(GetProductsFromWishlist());
+                    context.read<WishlistBloc>().add(
+                      OnFavoritesChanges(categoryId),
+                    );
                   },
                 ),
                 SizedBox(height: 20.h),

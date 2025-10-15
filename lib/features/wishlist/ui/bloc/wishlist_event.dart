@@ -33,4 +33,10 @@ class GetProductsFromWishlistByCategory extends WishlistEvent {
   List<Object> get props => [categoryId];
 }
 
-class OnFavoritesChanges extends WishlistEvent {}
+class OnFavoritesChanges extends WishlistEvent {
+  final int categoryId;
+  const OnFavoritesChanges(this.categoryId);
+
+  @override
+  List<Object> get props => [categoryId];
+}

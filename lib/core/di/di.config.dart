@@ -117,6 +117,18 @@ import 'package:evira_e_commerce/features/signup/domain/usecases/signup_usecase.
     as _i109;
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart'
     as _i630;
+import 'package:evira_e_commerce/features/special_offers/data/datasources/special_offers_datasource_impl.dart'
+    as _i1045;
+import 'package:evira_e_commerce/features/special_offers/data/repos/special_offers_repo_impl.dart'
+    as _i752;
+import 'package:evira_e_commerce/features/special_offers/domain/datasources/special_offers_datasource.dart'
+    as _i64;
+import 'package:evira_e_commerce/features/special_offers/domain/repos/specail_offers_repo.dart'
+    as _i563;
+import 'package:evira_e_commerce/features/special_offers/domain/usecases/get_special_offers_usecase.dart'
+    as _i1018;
+import 'package:evira_e_commerce/features/special_offers/ui/bloc/special_offers_bloc.dart'
+    as _i546;
 import 'package:evira_e_commerce/features/wishlist/data/datasources/wishlist_remote_data_source.dart'
     as _i307;
 import 'package:evira_e_commerce/features/wishlist/data/repos/wishlist_repo_impl.dart'
@@ -187,6 +199,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
     gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
+    gh.lazySingleton<_i64.SpecialOffersDatasource>(
+      () => _i1045.SpecialOffersDatasourceImpl(),
+    );
+    gh.lazySingleton<_i563.SpecialOffersRepo>(
+      () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
+    );
     gh.factory<_i820.GetThemeModeUseCase>(
       () => _i820.GetThemeModeUseCase(gh<_i193.ThemeService>()),
     );
@@ -246,6 +264,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i739.UploadprofileimageUsecase>(
       () => _i739.UploadprofileimageUsecase(gh<_i623.FillProfileRepo>()),
     );
+    gh.factory<_i1018.GetSpecialOffersUsecase>(
+      () => _i1018.GetSpecialOffersUsecase(
+        specialOffersRepo: gh<_i563.SpecialOffersRepo>(),
+      ),
+    );
     gh.factory<_i494.ShowDatePickerUsecase>(
       () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
     );
@@ -278,6 +301,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i516.LoginUsecase>(
       () => _i516.LoginUsecase(gh<_i890.LoginRepo>()),
+    );
+    gh.factory<_i546.SpecialOffersBloc>(
+      () => _i546.SpecialOffersBloc(gh<_i1018.GetSpecialOffersUsecase>()),
     );
     gh.factory<_i940.GetProductsFromWishlistUsecase>(
       () => _i940.GetProductsFromWishlistUsecase(gh<_i603.WishlistRepo>()),
