@@ -71,6 +71,8 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   animated_text_kit: ^4.3.0
   flutter_shake_animated: ^0.0.5
+  infinite_scroll_pagination: ^5.1.1
+  flutter_sticky_header: ^0.8.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

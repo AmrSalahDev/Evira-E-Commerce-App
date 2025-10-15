@@ -1,8 +1,5 @@
-import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/routes/app_router.dart';
-import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
-import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
 import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart';
 import 'package:evira_e_commerce/shared/animations/shake_animation.dart';
 import 'package:flutter/material.dart';
@@ -55,15 +52,8 @@ class HomeActionMenuPart extends StatelessWidget {
           icon: const Icon(Icons.favorite_border_outlined),
           iconSize: 32.h,
           color: context.iconColor,
-          onPressed: () async {
-            await getIt<NotificationService>().addNotification(
-              NotificationModel(
-                title: 'Notification Title 1',
-                message: 'Notification Message 1',
-                icon: 'assets/images/evira.png',
-                date: DateTime.now(),
-              ),
-            );
+          onPressed: () {
+            context.push(AppPaths.wishlist);
           },
         ),
       ],

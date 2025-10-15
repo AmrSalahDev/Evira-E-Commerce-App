@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:evira_e_commerce/features/home/domain/entities/home_product_entity.dart';
 import 'package:evira_e_commerce/features/home/domain/usecases/get_all_products_usecase.dart';
 import 'package:evira_e_commerce/features/home/domain/usecases/get_products_by_category_id_usecase.dart';
+import 'package:evira_e_commerce/shared/domain/entities/product_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,26 +16,20 @@ class HomeProductCubit extends Cubit<HomeProductState> {
     this.getAllProductsUsecase,
   ) : super(HomeProductInitial());
 
-  Future<void> getProductsByCategoryId({
-    required int categoryId,
-    required String userId,
-  }) async {
+  Future<void> getProductsByCategoryId({required int categoryId}) async {
     emit(HomeProductLoading());
     try {
-      final products = await getProductsByCategoryIdUsecase.call(
-        categoryId,
-        userId,
-      );
+      final products = await getProductsByCategoryIdUsecase.call(categoryId);
       emit(HomeProductLoaded(products));
     } catch (e) {
       emit(HomeProductError(e.toString()));
     }
   }
 
-  Future<void> loadAllProducts(String userId) async {
+  Future<void> loadAllProducts() async {
     emit(HomeProductLoading());
     try {
-      final products = await getAllProductsUsecase.call(userId);
+      final products = await getAllProductsUsecase.call();
       emit(HomeProductLoaded(products));
     } catch (e) {
       emit(HomeProductError(e.toString()));

@@ -2,17 +2,18 @@ import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
-import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
-class HomeCategoryBarPart extends StatelessWidget {
+class CategoryBar extends StatelessWidget {
   final Function(int categoryId) onCategorySelected;
   final Function() onAllSelected;
-  const HomeCategoryBarPart({
+
+  const CategoryBar({
     super.key,
     required this.onCategorySelected,
     required this.onAllSelected,
@@ -20,37 +21,40 @@ class HomeCategoryBarPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCategoryCubit, HomeCategoryState>(
-      listener: (context, state) {
-        if (state is HomeCategoryError) {
-          getIt<ToastService>().showErrorToast(
-            context: context,
-            message: state.message,
-          );
-        }
-      },
-      builder: (context, state) {
-        if (state is HomeCategoryLoading) {
-          return _ShimmerCategoriesPart();
-        }
-        if (state is HomeCategoryLoaded) {
-          return _CategoriesPart(
-            state: state,
-            onCategorySelected: onCategorySelected,
-            onAllSelected: onAllSelected,
-          );
-        }
-        if (state is HomeCategoryError) {
+    return Container(
+      color: context.backgroundColor,
+      child: BlocConsumer<CategoryCubit, CategoryState>(
+        listener: (context, state) {
+          if (state is CategoryError) {
+            getIt<ToastService>().showErrorToast(
+              context: context,
+              message: state.message,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is CategoryLoading) {
+            return const _ShimmerCategoriesPart();
+          }
+          if (state is CategoryLoaded) {
+            return _CategoriesPart(
+              state: state,
+              onCategorySelected: onCategorySelected,
+              onAllSelected: onAllSelected,
+            );
+          }
+          if (state is CategoryError) {
+            return const _ShimmerCategoriesPart();
+          }
           return const SizedBox.shrink();
-        }
-        return const SizedBox.shrink();
-      },
+        },
+      ),
     );
   }
 }
 
 class _CategoriesPart extends StatefulWidget {
-  final HomeCategoryLoaded state;
+  final CategoryLoaded state;
   final Function(int categoryId) onCategorySelected;
   final Function() onAllSelected;
 
@@ -70,7 +74,7 @@ class _CategoriesPartState extends State<_CategoriesPart> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.h,
+      height: 70.h,
       child: ListView.builder(
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
@@ -126,7 +130,7 @@ class _ShimmerCategoriesPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.h,
+      height: 70.h,
       child: ListView.builder(
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,

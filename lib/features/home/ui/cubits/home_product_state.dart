@@ -11,7 +11,7 @@ class HomeProductInitial extends HomeProductState {}
 class HomeProductLoading extends HomeProductState {}
 
 class HomeProductLoaded extends HomeProductState {
-  final List<HomeProductEntity> products;
+  final List<ProductEntity> products;
   const HomeProductLoaded(this.products);
 
   @override

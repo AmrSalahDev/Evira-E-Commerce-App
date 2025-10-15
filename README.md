@@ -16,6 +16,10 @@
 Evira is a premium and modern E-Commerce & Online Shopping app that brings a complete shopping experience in one place. With a stylish design, light & dark themes, and 190+ beautifully crafted screens, Evira makes online shopping easier, faster, and more enjoyable.  Shop by categories, search and filter products, add items to your wishlist or cart,
 ---
 
+[![Figma Design](screenshots/figma_thumbnail.png)](https://www.figma.com/community/file/1216043752712853958/evira-e-commerce-online-shop-app-ui-kit)
+
+📌 Click the image to view the live Figma prototype.
+
 > ⚠️ **Project Status: In Development**  
 >
 > This project is still under active development.  

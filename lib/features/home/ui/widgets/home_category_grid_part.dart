@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
-import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +14,9 @@ class HomeCategoryGridPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCategoryCubit, HomeCategoryState>(
+    return BlocConsumer<CategoryCubit, CategoryState>(
       listener: (context, state) {
-        if (state is HomeCategoryError) {
+        if (state is CategoryError) {
           getIt<ToastService>().showErrorToast(
             context: context,
             message: state.message,
@@ -24,12 +24,12 @@ class HomeCategoryGridPart extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        if (state is HomeCategoryLoading) {
-          return _ShimmerGridViewPart();
-        } else if (state is HomeCategoryLoaded) {
+        if (state is CategoryLoading) {
+          return const _ShimmerGridViewPart();
+        } else if (state is CategoryLoaded) {
           return _CategoryGridViewPart(state: state);
-        } else if (state is HomeCategoryError) {
-          return const SizedBox.shrink();
+        } else if (state is CategoryError) {
+          return const _ShimmerGridViewPart();
         }
         return SizedBox.shrink();
       },
@@ -38,7 +38,7 @@ class HomeCategoryGridPart extends StatelessWidget {
 }
 
 class _CategoryGridViewPart extends StatelessWidget {
-  final HomeCategoryLoaded state;
+  final CategoryLoaded state;
   const _CategoryGridViewPart({required this.state});
 
   @override

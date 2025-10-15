@@ -1,11 +1,7 @@
-import 'package:evira_e_commerce/features/home/domain/entities/home_product_entity.dart';
+import 'package:evira_e_commerce/shared/domain/entities/product_entity.dart';
 
 abstract class HomeProductRepo {
-  Future<List<HomeProductEntity>> getProductsByCategory(
-    int categoryId,
-    String userId,
-  );
-  Future<void> toggleFavorite(int productId, String userId, bool isFavorite);
+  Future<List<ProductEntity>> getProductsByCategory(int categoryId);
 
-  Future<List<HomeProductEntity>> getAllProducts(String userId);
+  Future<List<ProductEntity>> getAllProducts();
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
+import 'package:evira_e_commerce/core/utils/app_utils.dart';
 import 'package:evira_e_commerce/features/notification/domain/enitites/notification_entity.dart';
 import 'package:evira_e_commerce/features/notification/domain/service/notification_service.dart';
 import 'package:evira_e_commerce/features/notification/data/models/notification_model.dart';
@@ -40,68 +41,110 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     // Load notifications
     on<LoadNotifications>((event, emit) async {
       debugPrint('Load notifications');
-      emit(NotificationLoading());
-      try {
-        final notifications = await getNotificationsUsecase.call();
-        final count = await getUnseenNotificationsCountUsecase.call();
-        emit(
-          NotificationLoaded(notifications: notifications, unSeenCount: count),
-        );
-      } catch (e) {
-        emit(NotificationError(message: e.toString()));
-      }
+      await AppUtils.handleCode(
+        code: () async {
+          emit(NotificationLoading());
+          final notifications = await getNotificationsUsecase.call();
+          final count = await getUnseenNotificationsCountUsecase.call();
+          emit(
+            NotificationLoaded(
+              notifications: notifications,
+              unSeenCount: count,
+            ),
+          );
+        },
+        onNoInternet: (message) {
+          emit(NotificationError(message: message));
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
 
     // Add notification
     on<AddNotification>((event, emit) async {
       debugPrint('Add notification');
-
-      try {
-        await notificationService.addNotification(event.notification);
-      } catch (e) {
-        emit(NotificationError(message: e.toString()));
-      }
+      await AppUtils.handleCode(
+        code: () async {
+          await notificationService.addNotification(event.notification);
+        },
+        onNoInternet: (message) {
+          emit(NotificationError(message: message));
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
 
     // Mark all as seen
     on<MarkNotificationsAsSeen>((event, emit) async {
       debugPrint('Mark notifications as seen');
-      try {
-        await markNotificationsAsSeenUsecase.call();
-      } catch (e) {
-        emit(NotificationError(message: e.toString()));
-      }
+      await AppUtils.handleCode(
+        code: () async {
+          await markNotificationsAsSeenUsecase.call();
+        },
+        onNoInternet: (message) {
+          NotificationError(message: message);
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
 
     //  Get unseen count
     on<GetUnseenCount>((event, emit) async {
       debugPrint('Get unseen count');
-      try {
-        final count = await getUnseenNotificationsCountUsecase.call();
-        emit(NotificationCountLoaded(count));
-      } catch (e) {
-        emit(NotificationError(message: e.toString()));
-      }
+      await AppUtils.handleCode(
+        code: () async {
+          final count = await getUnseenNotificationsCountUsecase.call();
+          emit(NotificationCountLoaded(count));
+        },
+        onNoInternet: (message) {
+          emit(NotificationError(message: message));
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
 
     on<DeleteNotification>((event, emit) async {
       debugPrint('Delete notification');
-      try {
-        await deleteNotificationUsecase.call(event.id);
-        add(LoadNotifications());
-      } catch (e) {
-        emit(NotificationError(message: e.toString()));
-      }
+      await AppUtils.handleCode(
+        code: () async {
+          await deleteNotificationUsecase.call(event.id);
+          add(LoadNotifications());
+        },
+        onNoInternet: (message) {
+          emit(NotificationError(message: message));
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
 
     // Realtime listener for Supabase changes
     on<ListenNotificationChanges>((event, emit) async {
       debugPrint('Listen notification changes');
-      add(LoadNotifications());
-      await _sub?.cancel();
-      _sub = listenChanges.call().listen((_) async {
-        add(LoadNotifications());
-      });
+      await AppUtils.handleCode(
+        code: () async {
+          add(LoadNotifications());
+          await _sub?.cancel();
+          _sub = listenChanges.call().listen((_) async {
+            add(LoadNotifications());
+          });
+        },
+        onNoInternet: (message) {
+          emit(NotificationError(message: message));
+        },
+        onError: (message) {
+          emit(NotificationError(message: message));
+        },
+      );
     });
   }
 

@@ -868,6 +868,11 @@ class EviraLang {
   String get delete {
     return Intl.message('Delete', name: 'delete', desc: '', args: []);
   }
+
+  /// `My Wishlist`
+  String get wishlist {
+    return Intl.message('My Wishlist', name: 'wishlist', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

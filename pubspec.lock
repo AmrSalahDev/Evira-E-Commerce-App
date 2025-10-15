@@ -739,6 +739,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  flutter_staggered_grid_view:
+    dependency: transitive
+    description:
+      name: flutter_staggered_grid_view
+      sha256: "19e7abb550c96fbfeb546b23f3ff356ee7c59a019a651f8f102a4ba9b7349395"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
+  flutter_sticky_header:
+    dependency: "direct main"
+    description:
+      name: flutter_sticky_header
+      sha256: fb4fda6164ef3e5fc7ab73aba34aad253c17b7c6ecf738fa26f1a905b7d2d1e2
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1045,6 +1061,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  infinite_scroll_pagination:
+    dependency: "direct main"
+    description:
+      name: infinite_scroll_pagination
+      sha256: b0d28e37cd8f62490ff6aef63f9db93d4c78b7f11b7c6b26f33c69d8476fda78
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.1"
   injectable:
     dependency: "direct main"
     description:
@@ -1643,6 +1667,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  sliver_tools:
+    dependency: transitive
+    description:
+      name: sliver_tools
+      sha256: eae28220badfb9d0559207badcbbc9ad5331aac829a88cb0964d330d2a4636a6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.12"
   smooth_page_indicator:
     dependency: "direct main"
     description:
@@ -1963,6 +1995,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+  value_layout_builder:
+    dependency: transitive
+    description:
+      name: value_layout_builder
+      sha256: ab4b7d98bac8cefeb9713154d43ee0477490183f5aa23bb4ffa5103d9bbf6275
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   vector_graphics:
     dependency: transitive
     description:

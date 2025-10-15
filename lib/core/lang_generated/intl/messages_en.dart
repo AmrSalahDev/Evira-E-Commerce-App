@@ -204,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "viaEmail": MessageLookupByLibrary.simpleMessage("via Email:"),
     "viaSMS": MessageLookupByLibrary.simpleMessage("via SMS:"),
     "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+    "wishlist": MessageLookupByLibrary.simpleMessage("My Wishlist"),
     "yourAccountHasBeenCreated": MessageLookupByLibrary.simpleMessage(
       "Your account has been created!",
     ),

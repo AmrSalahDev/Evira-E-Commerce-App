@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class FavoriteButton extends StatefulWidget {
   final Color heartColor;
   final double size;
+  final bool isFavorited;
   final VoidCallback onFavorited;
   final VoidCallback onUnfavorited;
 
@@ -12,6 +13,7 @@ class FavoriteButton extends StatefulWidget {
     required this.size,
     required this.onFavorited,
     required this.onUnfavorited,
+    required this.isFavorited,
   });
 
   @override
@@ -20,13 +22,14 @@ class FavoriteButton extends StatefulWidget {
 
 class _FavoriteButtonState extends State<FavoriteButton>
     with SingleTickerProviderStateMixin {
-  bool isFavorite = false;
+  late bool isFavorite;
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
     super.initState();
+    isFavorite = widget.isFavorited; // initialize from parent
 
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
@@ -41,16 +44,27 @@ class _FavoriteButtonState extends State<FavoriteButton>
 
   void _onTap() {
     if (isFavorite) {
+      _controller.reverse();
       widget.onUnfavorited();
-      _controller.reverse(); // Shrink when unfavorited
     } else {
-      _controller.forward().then((_) => _controller.reverse()); // Bounce effect
+      _controller.forward().then((_) => _controller.reverse());
       widget.onFavorited();
     }
 
     setState(() {
-      isFavorite = !isFavorite;
+      isFavorite = !isFavorite; // Toggle here
     });
+  }
+
+  @override
+  void didUpdateWidget(covariant FavoriteButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isFavorited != oldWidget.isFavorited) {
+      // ✅ Keep sync with external changes
+      setState(() {
+        isFavorite = widget.isFavorited;
+      });
+    }
   }
 
   @override
@@ -59,7 +73,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
       onTap: _onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(
             colors: [Color(0xFF2d2d2d), Color(0xFF1c1c1c)],

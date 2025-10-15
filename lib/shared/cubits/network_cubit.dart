@@ -24,7 +24,7 @@ class NetworkCubit extends Cubit<NetworkState> {
     ) {
       // Received changes in available connectivity types!
       _debounceTimer?.cancel();
-      _debounceTimer = Timer(const Duration(milliseconds: 500), () async {
+      _debounceTimer = Timer(const Duration(seconds: 1), () async {
         await _onStatusChange(result);
       });
     });
@@ -45,6 +45,8 @@ class NetworkCubit extends Cubit<NetworkState> {
       emit(NetworkConnected());
     }
   }
+
+  // AuthRetryableFetchException
 
   void stopMonitoring() {
     _subscription?.cancel();

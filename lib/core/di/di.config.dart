@@ -11,7 +11,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:evira_e_commerce/core/services/biometrics_service.dart'
     as _i858;
-import 'package:evira_e_commerce/core/services/dialog_service.dart' as _i873;
 import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
     as _i7;
 import 'package:evira_e_commerce/core/services/social_auth_service.dart'
@@ -54,24 +53,18 @@ import 'package:evira_e_commerce/features/home/data/repos/home_app_bar_repo_impl
     as _i603;
 import 'package:evira_e_commerce/features/home/data/repos/home_banner_repo_impl.dart'
     as _i170;
-import 'package:evira_e_commerce/features/home/data/repos/home_category_repo_impl.dart'
-    as _i293;
 import 'package:evira_e_commerce/features/home/data/repos/home_product_repo_impl.dart'
     as _i99;
 import 'package:evira_e_commerce/features/home/domain/repos/home_app_bar_repo.dart'
     as _i771;
 import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart'
     as _i487;
-import 'package:evira_e_commerce/features/home/domain/repos/home_category_repo.dart'
-    as _i868;
 import 'package:evira_e_commerce/features/home/domain/repos/home_product_repo.dart'
     as _i424;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_all_products_usecase.dart'
     as _i350;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart'
     as _i167;
-import 'package:evira_e_commerce/features/home/domain/usecases/get_home_categories_usecase.dart'
-    as _i462;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_products_by_category_id_usecase.dart'
     as _i685;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_user_info_usecase.dart'
@@ -80,8 +73,6 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart
     as _i329;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
     as _i1000;
-import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart'
-    as _i444;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart'
     as _i385;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
@@ -126,12 +117,39 @@ import 'package:evira_e_commerce/features/signup/domain/usecases/signup_usecase.
     as _i109;
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart'
     as _i630;
+import 'package:evira_e_commerce/features/wishlist/data/datasources/wishlist_remote_data_source.dart'
+    as _i307;
+import 'package:evira_e_commerce/features/wishlist/data/repos/wishlist_repo_impl.dart'
+    as _i540;
+import 'package:evira_e_commerce/features/wishlist/domain/repos/wishlist_repo.dart'
+    as _i603;
+import 'package:evira_e_commerce/features/wishlist/domain/services/wishlist_service.dart'
+    as _i754;
+import 'package:evira_e_commerce/features/wishlist/domain/usecases/add_product_to_wishlist_usecase.dart'
+    as _i590;
+import 'package:evira_e_commerce/features/wishlist/domain/usecases/get_products_from_wishlist_usecase.dart'
+    as _i940;
+import 'package:evira_e_commerce/features/wishlist/domain/usecases/get_wishlist_by_category_usecase.dart'
+    as _i591;
+import 'package:evira_e_commerce/features/wishlist/domain/usecases/on_favorites_changes_usecase.dart'
+    as _i524;
+import 'package:evira_e_commerce/features/wishlist/domain/usecases/remove_product_from_wishlist_usecase.dart'
+    as _i80;
+import 'package:evira_e_commerce/features/wishlist/ui/bloc/wishlist_bloc.dart'
+    as _i218;
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart' as _i170;
+import 'package:evira_e_commerce/shared/cubits/category_cubit.dart' as _i296;
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart' as _i795;
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart' as _i969;
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart' as _i149;
 import 'package:evira_e_commerce/shared/cubits/text_field_cubit.dart' as _i669;
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart' as _i436;
+import 'package:evira_e_commerce/shared/data/repos/category_repo_impl.dart'
+    as _i1010;
+import 'package:evira_e_commerce/shared/domain/repos/category_repo.dart'
+    as _i457;
+import 'package:evira_e_commerce/shared/domain/usecases/get_categories_usecase.dart'
+    as _i790;
 import 'package:evira_e_commerce/shared/domain/usecases/get_theme_mode_usecase.dart'
     as _i820;
 import 'package:evira_e_commerce/shared/domain/usecases/set_theme_mode_usecase.dart'
@@ -159,18 +177,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
-    gh.lazySingleton<_i873.DialogService>(() => _i873.DialogService());
-    gh.lazySingleton<_i868.HomeCategoryRepo>(
-      () => _i293.HomeCategoryRepoImpl(),
-    );
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
+    gh.lazySingleton<_i307.WishlistRemoteDataSource>(
+      () => _i307.WishlistRemoteDataSourceImpl(),
+    );
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
-    gh.factory<_i462.GetHomeCategoriesUseCase>(
-      () => _i462.GetHomeCategoriesUseCase(gh<_i868.HomeCategoryRepo>()),
-    );
     gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
     gh.factory<_i820.GetThemeModeUseCase>(
@@ -198,11 +212,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i251.NotificationRemoteDataSource>(
       () => _i251.NotificationRemoteDataSourceImpl(),
     );
+    gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
     gh.factory<_i350.GetAllProductsUsecase>(
       () => _i350.GetAllProductsUsecase(gh<_i424.HomeProductRepo>()),
     );
     gh.factory<_i685.GetProductsByCategoryIdUsecase>(
       () => _i685.GetProductsByCategoryIdUsecase(gh<_i424.HomeProductRepo>()),
+    );
+    gh.lazySingleton<_i603.WishlistRepo>(
+      () => _i540.WishlistRepoImpl(gh<_i307.WishlistRemoteDataSource>()),
     );
     gh.factory<_i167.GetHomeBannersUseCase>(
       () => _i167.GetHomeBannersUseCase(gh<_i487.HomeBannerRepo>()),
@@ -219,6 +237,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1000.HomeBannerCubit>(
       () => _i1000.HomeBannerCubit(gh<_i167.GetHomeBannersUseCase>()),
     );
+    gh.lazySingleton<_i754.WishlistService>(
+      () => _i754.WishlistService(gh<_i307.WishlistRemoteDataSource>()),
+    );
     gh.factory<_i1013.FillProfileUsecase>(
       () => _i1013.FillProfileUsecase(gh<_i623.FillProfileRepo>()),
     );
@@ -227,6 +248,21 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i494.ShowDatePickerUsecase>(
       () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
+    );
+    gh.factory<_i590.AddProductToWishlistUsecase>(
+      () => _i590.AddProductToWishlistUsecase(
+        wishlistRepo: gh<_i603.WishlistRepo>(),
+      ),
+    );
+    gh.factory<_i591.GetWishlistByCategoryUsecase>(
+      () => _i591.GetWishlistByCategoryUsecase(
+        wishlistRepo: gh<_i603.WishlistRepo>(),
+      ),
+    );
+    gh.factory<_i80.RemoveProductFromWishlistUsecase>(
+      () => _i80.RemoveProductFromWishlistUsecase(
+        wishlistRepo: gh<_i603.WishlistRepo>(),
+      ),
     );
     gh.factory<_i109.SignupUsecase>(
       () => _i109.SignupUsecase(signupRepo: gh<_i962.SignupRepo>()),
@@ -243,14 +279,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i516.LoginUsecase>(
       () => _i516.LoginUsecase(gh<_i890.LoginRepo>()),
     );
+    gh.factory<_i940.GetProductsFromWishlistUsecase>(
+      () => _i940.GetProductsFromWishlistUsecase(gh<_i603.WishlistRepo>()),
+    );
+    gh.factory<_i524.OnFavoritesChangesUsecase>(
+      () => _i524.OnFavoritesChangesUsecase(gh<_i603.WishlistRepo>()),
+    );
     gh.factory<_i378.ProfileImageCubit>(
       () => _i378.ProfileImageCubit(
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
       ),
-    );
-    gh.factory<_i444.HomeCategoryCubit>(
-      () => _i444.HomeCategoryCubit(gh<_i462.GetHomeCategoriesUseCase>()),
     );
     gh.lazySingleton<_i306.NotificationService>(
       () => _i306.NotificationService(gh<_i251.NotificationRemoteDataSource>()),
@@ -261,6 +300,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i1013.FillProfileUsecase>(),
         gh<_i739.UploadprofileimageUsecase>(),
       ),
+    );
+    gh.factory<_i790.GetCategoriesUseCase>(
+      () => _i790.GetCategoriesUseCase(gh<_i457.CategoryRepo>()),
     );
     gh.factory<_i166.LoginCubit>(
       () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
@@ -275,6 +317,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i350.GetAllProductsUsecase>(),
       ),
     );
+    gh.factory<_i296.CategoryCubit>(
+      () => _i296.CategoryCubit(gh<_i790.GetCategoriesUseCase>()),
+    );
     gh.factory<_i819.DeleteNotificationUsecase>(
       () => _i819.DeleteNotificationUsecase(
         notificationRepo: gh<_i305.NotificationRepo>(),
@@ -284,12 +329,21 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i29.GetUnseenNotificationsCountUseCase(gh<_i305.NotificationRepo>()),
     );
-    gh.factory<_i629.MarkNotificationsAsSeenUsecase>(
-      () => _i629.MarkNotificationsAsSeenUsecase(gh<_i305.NotificationRepo>()),
-    );
     gh.factory<_i302.ListenNotificationsChangesUsecase>(
       () =>
           _i302.ListenNotificationsChangesUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i629.MarkNotificationsAsSeenUsecase>(
+      () => _i629.MarkNotificationsAsSeenUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i218.WishlistBloc>(
+      () => _i218.WishlistBloc(
+        gh<_i80.RemoveProductFromWishlistUsecase>(),
+        gh<_i590.AddProductToWishlistUsecase>(),
+        gh<_i940.GetProductsFromWishlistUsecase>(),
+        gh<_i591.GetWishlistByCategoryUsecase>(),
+        gh<_i524.OnFavoritesChangesUsecase>(),
+      ),
     );
     gh.factory<_i168.GetNotificationsUsecase>(
       () => _i168.GetNotificationsUsecase(gh<_i305.NotificationRepo>()),

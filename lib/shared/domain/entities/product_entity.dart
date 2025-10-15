@@ -1,4 +1,4 @@
-class HomeProductEntity {
+class ProductEntity {
   final int id;
   final String name;
   final String imageUrl;
@@ -7,7 +7,7 @@ class HomeProductEntity {
   final int sold;
   final bool isFavorite;
 
-  const HomeProductEntity({
+  const ProductEntity({
     required this.id,
     required this.name,
     required this.imageUrl,

@@ -5,7 +5,7 @@ import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
-import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
@@ -28,6 +28,8 @@ import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_c
 import 'package:evira_e_commerce/features/set_fingerprint/ui/screen/set_fingerprint_screen.dart';
 import 'package:evira_e_commerce/features/signup/ui/cubit/signup_cubit.dart';
 import 'package:evira_e_commerce/features/signup/ui/screen/signup_screen.dart';
+import 'package:evira_e_commerce/features/wishlist/ui/bloc/wishlist_bloc.dart';
+import 'package:evira_e_commerce/features/wishlist/ui/screens/wishlist_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/greeting_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/social_auth_cubit.dart';
@@ -52,6 +54,7 @@ class AppPaths {
   static final String noInternet = '/noInternet';
   static final String error = '/error';
   static final String notification = '/notification';
+  static final String wishlist = '/wishlist';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -95,7 +98,7 @@ class AppRouter {
                 BlocProvider(create: (context) => getIt<HomeAppBarCubit>()),
                 BlocProvider(create: (context) => getIt<GreetingCubit>()),
                 BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
-                BlocProvider(create: (context) => getIt<HomeCategoryCubit>()),
+                BlocProvider(create: (context) => getIt<CategoryCubit>()),
                 BlocProvider(create: (context) => getIt<HomeProductCubit>()),
                 BlocProvider.value(value: getIt<NotificationBloc>()),
               ],
@@ -109,6 +112,17 @@ class AppRouter {
           builder: (context, state) => BlocProvider.value(
             value: getIt<NotificationBloc>(),
             child: const NotificationScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.wishlist,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<WishlistBloc>()),
+              BlocProvider(create: (context) => getIt<CategoryCubit>()),
+            ],
+            child: const WishlistScreen(),
           ),
         ),
 

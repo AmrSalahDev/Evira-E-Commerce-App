@@ -3,12 +3,12 @@ import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
-import 'package:evira_e_commerce/features/home/ui/cubits/home_category_cubit.dart';
+import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_app_bar_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_banner_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_bottom_navigation_bar.dart';
-import 'package:evira_e_commerce/features/home/ui/widgets/home_category_bar_part.dart';
+import 'package:evira_e_commerce/shared/widgets/category_bar.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_category_grid_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_product_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_search_bar_part.dart';
@@ -21,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,6 +31,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
+  final client = Supabase.instance.client;
   @override
   void initState() {
     super.initState();
@@ -37,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
     context.read<GreetingCubit>().startGreeting();
     context.read<NotificationBloc>().add(ListenNotificationChanges());
     context.read<HomeBannerCubit>().loadBanners();
-    context.read<HomeCategoryCubit>().loadCategories();
-    context.read<HomeProductCubit>().loadAllProducts('');
+    context.read<CategoryCubit>().loadCategories();
+    context.read<HomeProductCubit>().loadAllProducts();
   }
 
   @override
@@ -73,15 +75,14 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
             HomeCategoryGridPart(),
             SizedBox(height: 30.h),
             SeeAllWidgetPart(title: EviraLang.of(context).mostPopular),
-            HomeCategoryBarPart(
+            CategoryBar(
               onCategorySelected: (categoryId) async {
                 await context.read<HomeProductCubit>().getProductsByCategoryId(
                   categoryId: categoryId,
-                  userId: '',
                 );
               },
               onAllSelected: () async =>
-                  await context.read<HomeProductCubit>().loadAllProducts(''),
+                  await context.read<HomeProductCubit>().loadAllProducts(),
             ),
             SizedBox(height: 10.h),
             HomeProductPart(),

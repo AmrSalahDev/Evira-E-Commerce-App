@@ -28,13 +28,13 @@ class HomeBannerPart extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is HomeBannerLoading) {
-          return _ShimmerBannersPart();
+          return const _ShimmerBannersPart();
         }
         if (state is HomeBannerLoaded) {
           return _BannersPart(state: state);
         }
         if (state is HomeBannerError) {
-          return const SizedBox.shrink();
+          return const _ShimmerBannersPart();
         }
         return SizedBox.shrink();
       },
