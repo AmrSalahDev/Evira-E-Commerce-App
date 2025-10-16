@@ -23,9 +23,6 @@ class HomeProductRepoImpl implements HomeProductRepo {
 
   @override
   Future<List<ProductEntity>> getAllProducts() async {
-    // Select all columns from the main table (*),
-    // and also include related data from the favorites table,
-    // joining it on the user_id column (using a LEFT JOIN).
     final supabase = Supabase.instance.client;
     final userId = supabase.auth.currentUser?.id;
     if (userId == null) return [];

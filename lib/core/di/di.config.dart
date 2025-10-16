@@ -83,6 +83,20 @@ import 'package:evira_e_commerce/features/login/domain/usecases/login_usecase.da
     as _i516;
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart'
     as _i166;
+import 'package:evira_e_commerce/features/most_popular/data/datasources/most_popular_remote_datasource_impl.dart'
+    as _i1056;
+import 'package:evira_e_commerce/features/most_popular/data/repos/most_popular_repo_impl.dart'
+    as _i299;
+import 'package:evira_e_commerce/features/most_popular/domain/datasources/most_popular_remote_datasource.dart'
+    as _i369;
+import 'package:evira_e_commerce/features/most_popular/domain/repos/most_popular_repo.dart'
+    as _i815;
+import 'package:evira_e_commerce/features/most_popular/domain/usecases/get_most_popular_by_category_usecase.dart'
+    as _i190;
+import 'package:evira_e_commerce/features/most_popular/domain/usecases/get_most_popular_usecase.dart'
+    as _i583;
+import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart'
+    as _i472;
 import 'package:evira_e_commerce/features/notification/data/datasources/notification_remote_data_source.dart'
     as _i251;
 import 'package:evira_e_commerce/features/notification/data/repo/notification_repo_impl.dart'
@@ -198,6 +212,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i623.FillProfileRepo>(() => _i133.FillProfileRepoImpl());
     gh.lazySingleton<_i771.HomeAppBarRepo>(() => _i603.HomeAppBarRepoImpl());
     gh.lazySingleton<_i487.HomeBannerRepo>(() => _i170.HomeBannerRepoImpl());
+    gh.lazySingleton<_i369.MostPopularRemoteDatasource>(
+      () => _i1056.MostPopularRemoteDatasourceImpl(),
+    );
     gh.lazySingleton<_i1030.CreatePinRepo>(() => _i825.CreatePinRepoImpl());
     gh.lazySingleton<_i64.SpecialOffersDatasource>(
       () => _i1045.SpecialOffersDatasourceImpl(),
@@ -231,6 +248,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i251.NotificationRemoteDataSourceImpl(),
     );
     gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
+    gh.lazySingleton<_i815.MostPopularRepo>(
+      () => _i299.MostPopularRepoImpl(gh<_i369.MostPopularRemoteDatasource>()),
+    );
     gh.factory<_i350.GetAllProductsUsecase>(
       () => _i350.GetAllProductsUsecase(gh<_i424.HomeProductRepo>()),
     );
@@ -317,6 +337,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i419.RecoverLostImageUsecase>(),
       ),
     );
+    gh.factory<_i583.GetMostPopularUsecase>(
+      () => _i583.GetMostPopularUsecase(gh<_i815.MostPopularRepo>()),
+    );
+    gh.factory<_i190.GetMostPopularByCategoryUsecase>(
+      () => _i190.GetMostPopularByCategoryUsecase(gh<_i815.MostPopularRepo>()),
+    );
     gh.lazySingleton<_i306.NotificationService>(
       () => _i306.NotificationService(gh<_i251.NotificationRemoteDataSource>()),
     );
@@ -361,6 +387,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i629.MarkNotificationsAsSeenUsecase>(
       () => _i629.MarkNotificationsAsSeenUsecase(gh<_i305.NotificationRepo>()),
+    );
+    gh.factory<_i472.MostPopularBloc>(
+      () => _i472.MostPopularBloc(
+        gh<_i583.GetMostPopularUsecase>(),
+        gh<_i190.GetMostPopularByCategoryUsecase>(),
+      ),
     );
     gh.factory<_i218.WishlistBloc>(
       () => _i218.WishlistBloc(

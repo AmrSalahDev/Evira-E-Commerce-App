@@ -5,6 +5,8 @@ import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
+import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
+import 'package:evira_e_commerce/features/most_popular/ui/screens/most_popular_screen.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/bloc/special_offers_bloc.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/screens/special_offers_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
@@ -58,6 +60,7 @@ class AppPaths {
   static final String notification = '/notification';
   static final String wishlist = '/wishlist';
   static final String specialOffer = '/specialOffer';
+  static final String mostPopular = '/mostPopular';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -80,7 +83,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.specialOffer,
+      initialLocation: path,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         GoRoute(
@@ -115,6 +118,17 @@ class AppRouter {
           builder: (context, state) => BlocProvider.value(
             value: getIt<NotificationBloc>(),
             child: const NotificationScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.mostPopular,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<CategoryCubit>()),
+              BlocProvider(create: (context) => getIt<MostPopularBloc>()),
+            ],
+            child: const MostPopularScreen(),
           ),
         ),
 

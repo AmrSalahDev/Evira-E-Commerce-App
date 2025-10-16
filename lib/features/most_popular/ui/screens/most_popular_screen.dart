@@ -5,7 +5,7 @@ import 'package:evira_e_commerce/core/routes/app_router.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
-import 'package:evira_e_commerce/features/wishlist/ui/bloc/wishlist_bloc.dart';
+import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:evira_e_commerce/shared/mixins/stateful_screen_mixin.dart';
@@ -18,17 +18,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:go_router/go_router.dart';
 
-class WishlistScreen extends StatefulWidget {
-  const WishlistScreen({super.key});
+class MostPopularScreen extends StatefulWidget {
+  const MostPopularScreen({super.key});
 
   @override
-  State<WishlistScreen> createState() => _WishlistScreenState();
+  State<MostPopularScreen> createState() => _MostPopularScreenState();
 }
 
-class _WishlistScreenState extends State<WishlistScreen>
+class _MostPopularScreenState extends State<MostPopularScreen>
     with StatefulScreenMixin {
   @override
-  String get title => EviraLang.of(context).wishlist;
+  String get title => EviraLang.of(context).mostPopular;
+
+  int categoryId = 0;
 
   @override
   List<Widget>? buildActions() {
@@ -45,13 +47,11 @@ class _WishlistScreenState extends State<WishlistScreen>
     ];
   }
 
-  int categoryId = 0;
-
   @override
   void initState() {
     super.initState();
     context.read<CategoryCubit>().loadCategories();
-    context.read<WishlistBloc>().add(OnFavoritesChanges(categoryId));
+    context.read<MostPopularBloc>().add(GetMostPopularProducts());
   }
 
   @override
@@ -61,17 +61,17 @@ class _WishlistScreenState extends State<WishlistScreen>
         if (state is NetworkDisconnected) {
           context.go(
             AppPaths.noInternet,
-            extra: NoInternetScreenArgs(targetPath: AppPaths.wishlist),
+            extra: NoInternetScreenArgs(targetPath: AppPaths.mostPopular),
           );
         }
       },
       child: RefreshIndicator(
         onRefresh: () async {
           if (categoryId == 0) {
-            context.read<WishlistBloc>().add(GetProductsFromWishlist());
+            context.read<MostPopularBloc>().add(GetMostPopularProducts());
           } else {
-            context.read<WishlistBloc>().add(
-              GetProductsFromWishlistByCategory(categoryId),
+            context.read<MostPopularBloc>().add(
+              GetMostPopularProducts(categoryId: categoryId),
             );
           }
         },
@@ -86,27 +86,23 @@ class _WishlistScreenState extends State<WishlistScreen>
                   CategoryBar(
                     onCategorySelected: (categoryId) {
                       this.categoryId = categoryId;
-                      // context.read<WishlistBloc>().add(
-                      //   GetProductsFromWishlistByCategory(categoryId),
-                      // );
-                      context.read<WishlistBloc>().add(
-                        OnFavoritesChanges(categoryId),
+                      context.read<MostPopularBloc>().add(
+                        GetMostPopularProducts(categoryId: categoryId),
                       );
                     },
                     onAllSelected: () {
                       categoryId = 0;
-                      // context.read<WishlistBloc>().add(GetProductsFromWishlist());
-                      context.read<WishlistBloc>().add(
-                        OnFavoritesChanges(categoryId),
+                      context.read<MostPopularBloc>().add(
+                        GetMostPopularProducts(),
                       );
                     },
                   ),
                   SizedBox(height: 20.h),
                 ],
               ),
-              sliver: BlocConsumer<WishlistBloc, WishlistState>(
+              sliver: BlocConsumer<MostPopularBloc, MostPopularState>(
                 listener: (context, state) {
-                  if (state is WishlistError) {
+                  if (state is MostPopularError) {
                     getIt<ToastService>().showErrorToast(
                       context: context,
                       message: state.message,
@@ -114,9 +110,9 @@ class _WishlistScreenState extends State<WishlistScreen>
                   }
                 },
                 builder: (context, state) {
-                  if (state is WishlistLoading) {
+                  if (state is MostPopularLoading) {
                     return const SliverToBoxAdapter(child: ShimmerProducts());
-                  } else if (state is WishlistLoaded) {
+                  } else if (state is MostPopularLoaded) {
                     return SliverGrid.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -125,12 +121,12 @@ class _WishlistScreenState extends State<WishlistScreen>
                         mainAxisExtent: 320.h,
                       ),
                       itemBuilder: (context, index) {
-                        final product = state.wishlistProducts[index];
+                        final product = state.products[index];
                         return ProductItem(product: product);
                       },
-                      itemCount: state.wishlistProducts.length,
+                      itemCount: state.products.length,
                     );
-                  } else if (state is WishlistError) {
+                  } else if (state is MostPopularError) {
                     if (state.message ==
                         EviraLang.of(context).noInternetConnection) {
                       return const SliverToBoxAdapter(child: ShimmerProducts());

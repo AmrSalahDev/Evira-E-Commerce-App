@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class ShimmerBannerCard extends StatelessWidget {
   final int itemCount;
-  const ShimmerBannerCard({super.key, this.itemCount = 0});
+  const ShimmerBannerCard({super.key, this.itemCount = 1});
 
   @override
   Widget build(BuildContext context) {
