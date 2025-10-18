@@ -100,9 +100,11 @@
     "areYouSureToDelete":"Are you sure you want to delete?",
     "confirm":"Confirm",
     "delete":"Delete",
-    "wishlist":"My Wishlist"
-    
-    
-    
-
+    "wishlist":"My Wishlist",
+    "recent":"Recent",
+    "clearAll":"Clear All",
+    "notFound":"Not Found",
+    "notFoundDescription":"Sorry, the keyword you entered cannot be\nfound, please check again or search with\nanother keyword.",
+    "found":"Found",
+    "resultsfor":"Results for"
 }

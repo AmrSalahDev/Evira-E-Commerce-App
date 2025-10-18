@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomeSearchBarPart extends StatelessWidget {
   final VoidCallback? onTap;
-  final VoidCallback? onSettingsPressed;
-  const HomeSearchBarPart({super.key, this.onTap, this.onSettingsPressed});
+  final VoidCallback? onFilterPressed;
+  const HomeSearchBarPart({super.key, this.onTap, this.onFilterPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class HomeSearchBarPart extends StatelessWidget {
         fillColor: context.textFieldColor,
         prefixIcon: Icon(Icons.search, color: context.hintColor, size: 30.h),
         suffixIcon: GestureDetector(
-          onTap: onSettingsPressed,
+          onTap: onFilterPressed,
           child: Transform.scale(
             scale: 0.5,
             child: Assets.icons.slidersSimple.svg(

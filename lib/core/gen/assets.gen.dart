@@ -28,6 +28,9 @@ class $AssetsIconsGen {
   AssetGenImage get cartActive =>
       const AssetGenImage('assets/icons/cart_active.png');
 
+  /// File path: assets/icons/close.svg
+  SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+
   /// File path: assets/icons/facebook.svg
   SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
 
@@ -80,6 +83,7 @@ class $AssetsIconsGen {
     apple,
     cart,
     cartActive,
+    close,
     facebook,
     google,
     home,
@@ -152,6 +156,15 @@ class $AssetsImagesGen {
     'assets/images/reset_password_successful_logo_light.png',
   );
 
+  /// File path: assets/images/search_result_not_found_light.png
+  AssetGenImage get searchResultNotFoundLight =>
+      const AssetGenImage('assets/images/search_result_not_found_light.png');
+
+  /// File path: assets/images/search_result_not_found_logo_dark.png
+  AssetGenImage get searchResultNotFoundLogoDark => const AssetGenImage(
+    'assets/images/search_result_not_found_logo_dark.png',
+  );
+
   /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 
@@ -168,6 +181,8 @@ class $AssetsImagesGen {
     letsYouInLight,
     resetPasswordSuccessfulLogoDark,
     resetPasswordSuccessfulLogoLight,
+    searchResultNotFoundLight,
+    searchResultNotFoundLogoDark,
   ];
 }
 

@@ -7,6 +7,9 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/screens/most_popular_screen.dart';
+import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.dart';
+import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart';
+import 'package:evira_e_commerce/features/search/ui/screens/search_screen.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/bloc/special_offers_bloc.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/screens/special_offers_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
@@ -61,6 +64,7 @@ class AppPaths {
   static final String wishlist = '/wishlist';
   static final String specialOffer = '/specialOffer';
   static final String mostPopular = '/mostPopular';
+  static final String search = '/search';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -118,6 +122,19 @@ class AppRouter {
           builder: (context, state) => BlocProvider.value(
             value: getIt<NotificationBloc>(),
             child: const NotificationScreen(),
+          ),
+        ),
+
+        GoRoute(
+          path: AppPaths.search,
+          pageBuilder: GoTransitions.slide.toTop.withFade.call,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<CategoryCubit>()),
+              BlocProvider(create: (context) => getIt<SearchResultsBloc>()),
+              BlocProvider(create: (context) => getIt<SearchRecentsBloc>()),
+            ],
+            child: const SearchScreen(),
           ),
         ),
 

@@ -66,7 +66,11 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
           children: [
             HomeAppBarPart(),
             SizedBox(height: 30.h),
-            HomeSearchBarPart(),
+            HomeSearchBarPart(
+              onTap: () {
+                context.push(AppPaths.search);
+              },
+            ),
             SizedBox(height: 30.h),
             SeeAllWidgetPart(
               title: EviraLang.of(context).specialOffers,

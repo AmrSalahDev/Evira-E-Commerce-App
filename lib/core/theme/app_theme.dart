@@ -130,4 +130,6 @@ extension AppColorContext on BuildContext {
   Color get grayBackgroundColor =>
       isDark ? AppColors.darkGrayBackground : AppColors.lightGrayBackground;
   Color get cardColor => isDark ? AppColors.darkCard : AppColors.lightCard;
+  Color get recentColor =>
+      isDark ? AppColors.darkRecent : AppColors.lightRecent;
 }

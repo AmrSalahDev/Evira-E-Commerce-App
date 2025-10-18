@@ -8,17 +8,21 @@ import 'package:evira_e_commerce/shared/cubits/app_flow_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/network_cubit.dart';
 import 'package:evira_e_commerce/shared/cubits/theme_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_transitions/go_transitions.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:my_flutter_toolkit/ui/system/system_ui_wrapper.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -38,8 +42,15 @@ void main() async {
   // initialize dependencies
   configureDependencies();
 
-  // initialize hive
-  //await Hive.initFlutter();
+  // initialize talker logger
+  Bloc.observer = TalkerBlocObserver();
+
+  // initialize hydrated storage
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorageDirectory.web
+        : HydratedStorageDirectory((await getTemporaryDirectory()).path),
+  );
 
   final appFlowCubit = getIt<AppFlowCubit>();
 

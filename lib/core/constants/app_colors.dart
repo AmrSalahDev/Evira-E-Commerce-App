@@ -30,6 +30,7 @@ final class AppColors {
   static const Color lightShimmerHighlight = Color(0xFFF5F5F5);
   static const Color lightGrayBackground = Color(0xFFececec);
   static const Color lightCard = Color(0xFFe7e7e7);
+  static const Color lightRecent = Color(0xFFbcbdc2);
 
   // Dark
   static const Color darkBackground = Color(0xFF191a1f);
@@ -58,4 +59,5 @@ final class AppColors {
   static const Color darkShimmerHighlight = Color(0xFF757575);
   static const Color darkGrayBackground = Color(0xFF35383f);
   static const Color darkCard = Color(0xFF35383f);
+  static const Color darkRecent = Color(0xFFbcbdc2);
 }

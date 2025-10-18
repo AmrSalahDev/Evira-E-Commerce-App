@@ -9,7 +9,6 @@ dependencies:
   app_settings: ^6.1.1
   build_runner: ^2.7.0
   cached_network_image: ^3.4.1
-  change_app_package_name: ^1.5.0
   country_picker: ^2.0.27
   crypto: ^3.0.6
   cupertino_icons: ^1.0.8
@@ -45,13 +44,10 @@ dependencies:
   otp_resend_timer: ^1.0.0
   pattern_formatter: ^4.0.1
   pinput: ^5.0.2
-  rename: ^3.1.0
-  shared_preferences: ^2.5.3
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1
   supabase_flutter: ^2.10.1
   toastification: ^3.0.3
-  flutter_facebook_auth: ^7.1.2
   app_links: ^6.4.1
   google_sign_in: ^7.2.0
   internet_connection_checker_plus: ^2.9.0
@@ -62,17 +58,22 @@ dependencies:
   carousel_slider: ^5.1.1
   bloc_test: ^10.0.0
   connectivity_plus: ^7.0.0
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
   mockito: ^5.5.0
   thanos_snap_effect: ^0.0.9
   animated_emoji: ^3.2.1
-  typewritertext: ^3.0.9
   flutter_staggered_animations: ^1.1.1
   animated_text_kit: ^4.3.0
-  flutter_shake_animated: ^0.0.5
+ 
   infinite_scroll_pagination: ^5.1.1
   flutter_sticky_header: ^0.8.0
+  animated_hint_textfield: ^1.1.1
+  animation_list: ^3.1.0
+  dismissible_page: ^1.0.2
+  hydrated_bloc: ^10.1.1
+  path_provider: ^2.1.5
+  animated_digit: ^3.3.2
+  talker_bloc_logger: ^5.0.2
+  stream_transform: ^2.1.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0

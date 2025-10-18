@@ -1,3 +1,4 @@
+import 'package:animated_digit/animated_digit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
@@ -124,15 +125,17 @@ class ProductItem extends StatelessWidget {
               ],
             ),
             SizedBox(height: 5.h),
-            Text(
-              "\$${product.price}",
-              style: GoogleFonts.urbanist(
+            AnimatedDigitWidget(
+              value: product.price,
+              enableSeparator: true,
+              separateSymbol: '.',
+              fractionDigits: 2,
+              prefix: '\$',
+              textStyle: GoogleFonts.urbanist(
                 fontSize: 20.sp,
                 color: context.textColor,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

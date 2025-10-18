@@ -18,7 +18,7 @@ packages:
     source: hosted
     version: "7.7.1"
   animated_digit:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: animated_digit
       sha256: e0935e46d8cd281184a5867a0666088e7b10f495a57eebd8f9e57c08bbcb2b84
@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
+  animated_hint_textfield:
+    dependency: "direct main"
+    description:
+      name: animated_hint_textfield
+      sha256: "7691ca95f523d45830248991592fa04ecf8fae2b6ea83ae94e22073689cfe611"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   animated_text_kit:
     dependency: "direct main"
     description:
@@ -41,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.3.0"
+  animation_list:
+    dependency: "direct main"
+    description:
+      name: animation_list
+      sha256: "5d193f53a6616dc6496eb7eff297da84a6f18c1c042412bbfe05dfc8be7be926"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   ansicolor:
     dependency: transitive
     description:
@@ -257,14 +273,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
-  change_app_package_name:
-    dependency: "direct main"
-    description:
-      name: change_app_package_name
-      sha256: "8e43b754fe960426904d77ed4c62fa8c9834deaf6e293ae40963fa447482c4c5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.0"
   characters:
     dependency: transitive
     description:
@@ -425,6 +433,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.1"
+  dismissible_page:
+    dependency: "direct main"
+    description:
+      name: dismissible_page
+      sha256: "5b2316f770fe83583f770df1f6505cb19102081c5971979806e77f2e507a9958"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   email_validator:
     dependency: transitive
     description:
@@ -441,14 +457,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.7"
-  facebook_auth_desktop:
-    dependency: transitive
-    description:
-      name: facebook_auth_desktop
-      sha256: "219d559a33891e937c1913430505eae01fb946cb35729167bbdc747e3ebbd9ff"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
   fade_shimmer:
     dependency: "direct main"
     description:
@@ -574,30 +582,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
-  flutter_facebook_auth:
-    dependency: "direct main"
-    description:
-      name: flutter_facebook_auth
-      sha256: "902a98db4c7a24001a0835d592806c6a3d6b0c7fba2d169c11e20e14fdc74368"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.1.2"
-  flutter_facebook_auth_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_facebook_auth_platform_interface
-      sha256: e04b8dbfa77702bea45a79993163ad5d20b2c0084109bec591fdc2b9ee505779
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.2"
-  flutter_facebook_auth_web:
-    dependency: transitive
-    description:
-      name: flutter_facebook_auth_web
-      sha256: f682400d61cf8d52dd8b6458b5ee106ed57e95309a117dc32875d3da129ce47c
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.2"
   flutter_gen_core:
     dependency: transitive
     description:
@@ -723,14 +707,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
-  flutter_shake_animated:
-    dependency: "direct main"
-    description:
-      name: flutter_shake_animated
-      sha256: "93ce87fa31467c28f10f11147243172a7692df846589b30ff16e592de20341b2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
   flutter_staggered_animations:
     dependency: "direct main"
     description:
@@ -925,22 +901,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  hive:
-    dependency: "direct main"
+  hive_ce:
+    dependency: transitive
     description:
-      name: hive
-      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      name: hive_ce
+      sha256: e3a9d2608350ca5ae1fcaa594bbc24c443cf8e67cd16b89ec258fb0bcccb0847
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.3"
-  hive_flutter:
-    dependency: "direct main"
-    description:
-      name: hive_flutter
-      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
+    version: "2.15.0"
   html:
     dependency: transitive
     description:
@@ -973,6 +941,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  hydrated_bloc:
+    dependency: "direct main"
+    description:
+      name: hydrated_bloc
+      sha256: f359a1135cc2eaddb53eeb21c8f915a149b9bdb80d01fda27c6f4e333db0cf2f
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.1.1"
   iconsax_flutter:
     dependency: transitive
     description:
@@ -1117,6 +1093,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  isolate_channel:
+    dependency: transitive
+    description:
+      name: isolate_channel
+      sha256: f3d36f783b301e6b312c3450eeb2656b0e7d1db81331af2a151d9083a3f6b18d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2+1"
   js:
     dependency: transitive
     description:
@@ -1221,14 +1205,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.11"
-  logger:
-    dependency: transitive
-    description:
-      name: logger
-      sha256: "55d6c23a6c15db14920e037fe7e0dc32e7cdaf3b64b4b25df2d541b5b6b81c0c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.1"
   logging:
     dependency: transitive
     description:
@@ -1375,7 +1351,7 @@ packages:
     source: hosted
     version: "1.1.0"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: "50c5dd5b6e1aaf6fb3a78b33f6aa3afca52bf903a8a5298f53101fdaee55bbcd"
@@ -1542,14 +1518,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
-  rename:
-    dependency: "direct main"
-    description:
-      name: rename
-      sha256: da5f4d67f8c68f066ad04edfd6585495dbe595f2baf3b1999eb6af1805d79539
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   retry:
     dependency: transitive
     description:
@@ -1567,7 +1535,7 @@ packages:
     source: hosted
     version: "0.28.0"
   shared_preferences:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: shared_preferences
       sha256: "6e8bf70b7fef813df4e9a36f658ac46d107db4b4cfe1048b477d4e453a8159f5"
@@ -1788,7 +1756,7 @@ packages:
     source: hosted
     version: "2.1.4"
   stream_transform:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: stream_transform
       sha256: ad47125e588cfd37a9a7f86c7d6356dde8dfe89d071d293f80ca9e9273a33871
@@ -1827,6 +1795,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.4.0"
+  talker:
+    dependency: transitive
+    description:
+      name: talker
+      sha256: "82de443cadfb6c41d457e7774c7890a91c73af3c2f17f3f7c01670bb58d5f5a1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
+  talker_bloc_logger:
+    dependency: "direct main"
+    description:
+      name: talker_bloc_logger
+      sha256: e631fcc9454cd86639888a9bb4654582bbc8c64c7dcc913401bfecb8892ec759
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
+  talker_logger:
+    dependency: transitive
+    description:
+      name: talker_logger
+      sha256: "8218836d871ea5ab1ec616cffe3cdae84e8fb44022d5cc04c95d7b220572b8fb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   term_glyph:
     dependency: transitive
     description:
@@ -1899,14 +1891,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  typewritertext:
-    dependency: "direct main"
-    description:
-      name: typewritertext
-      sha256: c6b90cdc9f7fd7ae3235d9c926012000f7a1765cd49d67b78370dc61123212b2
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.9"
   universal_io:
     dependency: transitive
     description:

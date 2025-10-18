@@ -873,6 +873,41 @@ class EviraLang {
   String get wishlist {
     return Intl.message('My Wishlist', name: 'wishlist', desc: '', args: []);
   }
+
+  /// `Recent`
+  String get recent {
+    return Intl.message('Recent', name: 'recent', desc: '', args: []);
+  }
+
+  /// `Clear All`
+  String get clearAll {
+    return Intl.message('Clear All', name: 'clearAll', desc: '', args: []);
+  }
+
+  /// `Not Found`
+  String get notFound {
+    return Intl.message('Not Found', name: 'notFound', desc: '', args: []);
+  }
+
+  /// `Sorry, the keyword you entered cannot be\nfound, please check again or search with\nanother keyword.`
+  String get notFoundDescription {
+    return Intl.message(
+      'Sorry, the keyword you entered cannot be\nfound, please check again or search with\nanother keyword.',
+      name: 'notFoundDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Found`
+  String get found {
+    return Intl.message('Found', name: 'found', desc: '', args: []);
+  }
+
+  /// `Results for`
+  String get resultsfor {
+    return Intl.message('Results for', name: 'resultsfor', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

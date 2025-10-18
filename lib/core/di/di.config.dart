@@ -15,7 +15,6 @@ import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
     as _i7;
 import 'package:evira_e_commerce/core/services/social_auth_service.dart'
     as _i769;
-import 'package:evira_e_commerce/core/services/theme_service.dart' as _i193;
 import 'package:evira_e_commerce/core/services/toast_service.dart' as _i101;
 import 'package:evira_e_commerce/features/create_pin/data/repos/create_pin_repo_impl.dart'
     as _i825;
@@ -121,6 +120,28 @@ import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc
     as _i529;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
+import 'package:evira_e_commerce/features/search/data/datasources/search_remote_datasource_impl.dart'
+    as _i758;
+import 'package:evira_e_commerce/features/search/data/repos/search_repo_impl.dart'
+    as _i388;
+import 'package:evira_e_commerce/features/search/domain/datasources/search_remote_datasource.dart'
+    as _i675;
+import 'package:evira_e_commerce/features/search/domain/repos/search_repo.dart'
+    as _i595;
+import 'package:evira_e_commerce/features/search/domain/usecases/add_search_recent_keyword_usecase.dart'
+    as _i299;
+import 'package:evira_e_commerce/features/search/domain/usecases/clear_all_recent_keywords_usecase.dart'
+    as _i615;
+import 'package:evira_e_commerce/features/search/domain/usecases/delete_recent_keyword_usecase.dart'
+    as _i1018;
+import 'package:evira_e_commerce/features/search/domain/usecases/get_recent_keywords_usecase.dart'
+    as _i812;
+import 'package:evira_e_commerce/features/search/domain/usecases/search_result_usecase.dart'
+    as _i570;
+import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.dart'
+    as _i1071;
+import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart'
+    as _i738;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
     as _i418;
 import 'package:evira_e_commerce/features/signup/data/repos/signup_repo_impl.dart'
@@ -176,10 +197,6 @@ import 'package:evira_e_commerce/shared/domain/repos/category_repo.dart'
     as _i457;
 import 'package:evira_e_commerce/shared/domain/usecases/get_categories_usecase.dart'
     as _i790;
-import 'package:evira_e_commerce/shared/domain/usecases/get_theme_mode_usecase.dart'
-    as _i820;
-import 'package:evira_e_commerce/shared/domain/usecases/set_theme_mode_usecase.dart'
-    as _i733;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -198,11 +215,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i7.SharedPreferencesService(),
     );
     gh.lazySingleton<_i769.SocialAuthService>(() => _i769.SocialAuthService());
-    gh.lazySingleton<_i193.ThemeService>(() => _i193.ThemeService());
     gh.lazySingleton<_i101.ToastService>(() => _i101.ToastService());
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
+    gh.lazySingleton<_i436.ThemeCubit>(() => _i436.ThemeCubit());
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
@@ -222,20 +239,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i563.SpecialOffersRepo>(
       () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
     );
-    gh.factory<_i820.GetThemeModeUseCase>(
-      () => _i820.GetThemeModeUseCase(gh<_i193.ThemeService>()),
-    );
-    gh.factory<_i733.SetThemeModeUseCase>(
-      () => _i733.SetThemeModeUseCase(gh<_i193.ThemeService>()),
-    );
     gh.lazySingleton<_i424.HomeProductRepo>(() => _i99.HomeProductRepoImpl());
     gh.lazySingleton<_i1011.ImagePickerRepo>(() => _i782.ImagePickerRepoImpl());
-    gh.lazySingleton<_i436.ThemeCubit>(
-      () => _i436.ThemeCubit(
-        gh<_i820.GetThemeModeUseCase>(),
-        gh<_i733.SetThemeModeUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i962.SignupRepo>(() => _i280.SignupRepoImpl());
     gh.lazySingleton<_i890.LoginRepo>(() => _i1036.LoginRepoImpl());
     gh.factory<_i49.ImagePickerUsecase>(
@@ -246,6 +251,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i251.NotificationRemoteDataSource>(
       () => _i251.NotificationRemoteDataSourceImpl(),
+    );
+    gh.lazySingleton<_i675.SearchRemoteDatasource>(
+      () => _i758.SearchRemoteDatasourceImpl(),
     );
     gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
     gh.lazySingleton<_i815.MostPopularRepo>(
@@ -331,17 +339,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i524.OnFavoritesChangesUsecase>(
       () => _i524.OnFavoritesChangesUsecase(gh<_i603.WishlistRepo>()),
     );
+    gh.lazySingleton<_i595.SearchRepo>(
+      () => _i388.SearchRepoImpl(gh<_i675.SearchRemoteDatasource>()),
+    );
     gh.factory<_i378.ProfileImageCubit>(
       () => _i378.ProfileImageCubit(
         gh<_i49.ImagePickerUsecase>(),
         gh<_i419.RecoverLostImageUsecase>(),
       ),
     );
-    gh.factory<_i583.GetMostPopularUsecase>(
-      () => _i583.GetMostPopularUsecase(gh<_i815.MostPopularRepo>()),
-    );
     gh.factory<_i190.GetMostPopularByCategoryUsecase>(
       () => _i190.GetMostPopularByCategoryUsecase(gh<_i815.MostPopularRepo>()),
+    );
+    gh.factory<_i583.GetMostPopularUsecase>(
+      () => _i583.GetMostPopularUsecase(gh<_i815.MostPopularRepo>()),
     );
     gh.lazySingleton<_i306.NotificationService>(
       () => _i306.NotificationService(gh<_i251.NotificationRemoteDataSource>()),
@@ -368,6 +379,21 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i685.GetProductsByCategoryIdUsecase>(),
         gh<_i350.GetAllProductsUsecase>(),
       ),
+    );
+    gh.factory<_i299.AddSearchRecentKeywordUsecase>(
+      () => _i299.AddSearchRecentKeywordUsecase(gh<_i595.SearchRepo>()),
+    );
+    gh.factory<_i615.ClearAllRecentKeywordsUsecase>(
+      () => _i615.ClearAllRecentKeywordsUsecase(gh<_i595.SearchRepo>()),
+    );
+    gh.factory<_i1018.DeleteRecentKeywordUsecase>(
+      () => _i1018.DeleteRecentKeywordUsecase(gh<_i595.SearchRepo>()),
+    );
+    gh.factory<_i812.GetRecentKeywordsUsecase>(
+      () => _i812.GetRecentKeywordsUsecase(gh<_i595.SearchRepo>()),
+    );
+    gh.factory<_i570.SearchResultUsecase>(
+      () => _i570.SearchResultUsecase(gh<_i595.SearchRepo>()),
     );
     gh.factory<_i296.CategoryCubit>(
       () => _i296.CategoryCubit(gh<_i790.GetCategoriesUseCase>()),
@@ -403,6 +429,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i524.OnFavoritesChangesUsecase>(),
       ),
     );
+    gh.factory<_i738.SearchResultsBloc>(
+      () => _i738.SearchResultsBloc(gh<_i570.SearchResultUsecase>()),
+    );
     gh.factory<_i168.GetNotificationsUsecase>(
       () => _i168.GetNotificationsUsecase(gh<_i305.NotificationRepo>()),
     );
@@ -421,6 +450,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i29.GetUnseenNotificationsCountUseCase>(),
         gh<_i302.ListenNotificationsChangesUsecase>(),
         gh<_i819.DeleteNotificationUsecase>(),
+      ),
+    );
+    gh.factory<_i1071.SearchRecentsBloc>(
+      () => _i1071.SearchRecentsBloc(
+        gh<_i299.AddSearchRecentKeywordUsecase>(),
+        gh<_i1018.DeleteRecentKeywordUsecase>(),
+        gh<_i289.ClearAllNotificatonsUsecase>(),
+        gh<_i812.GetRecentKeywordsUsecase>(),
       ),
     );
     return this;

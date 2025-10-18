@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "clearAll": MessageLookupByLibrary.simpleMessage("Clear All"),
     "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
       "Code has been send to ",
     ),
@@ -109,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "Forget Password",
     ),
+    "found": MessageLookupByLibrary.simpleMessage("Found"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
@@ -141,6 +143,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "noNotifications": MessageLookupByLibrary.simpleMessage(
       "No notifications yet.",
     ),
+    "notFound": MessageLookupByLibrary.simpleMessage("Not Found"),
+    "notFoundDescription": MessageLookupByLibrary.simpleMessage(
+      "Sorry, the keyword you entered cannot be\nfound, please check again or search with\nanother keyword.",
+    ),
     "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
     "onboarding_title_1": MessageLookupByLibrary.simpleMessage(
@@ -168,9 +174,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
+    "recent": MessageLookupByLibrary.simpleMessage("Recent"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend code in"),
+    "resultsfor": MessageLookupByLibrary.simpleMessage("Results for"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
     "selectDate": MessageLookupByLibrary.simpleMessage("Select Date"),
