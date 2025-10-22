@@ -50,36 +50,72 @@ class SearchStatusBarPart extends StatelessWidget {
                     ),
                   ],
                 );
+              } else if (state is SearchResultError) {
+                if (state.message ==
+                    EviraLang.of(context).noInternetConnection) {
+                  return ShimmerBox(
+                    height: 50.h,
+                    width: context.screenWidth,
+                    shimmerBaseColor: context.cardColor,
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
               } else {
                 return const SizedBox.shrink();
               }
             },
           )
-        : Row(
-            children: [
-              Text(
-                EviraLang.of(context).recent,
-                style: GoogleFonts.urbanist(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: context.textColor,
-                ),
-              ),
-              const Spacer(),
-              GestureDetector(
-                onTap: () => context.read<SearchRecentsBloc>().add(
-                  ClearAllRecentKeywordsEvent(),
-                ),
-                child: Text(
-                  EviraLang.of(context).clearAll,
-                  style: GoogleFonts.urbanist(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                    color: context.textColor,
-                  ),
-                ),
-              ),
-            ],
+        : BlocBuilder<SearchRecentsBloc, SearchRecentsState>(
+            builder: (context, state) {
+              if (state is SearchRecentKeywordsLoading) {
+                return ShimmerBox(
+                  height: 50.h,
+                  width: context.screenWidth,
+                  shimmerBaseColor: context.cardColor,
+                );
+              } else if (state is SearchRecentKeywordsLoaded) {
+                return Row(
+                  children: [
+                    Text(
+                      EviraLang.of(context).recent,
+                      style: GoogleFonts.urbanist(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: context.textColor,
+                      ),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => context.read<SearchRecentsBloc>().add(
+                        ClearAllRecentKeywordsEvent(),
+                      ),
+                      child: Text(
+                        EviraLang.of(context).clearAll,
+                        style: GoogleFonts.urbanist(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: context.textColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              } else if (state is SearchRecentKeywordsError) {
+                if (state.message ==
+                    EviraLang.of(context).noInternetConnection) {
+                  return ShimmerBox(
+                    height: 50.h,
+                    width: context.screenWidth,
+                    shimmerBaseColor: context.cardColor,
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
           );
   }
 }

@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
     "areYouSureToDelete": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete?",
     ),
@@ -47,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+    "clear": MessageLookupByLibrary.simpleMessage("Clear"),
     "clearAll": MessageLookupByLibrary.simpleMessage("Clear All"),
     "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
       "Code has been send to ",
@@ -101,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fillYourProfile": MessageLookupByLibrary.simpleMessage(
       "Fill Your Profile",
     ),
+    "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
       "Forgot the password?",
     ),
@@ -170,14 +174,20 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password too weak",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "pleaseEnterKeyword": MessageLookupByLibrary.simpleMessage(
+      "Please enter a keyword",
+    ),
+    "priceRange": MessageLookupByLibrary.simpleMessage("Price Range"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
+    "rating": MessageLookupByLibrary.simpleMessage("Rating"),
     "recent": MessageLookupByLibrary.simpleMessage("Recent"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "resendCode": MessageLookupByLibrary.simpleMessage("Resend code in"),
+    "reset": MessageLookupByLibrary.simpleMessage("Reset"),
     "resultsfor": MessageLookupByLibrary.simpleMessage("Results for"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
@@ -196,6 +206,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "sold": MessageLookupByLibrary.simpleMessage("sold"),
+    "sortAndFilter": MessageLookupByLibrary.simpleMessage("Sort & Filter"),
+    "sortBy": MessageLookupByLibrary.simpleMessage("Sort By"),
     "specialOffers": MessageLookupByLibrary.simpleMessage("Special Offers"),
     "stillNoInternetConnection": MessageLookupByLibrary.simpleMessage(
       "Still no internet connection.",

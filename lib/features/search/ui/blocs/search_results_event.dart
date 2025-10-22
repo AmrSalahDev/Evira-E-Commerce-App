@@ -43,3 +43,13 @@ class SearchResultEvent extends SearchResultsEvent {
   @override
   List<Object> get props => [keyword];
 }
+
+class ApplyFiltersEvent extends SearchResultsEvent {
+  final FilterEntity filter;
+  final String keyword;
+
+  const ApplyFiltersEvent({required this.filter, required this.keyword});
+
+  @override
+  List<Object> get props => [filter, keyword];
+}

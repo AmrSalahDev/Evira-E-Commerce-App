@@ -9,6 +9,7 @@ import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc
 import 'package:evira_e_commerce/features/most_popular/ui/screens/most_popular_screen.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart';
+import 'package:evira_e_commerce/features/search/ui/cubit/filter_cubit.dart';
 import 'package:evira_e_commerce/features/search/ui/screens/search_screen.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/bloc/special_offers_bloc.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/screens/special_offers_screen.dart';
@@ -87,7 +88,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: path,
+      initialLocation: AppPaths.search,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         GoRoute(
@@ -133,6 +134,7 @@ class AppRouter {
               BlocProvider(create: (context) => getIt<CategoryCubit>()),
               BlocProvider(create: (context) => getIt<SearchResultsBloc>()),
               BlocProvider(create: (context) => getIt<SearchRecentsBloc>()),
+              BlocProvider.value(value: getIt<FilterCubit>()),
             ],
             child: const SearchScreen(),
           ),

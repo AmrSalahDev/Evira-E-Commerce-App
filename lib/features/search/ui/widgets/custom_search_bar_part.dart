@@ -12,12 +12,14 @@ class CustomSearchBarPart extends StatefulWidget {
   final TextEditingController controller;
   final Function(String)? onSubmitted;
   final Function(String)? onSearch;
+  final Function(String) onFilterTap;
 
   const CustomSearchBarPart({
     super.key,
     required this.keywords,
     this.onSubmitted,
     required this.controller,
+    required this.onFilterTap,
     this.onSearch,
   });
 
@@ -40,6 +42,7 @@ class _CustomSearchBarPartState extends State<CustomSearchBarPart> {
   @override
   void dispose() {
     widget.controller.removeListener(_onTextChanged);
+    suggestionController.dispose();
     super.dispose();
   }
 
@@ -63,10 +66,12 @@ class _CustomSearchBarPartState extends State<CustomSearchBarPart> {
 
   void _updateState({required bool isSearching, required String? suggestion}) {
     if (!mounted) return;
-    setState(() {
-      this.isSearching = isSearching;
-      this.suggestion = suggestion;
-      suggestionController.text = suggestion ?? "";
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        this.isSearching = isSearching;
+        this.suggestion = suggestion;
+        suggestionController.text = suggestion ?? "";
+      });
     });
   }
 
@@ -89,15 +94,15 @@ class _CustomSearchBarPartState extends State<CustomSearchBarPart> {
 }
 
 class _SearchTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final CustomSearchBarPart widget;
+  final bool isSearching;
+
   const _SearchTextField({
     required this.controller,
     required this.widget,
     required this.isSearching,
   });
-
-  final TextEditingController controller;
-  final CustomSearchBarPart widget;
-  final bool isSearching;
 
   @override
   Widget build(BuildContext context) {
@@ -143,12 +148,15 @@ class _SearchTextField extends StatelessWidget {
           ),
         ),
 
-        suffixIcon: Transform.scale(
-          scale: 0.4,
-          child: Assets.icons.slidersSimple.svg(
-            height: 24.h,
-            width: 24.h,
-            colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
+        suffixIcon: GestureDetector(
+          onTap: () => widget.onFilterTap(controller.text),
+          child: Transform.scale(
+            scale: 0.4,
+            child: Assets.icons.slidersSimple.svg(
+              height: 24.h,
+              width: 24.h,
+              colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
+            ),
           ),
         ),
       ),
@@ -158,12 +166,12 @@ class _SearchTextField extends StatelessWidget {
 
 class _SuggestionTextField extends StatelessWidget {
   final bool isSearching;
+  final TextEditingController suggestionController;
+
   const _SuggestionTextField({
     required this.suggestionController,
     required this.isSearching,
   });
-
-  final TextEditingController suggestionController;
 
   @override
   Widget build(BuildContext context) {
@@ -209,12 +217,14 @@ class _SuggestionTextField extends StatelessWidget {
             colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
           ),
         ),
-        suffixIcon: Transform.scale(
-          scale: 0.4,
-          child: Assets.icons.slidersSimple.svg(
-            height: 24.h,
-            width: 24.h,
-            colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
+        suffixIcon: GestureDetector(
+          child: Transform.scale(
+            scale: 0.4,
+            child: Assets.icons.slidersSimple.svg(
+              height: 24.h,
+              width: 24.h,
+              colorFilter: ColorFilter.mode(context.iconColor, BlendMode.srcIn),
+            ),
           ),
         ),
       ),

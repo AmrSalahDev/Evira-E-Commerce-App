@@ -106,5 +106,15 @@
     "notFound":"Not Found",
     "notFoundDescription":"Sorry, the keyword you entered cannot be\nfound, please check again or search with\nanother keyword.",
     "found":"Found",
-    "resultsfor":"Results for"
+    "resultsfor":"Results for",
+    "sortAndFilter":"Sort & Filter",
+    "categories":"Categories",
+    "filter":"Filter",
+    "sortBy":"Sort By",
+    "priceRange":"Price Range",
+    "clear":"Clear",
+    "apply":"Apply",
+    "reset":"Reset",
+    "rating":"Rating",
+    "pleaseEnterKeyword":"Please enter a keyword"
 }

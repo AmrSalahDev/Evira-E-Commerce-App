@@ -908,6 +908,66 @@ class EviraLang {
   String get resultsfor {
     return Intl.message('Results for', name: 'resultsfor', desc: '', args: []);
   }
+
+  /// `Sort & Filter`
+  String get sortAndFilter {
+    return Intl.message(
+      'Sort & Filter',
+      name: 'sortAndFilter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Categories`
+  String get categories {
+    return Intl.message('Categories', name: 'categories', desc: '', args: []);
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message('Filter', name: 'filter', desc: '', args: []);
+  }
+
+  /// `Sort By`
+  String get sortBy {
+    return Intl.message('Sort By', name: 'sortBy', desc: '', args: []);
+  }
+
+  /// `Price Range`
+  String get priceRange {
+    return Intl.message('Price Range', name: 'priceRange', desc: '', args: []);
+  }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message('Clear', name: 'clear', desc: '', args: []);
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+  }
+
+  /// `Reset`
+  String get reset {
+    return Intl.message('Reset', name: 'reset', desc: '', args: []);
+  }
+
+  /// `Rating`
+  String get rating {
+    return Intl.message('Rating', name: 'rating', desc: '', args: []);
+  }
+
+  /// `Please enter a keyword`
+  String get pleaseEnterKeyword {
+    return Intl.message(
+      'Please enter a keyword',
+      name: 'pleaseEnterKeyword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

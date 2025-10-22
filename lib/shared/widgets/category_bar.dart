@@ -12,11 +12,13 @@ import 'package:shimmer/shimmer.dart';
 class CategoryBar extends StatelessWidget {
   final Function(int categoryId) onCategorySelected;
   final Function() onAllSelected;
+  final int defaultCategoryIndex;
 
   const CategoryBar({
     super.key,
     required this.onCategorySelected,
     required this.onAllSelected,
+    this.defaultCategoryIndex = 0,
   });
 
   @override
@@ -41,6 +43,7 @@ class CategoryBar extends StatelessWidget {
               state: state,
               onCategorySelected: onCategorySelected,
               onAllSelected: onAllSelected,
+              defaultCategoryIndex: defaultCategoryIndex,
             );
           }
           if (state is CategoryError) {
@@ -57,11 +60,13 @@ class _CategoriesPart extends StatefulWidget {
   final CategoryLoaded state;
   final Function(int categoryId) onCategorySelected;
   final Function() onAllSelected;
+  final int defaultCategoryIndex;
 
   const _CategoriesPart({
     required this.state,
     required this.onCategorySelected,
     required this.onAllSelected,
+    required this.defaultCategoryIndex,
   });
 
   @override
@@ -69,7 +74,17 @@ class _CategoriesPart extends StatefulWidget {
 }
 
 class _CategoriesPartState extends State<_CategoriesPart> {
-  int selectedIndex = 0;
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.defaultCategoryIndex;
+    //  trigger initial selection callback
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.onCategorySelected(selectedIndex);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

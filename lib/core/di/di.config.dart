@@ -130,6 +130,8 @@ import 'package:evira_e_commerce/features/search/domain/repos/search_repo.dart'
     as _i595;
 import 'package:evira_e_commerce/features/search/domain/usecases/add_search_recent_keyword_usecase.dart'
     as _i299;
+import 'package:evira_e_commerce/features/search/domain/usecases/apply_filters_usecase.dart'
+    as _i289;
 import 'package:evira_e_commerce/features/search/domain/usecases/clear_all_recent_keywords_usecase.dart'
     as _i615;
 import 'package:evira_e_commerce/features/search/domain/usecases/delete_recent_keyword_usecase.dart'
@@ -142,6 +144,8 @@ import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.da
     as _i1071;
 import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart'
     as _i738;
+import 'package:evira_e_commerce/features/search/ui/cubit/filter_cubit.dart'
+    as _i940;
 import 'package:evira_e_commerce/features/set_fingerprint/ui/cubit/fingerprint_cubit.dart'
     as _i418;
 import 'package:evira_e_commerce/features/signup/data/repos/signup_repo_impl.dart'
@@ -220,6 +224,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
     gh.lazySingleton<_i436.ThemeCubit>(() => _i436.ThemeCubit());
+    gh.lazySingleton<_i940.FilterCubit>(() => _i940.FilterCubit());
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
@@ -395,12 +400,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i570.SearchResultUsecase>(
       () => _i570.SearchResultUsecase(gh<_i595.SearchRepo>()),
     );
+    gh.factory<_i289.ApplyFiltersUsecase>(
+      () => _i289.ApplyFiltersUsecase(gh<_i595.SearchRepo>()),
+    );
     gh.factory<_i296.CategoryCubit>(
       () => _i296.CategoryCubit(gh<_i790.GetCategoriesUseCase>()),
     );
     gh.factory<_i819.DeleteNotificationUsecase>(
       () => _i819.DeleteNotificationUsecase(
         notificationRepo: gh<_i305.NotificationRepo>(),
+      ),
+    );
+    gh.factory<_i738.SearchResultsBloc>(
+      () => _i738.SearchResultsBloc(
+        gh<_i570.SearchResultUsecase>(),
+        gh<_i289.ApplyFiltersUsecase>(),
       ),
     );
     gh.factory<_i29.GetUnseenNotificationsCountUseCase>(
@@ -428,9 +442,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i591.GetWishlistByCategoryUsecase>(),
         gh<_i524.OnFavoritesChangesUsecase>(),
       ),
-    );
-    gh.factory<_i738.SearchResultsBloc>(
-      () => _i738.SearchResultsBloc(gh<_i570.SearchResultUsecase>()),
     );
     gh.factory<_i168.GetNotificationsUsecase>(
       () => _i168.GetNotificationsUsecase(gh<_i305.NotificationRepo>()),

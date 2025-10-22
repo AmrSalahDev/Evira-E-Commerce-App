@@ -1,3 +1,4 @@
+import 'package:evira_e_commerce/features/search/domain/entities/filter_entity.dart';
 import 'package:evira_e_commerce/features/search/domain/entities/result_products_entity.dart';
 import 'package:evira_e_commerce/features/search/domain/entities/search_recent_keywords_entity.dart';
 
@@ -9,4 +10,8 @@ abstract class SearchRepo {
     String? keyword,
   );
   Future<List<ResultProductsEntity>> getProductsByKeyword(String keyword);
+  Future<List<ResultProductsEntity>> applyFilters({
+    required FilterEntity filter,
+    required String keyword,
+  });
 }

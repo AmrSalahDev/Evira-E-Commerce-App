@@ -13,17 +13,18 @@ class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.getCategoriesUseCase) : super(CategoryInitial());
 
   Future<void> loadCategories({int limit = 8}) async {
-    if (isClosed) return;
     emit(CategoryLoading());
     await AppUtils.handleCode(
       code: () async {
         final categories = await getCategoriesUseCase(limit);
-        emit(CategoryLoaded(categories));
+        if (!isClosed) emit(CategoryLoaded(categories));
       },
       onNoInternet: (message) {
-        emit(CategoryError(message));
+        if (!isClosed) emit(CategoryError(message));
       },
-      onError: (message) => emit(CategoryError(message)),
+      onError: (message) {
+        if (!isClosed) emit(CategoryError(message));
+      },
     );
   }
 }

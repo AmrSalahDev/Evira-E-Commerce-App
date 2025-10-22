@@ -48,6 +48,7 @@ class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
     });
 
     on<DeleteRecentKeywordEvent>((event, emit) async {
+      emit(SearchRecentKeywordsLoading());
       await AppUtils.handleCode(
         code: () async {
           await deleteRecentKeywordUsecase(event.id);
@@ -60,6 +61,7 @@ class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
     });
 
     on<ClearAllRecentKeywordsEvent>((event, emit) async {
+      emit(SearchRecentKeywordsLoading());
       await AppUtils.handleCode(
         code: () async {
           await clearAllNotificatonsUsecase();
@@ -72,6 +74,7 @@ class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
     });
 
     on<GetRecentKeywordsEvent>((event, emit) async {
+      emit(SearchRecentKeywordsLoading());
       await AppUtils.handleCode(
         code: () async {
           final keywords = await getRecentKeywordsUsecase(event.keyword);
