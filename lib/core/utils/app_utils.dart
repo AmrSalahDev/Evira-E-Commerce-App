@@ -19,6 +19,7 @@ class AppUtils {
 
   static FutureOr<void> handleCode({
     required Function() code,
+    bool? isClosed,
     required Function(String message)? onNoInternet,
     required Function(String message) onError,
   }) async {

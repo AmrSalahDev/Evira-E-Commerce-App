@@ -87,6 +87,14 @@ class _CategoriesPartState extends State<_CategoriesPart> {
   }
 
   @override
+  void didUpdateWidget(covariant _CategoriesPart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.defaultCategoryIndex != widget.defaultCategoryIndex) {
+      selectedIndex = widget.defaultCategoryIndex;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 70.h,
@@ -106,12 +114,12 @@ class _CategoriesPartState extends State<_CategoriesPart> {
           return GestureDetector(
             onTap: () {
               setState(() => selectedIndex = index);
-              if (index != 0) {
+              if (index == 0) {
+                widget.onAllSelected();
+              } else {
                 widget.onCategorySelected(
                   widget.state.categories[index - 1].id,
                 );
-              } else {
-                widget.onAllSelected();
               }
             },
             child: Padding(

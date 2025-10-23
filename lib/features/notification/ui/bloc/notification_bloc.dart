@@ -11,7 +11,6 @@ import 'package:evira_e_commerce/features/notification/domain/usecases/get_notif
 import 'package:evira_e_commerce/features/notification/domain/usecases/get_unseen_notifications_count_usecase.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/listen_notifications_changes_usecase.dart';
 import 'package:evira_e_commerce/features/notification/domain/usecases/mark_notifications_as_seen_usecase.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -40,7 +39,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   ) : super(NotificationInitial()) {
     // Load notifications
     on<LoadNotifications>((event, emit) async {
-      debugPrint('Load notifications');
       await AppUtils.handleCode(
         code: () async {
           emit(NotificationLoading());
@@ -64,7 +62,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
     // Add notification
     on<AddNotification>((event, emit) async {
-      debugPrint('Add notification');
       await AppUtils.handleCode(
         code: () async {
           await notificationService.addNotification(event.notification);
@@ -80,7 +77,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
     // Mark all as seen
     on<MarkNotificationsAsSeen>((event, emit) async {
-      debugPrint('Mark notifications as seen');
       await AppUtils.handleCode(
         code: () async {
           await markNotificationsAsSeenUsecase.call();
@@ -96,7 +92,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
     //  Get unseen count
     on<GetUnseenCount>((event, emit) async {
-      debugPrint('Get unseen count');
       await AppUtils.handleCode(
         code: () async {
           final count = await getUnseenNotificationsCountUsecase.call();
@@ -112,7 +107,6 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     });
 
     on<DeleteNotification>((event, emit) async {
-      debugPrint('Delete notification');
       await AppUtils.handleCode(
         code: () async {
           await deleteNotificationUsecase.call(event.id);
@@ -129,10 +123,9 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
     // Realtime listener for Supabase changes
     on<ListenNotificationChanges>((event, emit) async {
-      debugPrint('Listen notification changes');
+      add(LoadNotifications());
       await AppUtils.handleCode(
         code: () async {
-          add(LoadNotifications());
           await _sub?.cancel();
           _sub = listenChanges.call().listen((_) async {
             add(LoadNotifications());

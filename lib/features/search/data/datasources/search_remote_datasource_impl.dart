@@ -18,11 +18,14 @@ class SearchRemoteDatasourceImpl implements SearchRemoteDatasource {
     if (userId == null || keyword.trim().isEmpty) return;
 
     // Upsert ensures: if keyword already exists for this user, just update timestamp
-    await supabase.from(tableName).upsert({
-      'user_id': userId,
-      'keyword': keyword.trim(),
-      'created_at': DateTime.now().toIso8601String(),
-    });
+    await supabase.from(tableName).upsert(
+      {
+        'user_id': userId,
+        'keyword': keyword.trim(),
+        'created_at': DateTime.now().toIso8601String(),
+      },
+      onConflict: 'user_id,keyword',
+    ); // If a row with the same (user_id, keyword) already exists, update it instead of inserting.
 
     // Optional: keep only last 10 keywords per user
     // await supabase.rpc(

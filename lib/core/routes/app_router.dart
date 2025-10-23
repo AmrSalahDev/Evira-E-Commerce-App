@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:evira_e_commerce/core/di/di.dart';
+import 'package:evira_e_commerce/core/routes/args/category_view_screen_args.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
+import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart';
+import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
@@ -66,6 +69,7 @@ class AppPaths {
   static final String specialOffer = '/specialOffer';
   static final String mostPopular = '/mostPopular';
   static final String search = '/search';
+  static final String categoryView = '/categoryView';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -88,7 +92,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 class AppRouter {
   static GoRouter createRouter(AppFlowCubit appFlowCubit, String path) {
     return GoRouter(
-      initialLocation: AppPaths.search,
+      initialLocation: path,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
         GoRoute(
@@ -124,6 +128,16 @@ class AppRouter {
             value: getIt<NotificationBloc>(),
             child: const NotificationScreen(),
           ),
+        ),
+        GoRoute(
+          path: AppPaths.categoryView,
+          builder: (context, state) {
+            final args = state.extra as CategoryViewScreenArgs;
+            return BlocProvider(
+              create: (context) => getIt<CategoryViewBloc>(),
+              child: CategoryViewScreen(args: args),
+            );
+          },
         ),
 
         GoRoute(

@@ -16,6 +16,18 @@ import 'package:evira_e_commerce/core/services/shared_preferences_service.dart'
 import 'package:evira_e_commerce/core/services/social_auth_service.dart'
     as _i769;
 import 'package:evira_e_commerce/core/services/toast_service.dart' as _i101;
+import 'package:evira_e_commerce/features/category_view/data/datasources/category_view_remote_datasource_impl.dart'
+    as _i103;
+import 'package:evira_e_commerce/features/category_view/data/repos/category_view_repo_impl.dart'
+    as _i36;
+import 'package:evira_e_commerce/features/category_view/domain/datasources/category_view_remote_datasource.dart'
+    as _i109;
+import 'package:evira_e_commerce/features/category_view/domain/repos/category_view_repo.dart'
+    as _i211;
+import 'package:evira_e_commerce/features/category_view/domain/usecases/get_category_products_usecase.dart'
+    as _i86;
+import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart'
+    as _i81;
 import 'package:evira_e_commerce/features/create_pin/data/repos/create_pin_repo_impl.dart'
     as _i825;
 import 'package:evira_e_commerce/features/create_pin/domain/repos/create_pin_repo.dart'
@@ -220,11 +232,14 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i769.SocialAuthService>(() => _i769.SocialAuthService());
     gh.lazySingleton<_i101.ToastService>(() => _i101.ToastService());
+    gh.lazySingleton<_i940.FilterCubit>(() => _i940.FilterCubit());
     gh.lazySingleton<_i170.AppFlowCubit>(() => _i170.AppFlowCubit());
     gh.lazySingleton<_i795.GreetingCubit>(() => _i795.GreetingCubit());
     gh.lazySingleton<_i969.NetworkCubit>(() => _i969.NetworkCubit());
     gh.lazySingleton<_i436.ThemeCubit>(() => _i436.ThemeCubit());
-    gh.lazySingleton<_i940.FilterCubit>(() => _i940.FilterCubit());
+    gh.lazySingleton<_i109.CategoryViewRemoteDatasource>(
+      () => _i103.CategoryViewRemoteDatasourceImpl(),
+    );
     gh.factory<_i149.SocialAuthCubit>(
       () => _i149.SocialAuthCubit(gh<_i769.SocialAuthService>()),
     );
@@ -305,6 +320,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i494.ShowDatePickerUsecase>(
       () => _i494.ShowDatePickerUsecase(gh<_i623.FillProfileRepo>()),
     );
+    gh.lazySingleton<_i211.CategoryViewRepo>(
+      () => _i36.CategoryViewRepoImpl(gh<_i109.CategoryViewRemoteDatasource>()),
+    );
     gh.factory<_i590.AddProductToWishlistUsecase>(
       () => _i590.AddProductToWishlistUsecase(
         wishlistRepo: gh<_i603.WishlistRepo>(),
@@ -372,6 +390,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i790.GetCategoriesUseCase>(
       () => _i790.GetCategoriesUseCase(gh<_i457.CategoryRepo>()),
     );
+    gh.factory<_i86.GetCategoryProductsUsecase>(
+      () => _i86.GetCategoryProductsUsecase(gh<_i211.CategoryViewRepo>()),
+    );
     gh.factory<_i166.LoginCubit>(
       () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
     );
@@ -388,6 +409,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i299.AddSearchRecentKeywordUsecase>(
       () => _i299.AddSearchRecentKeywordUsecase(gh<_i595.SearchRepo>()),
     );
+    gh.factory<_i289.ApplyFiltersUsecase>(
+      () => _i289.ApplyFiltersUsecase(gh<_i595.SearchRepo>()),
+    );
     gh.factory<_i615.ClearAllRecentKeywordsUsecase>(
       () => _i615.ClearAllRecentKeywordsUsecase(gh<_i595.SearchRepo>()),
     );
@@ -400,9 +424,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i570.SearchResultUsecase>(
       () => _i570.SearchResultUsecase(gh<_i595.SearchRepo>()),
     );
-    gh.factory<_i289.ApplyFiltersUsecase>(
-      () => _i289.ApplyFiltersUsecase(gh<_i595.SearchRepo>()),
-    );
     gh.factory<_i296.CategoryCubit>(
       () => _i296.CategoryCubit(gh<_i790.GetCategoriesUseCase>()),
     );
@@ -410,6 +431,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i819.DeleteNotificationUsecase(
         notificationRepo: gh<_i305.NotificationRepo>(),
       ),
+    );
+    gh.factory<_i81.CategoryViewBloc>(
+      () => _i81.CategoryViewBloc(gh<_i86.GetCategoryProductsUsecase>()),
     );
     gh.factory<_i738.SearchResultsBloc>(
       () => _i738.SearchResultsBloc(

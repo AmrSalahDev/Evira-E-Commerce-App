@@ -7,21 +7,22 @@ import 'package:evira_e_commerce/features/search/domain/usecases/get_recent_keyw
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stream_transform/stream_transform.dart';
+//import 'package:stream_transform/stream_transform.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 
 part 'search_recents_event.dart';
 part 'search_recents_state.dart';
 
-EventTransformer<E> debounceEvent<E>(Duration duration) {
-  //return (events, mapper) => events.debounce(duration).asyncExpand(mapper);
+// EventTransformer<E> debounceEvent<E>(Duration duration) {
+//   //return (events, mapper) => events.debounce(duration).asyncExpand(mapper);
 
-  // If your repository method hits an API, you can combine debounce with switchMap to automatically cancel previous API calls when a new keyword arrives.
-  return (events, mapper) => events
-      .debounce(duration)
-      .switchMap(
-        mapper,
-      ); // This ensures: The user types fast → old searches get cancelled → Only the latest one runs
-}
+//   // If your repository method hits an API, you can combine debounce with switchMap to automatically cancel previous API calls when a new keyword arrives.
+//   return (events, mapper) => events
+//       .debounce(duration)
+//       .switchMap(
+//         mapper,
+//       ); // This ensures: The user types fast → old searches get cancelled → Only the latest one runs
+// }
 
 @injectable
 class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
@@ -43,7 +44,9 @@ class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
         },
         onNoInternet: (message) =>
             emit(SearchRecentKeywordsError(message: message)),
-        onError: (message) => emit(SearchRecentKeywordsError(message: message)),
+        onError: (message) {
+          emit(SearchRecentKeywordsError(message: message));
+        },
       );
     });
 
@@ -84,6 +87,7 @@ class SearchRecentsBloc extends Bloc<SearchRecentsEvent, SearchRecentsState> {
             emit(SearchRecentKeywordsError(message: message)),
         onError: (message) => emit(SearchRecentKeywordsError(message: message)),
       );
-    }, transformer: debounceEvent(const Duration(milliseconds: 400)));
+    }, transformer: restartable()); // Cancel previous search and use latest
+    // transformer: debounceEvent(const Duration(milliseconds: 400)));
   }
 }

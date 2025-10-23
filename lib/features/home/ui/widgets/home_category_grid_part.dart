@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evira_e_commerce/core/di/di.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/routes/args/category_view_screen_args.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -57,31 +60,42 @@ class _CategoryGridViewPart extends StatelessWidget {
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Container(
-              height: 75.h,
-              width: 75.h,
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(21.h),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: context.cardColor,
-              ),
-              child: CachedNetworkImage(
-                imageUrl: state.categories[index].iconUrl,
-                color: context.iconColor,
-                height: 70.h,
-                width: 70.h,
-                fit: BoxFit.contain,
-                placeholder: (context, url) => Shimmer.fromColors(
-                  baseColor: context.cardColor,
-                  highlightColor: context.shimmerHighlightColor,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: context.cardColor,
+            GestureDetector(
+              onTap: () {
+                context.push(
+                  AppPaths.categoryView,
+                  extra: CategoryViewScreenArgs(
+                    categoryId: state.categories[index].id,
+                    categoryName: state.categories[index].name,
+                  ),
+                );
+              },
+              child: Container(
+                height: 75.h,
+                width: 75.h,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(21.h),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: context.cardColor,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: state.categories[index].iconUrl,
+                  color: context.iconColor,
+                  height: 70.h,
+                  width: 70.h,
+                  fit: BoxFit.contain,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                    baseColor: context.cardColor,
+                    highlightColor: context.shimmerHighlightColor,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: context.cardColor,
+                      ),
+                      width: 75.h,
+                      height: 75.h,
                     ),
-                    width: 75.h,
-                    height: 75.h,
                   ),
                 ),
               ),

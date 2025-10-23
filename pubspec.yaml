@@ -74,6 +74,9 @@ dependencies:
   animated_digit: ^3.3.2
   talker_bloc_logger: ^5.0.2
   stream_transform: ^2.1.1
+  retry: ^3.1.2
+  visibility_detector: ^0.4.0+2
+  bloc_concurrency: ^0.3.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

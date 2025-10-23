@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:evira_e_commerce/core/utils/app_utils.dart';
 import 'package:evira_e_commerce/features/most_popular/domain/entities/most_popular_entity.dart';
 import 'package:evira_e_commerce/features/most_popular/domain/usecases/get_most_popular_by_category_usecase.dart';
@@ -17,28 +18,30 @@ class MostPopularBloc extends Bloc<MostPopularEvent, MostPopularState> {
     this.getMostPopularUseCase,
     this.getMostPopularByCategoryUseCase,
   ) : super(MostPopularInitial()) {
-    on<GetMostPopularProducts>((event, emit) async {
-      emit(MostPopularLoading());
-      await AppUtils.handleCode(
-        code: () async {
-          if (isClosed) return;
-          if (event.categoryId == 0) {
-            final products = await getMostPopularUseCase.call();
-            emit(MostPopularLoaded(products));
-          } else {
-            final products = await getMostPopularByCategoryUseCase.call(
-              event.categoryId,
-            );
-            emit(MostPopularLoaded(products));
-          }
-        },
-        onNoInternet: (message) {
-          emit(MostPopularError(message));
-        },
-        onError: (message) {
-          emit(MostPopularError(message));
-        },
-      );
-    });
+    on<GetMostPopularProducts>(
+      (event, emit) async {
+        emit(MostPopularLoading());
+        await AppUtils.handleCode(
+          code: () async {
+            if (event.categoryId == 0) {
+              final products = await getMostPopularUseCase.call();
+              emit(MostPopularLoaded(products));
+            } else {
+              final products = await getMostPopularByCategoryUseCase.call(
+                event.categoryId,
+              );
+              emit(MostPopularLoaded(products));
+            }
+          },
+          onNoInternet: (message) {
+            emit(MostPopularError(message));
+          },
+          onError: (message) {
+            emit(MostPopularError(message));
+          },
+        );
+      },
+      transformer: droppable(),
+    ); // Ignore extra refreshes while one is in progress
   }
 }

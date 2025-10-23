@@ -21,7 +21,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +30,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
-  final client = Supabase.instance.client;
   @override
   void initState() {
     super.initState();
@@ -40,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
     context.read<NotificationBloc>().add(ListenNotificationChanges());
     context.read<HomeBannerCubit>().loadBanners();
     context.read<CategoryCubit>().loadCategories();
-    context.read<HomeProductCubit>().loadAllProducts();
   }
 
   @override
@@ -91,13 +88,17 @@ class _HomeScreenState extends State<HomeScreen> with StatefulScreenMixin {
             ),
             SizedBox(height: 20.h),
             CategoryBar(
+              defaultCategoryIndex: 0,
               onCategorySelected: (categoryId) async {
-                await context.read<HomeProductCubit>().getProductsByCategoryId(
-                  categoryId: categoryId,
-                );
+                if (categoryId == 0) {
+                  await context.read<HomeProductCubit>().loadAllProducts();
+                } else {
+                  await context
+                      .read<HomeProductCubit>()
+                      .getProductsByCategoryId(categoryId: categoryId);
+                }
               },
-              onAllSelected: () async =>
-                  await context.read<HomeProductCubit>().loadAllProducts(),
+              onAllSelected: () {},
             ),
             SizedBox(height: 20.h),
             HomeProductPart(),

@@ -1,12 +1,8 @@
-import 'dart:math';
-
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
 import 'package:evira_e_commerce/core/services/toast_service.dart';
-import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/shared/widgets/product_item.dart';
-import 'package:evira_e_commerce/shared/widgets/shimmer_box.dart';
 import 'package:evira_e_commerce/shared/widgets/shimmer_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
