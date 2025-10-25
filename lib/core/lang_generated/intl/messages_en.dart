@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPin": MessageLookupByLibrary.simpleMessage(
       "Add a PIN number to make your account more secure.",
     ),
+    "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
@@ -54,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "codeHasBeenSend": MessageLookupByLibrary.simpleMessage(
       "Code has been send to ",
     ),
+    "color": MessageLookupByLibrary.simpleMessage("Color"),
     "comingSoon": MessageLookupByLibrary.simpleMessage("Coming soon"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmBiometric": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "description": MessageLookupByLibrary.simpleMessage("Description"),
     "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
@@ -182,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "putYourFinger": MessageLookupByLibrary.simpleMessage(
       "Please put your finger on the fingerprint\nscanner to get started",
     ),
+    "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
     "rating": MessageLookupByLibrary.simpleMessage("Rating"),
     "recent": MessageLookupByLibrary.simpleMessage("Recent"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
@@ -199,11 +203,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Set Your Fingerprint",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "showLess": MessageLookupByLibrary.simpleMessage("Show less"),
+    "showMore": MessageLookupByLibrary.simpleMessage("Show more"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
     "signInWithPassword": MessageLookupByLibrary.simpleMessage(
       "Sign in with password",
     ),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "size": MessageLookupByLibrary.simpleMessage("Size"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "sold": MessageLookupByLibrary.simpleMessage("sold"),
     "sortAndFilter": MessageLookupByLibrary.simpleMessage("Sort & Filter"),
@@ -218,6 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many requests",
     ),
+    "totalPrice": MessageLookupByLibrary.simpleMessage("Total Price"),
     "tryAgain": MessageLookupByLibrary.simpleMessage("Try Again"),
     "unknownError": MessageLookupByLibrary.simpleMessage("Unknown error"),
     "verify": MessageLookupByLibrary.simpleMessage("Verify"),

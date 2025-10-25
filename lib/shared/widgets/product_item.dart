@@ -2,12 +2,15 @@ import 'package:animated_digit/animated_digit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:evira_e_commerce/core/routes/app_router.dart';
+import 'package:evira_e_commerce/core/routes/args/product_details_screen_args.dart';
 import 'package:evira_e_commerce/core/theme/app_theme.dart';
 import 'package:evira_e_commerce/features/wishlist/domain/services/wishlist_service.dart';
 import 'package:evira_e_commerce/shared/domain/entities/product_entity.dart';
 import 'package:evira_e_commerce/shared/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -23,33 +26,39 @@ class ProductItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 200.h,
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: context.cardColor,
-                borderRadius: BorderRadius.circular(30.r),
+            GestureDetector(
+              onTap: () => context.push(
+                AppPaths.productDetails,
+                extra: ProductDetailsScreenArgs(productId: product.id),
               ),
+              child: Container(
+                alignment: Alignment.center,
+                height: 200.h,
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: context.cardColor,
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
 
-              child: LayoutBuilder(
-                builder: (context, constraints) => CachedNetworkImage(
-                  imageUrl: product.imageUrl,
-                  fit: BoxFit.contain,
-                  height: constraints.maxHeight,
-                  width: constraints.maxWidth,
-                  alignment: Alignment.center,
-                  placeholder: (context, url) => Shimmer.fromColors(
-                    baseColor: context.cardColor,
-                    highlightColor: context.shimmerHighlightColor,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        color: context.cardColor,
+                child: LayoutBuilder(
+                  builder: (context, constraints) => CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    fit: BoxFit.contain,
+                    height: constraints.maxHeight,
+                    width: constraints.maxWidth,
+                    alignment: Alignment.center,
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: context.cardColor,
+                      highlightColor: context.shimmerHighlightColor,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.r),
+                          color: context.cardColor,
+                        ),
+                        width: constraints.maxWidth,
+                        height: constraints.maxHeight,
                       ),
-                      width: constraints.maxWidth,
-                      height: constraints.maxHeight,
                     ),
                   ),
                 ),

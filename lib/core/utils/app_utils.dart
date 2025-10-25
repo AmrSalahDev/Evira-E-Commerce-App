@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:evira_e_commerce/core/lang_generated/l10n.dart';
+import 'package:flutter/material.dart';
 
 class AppUtils {
   AppUtils._();
@@ -65,5 +66,16 @@ class AppUtils {
     });
 
     return filtered.first;
+  }
+
+  static Color parseHexColor(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+
+    // If only 6 characters are provided (no alpha), add FF (fully opaque)
+    if (hexColor.length == 6) {
+      hexColor = "FF$hexColor";
+    }
+
+    return Color(int.parse(hexColor, radix: 16));
   }
 }

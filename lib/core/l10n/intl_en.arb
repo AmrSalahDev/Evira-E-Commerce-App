@@ -116,5 +116,13 @@
     "apply":"Apply",
     "reset":"Reset",
     "rating":"Rating",
-    "pleaseEnterKeyword":"Please enter a keyword"
+    "pleaseEnterKeyword":"Please enter a keyword",
+    "description":"Description",
+    "showMore":"Show more",
+    "showLess":"Show less",
+    "size":"Size",
+    "color":"Color",
+    "quantity":"Quantity",
+    "addToCart":"Add to Cart",
+    "totalPrice":"Total Price"
 }

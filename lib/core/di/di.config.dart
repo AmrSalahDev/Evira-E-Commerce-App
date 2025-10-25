@@ -132,6 +132,18 @@ import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc
     as _i529;
 import 'package:evira_e_commerce/features/onboarding/ui/cubit/onboarding_cubit.dart'
     as _i672;
+import 'package:evira_e_commerce/features/product_details/data/datasources/product_details_remote_datasource_impl.dart'
+    as _i444;
+import 'package:evira_e_commerce/features/product_details/data/repos/product_details_repo_impl.dart'
+    as _i763;
+import 'package:evira_e_commerce/features/product_details/domain/datasources/product_details_remote_datasource.dart'
+    as _i136;
+import 'package:evira_e_commerce/features/product_details/domain/repos/product_details_repo.dart'
+    as _i408;
+import 'package:evira_e_commerce/features/product_details/domain/usecases/get_product_details_usecase.dart'
+    as _i263;
+import 'package:evira_e_commerce/features/product_details/ui/bloc/product_details_bloc.dart'
+    as _i943;
 import 'package:evira_e_commerce/features/search/data/datasources/search_remote_datasource_impl.dart'
     as _i758;
 import 'package:evira_e_commerce/features/search/data/repos/search_repo_impl.dart'
@@ -275,6 +287,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i675.SearchRemoteDatasource>(
       () => _i758.SearchRemoteDatasourceImpl(),
     );
+    gh.lazySingleton<_i136.ProductDetailsRemoteDatasource>(
+      () => _i444.ProductDetailsRemoteDatasourceImpl(),
+    );
     gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
     gh.lazySingleton<_i815.MostPopularRepo>(
       () => _i299.MostPopularRepoImpl(gh<_i369.MostPopularRemoteDatasource>()),
@@ -377,6 +392,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i583.GetMostPopularUsecase>(
       () => _i583.GetMostPopularUsecase(gh<_i815.MostPopularRepo>()),
     );
+    gh.lazySingleton<_i408.ProductDetailsRepo>(
+      () => _i763.ProductDetailsRepoImpl(
+        gh<_i136.ProductDetailsRemoteDatasource>(),
+      ),
+    );
     gh.lazySingleton<_i306.NotificationService>(
       () => _i306.NotificationService(gh<_i251.NotificationRemoteDataSource>()),
     );
@@ -432,6 +452,9 @@ extension GetItInjectableX on _i174.GetIt {
         notificationRepo: gh<_i305.NotificationRepo>(),
       ),
     );
+    gh.factory<_i263.GetProductDetailsUsecase>(
+      () => _i263.GetProductDetailsUsecase(gh<_i408.ProductDetailsRepo>()),
+    );
     gh.factory<_i81.CategoryViewBloc>(
       () => _i81.CategoryViewBloc(gh<_i86.GetCategoryProductsUsecase>()),
     );
@@ -486,6 +509,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i302.ListenNotificationsChangesUsecase>(),
         gh<_i819.DeleteNotificationUsecase>(),
       ),
+    );
+    gh.factory<_i943.ProductDetailsBloc>(
+      () => _i943.ProductDetailsBloc(gh<_i263.GetProductDetailsUsecase>()),
     );
     gh.factory<_i1071.SearchRecentsBloc>(
       () => _i1071.SearchRecentsBloc(

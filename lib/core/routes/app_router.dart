@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:evira_e_commerce/core/di/di.dart';
 import 'package:evira_e_commerce/core/routes/args/category_view_screen_args.dart';
 import 'package:evira_e_commerce/core/routes/args/no_internet_screen_args.dart';
+import 'package:evira_e_commerce/core/routes/args/product_details_screen_args.dart';
 import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart';
 import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
@@ -10,6 +11,8 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/screens/most_popular_screen.dart';
+import 'package:evira_e_commerce/features/product_details/ui/bloc/product_details_bloc.dart';
+import 'package:evira_e_commerce/features/product_details/ui/screen/product_details_screen.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart';
 import 'package:evira_e_commerce/features/search/ui/cubit/filter_cubit.dart';
@@ -70,6 +73,7 @@ class AppPaths {
   static final String mostPopular = '/mostPopular';
   static final String search = '/search';
   static final String categoryView = '/categoryView';
+  static final String productDetails = '/productDetails';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -136,6 +140,17 @@ class AppRouter {
             return BlocProvider(
               create: (context) => getIt<CategoryViewBloc>(),
               child: CategoryViewScreen(args: args),
+            );
+          },
+        ),
+
+        GoRoute(
+          path: AppPaths.productDetails,
+          builder: (context, state) {
+            final args = state.extra as ProductDetailsScreenArgs?;
+            return BlocProvider(
+              create: (context) => getIt<ProductDetailsBloc>(),
+              child: ProductDetailsScreen(args: args),
             );
           },
         ),

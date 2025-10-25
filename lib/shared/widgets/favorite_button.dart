@@ -6,6 +6,7 @@ class FavoriteButton extends StatefulWidget {
   final bool isFavorited;
   final VoidCallback onFavorited;
   final VoidCallback onUnfavorited;
+  final bool showBackground;
 
   const FavoriteButton({
     super.key,
@@ -14,6 +15,7 @@ class FavoriteButton extends StatefulWidget {
     required this.onFavorited,
     required this.onUnfavorited,
     required this.isFavorited,
+    this.showBackground = true,
   });
 
   @override
@@ -71,23 +73,32 @@ class _FavoriteButtonState extends State<FavoriteButton>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _onTap,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-            colors: [Color(0xFF2d2d2d), Color(0xFF1c1c1c)],
-          ),
-        ),
-        child: ScaleTransition(
-          scale: _scaleAnimation,
-          child: Icon(
-            isFavorite ? Icons.favorite : Icons.favorite_outline,
-            color: widget.heartColor,
-            size: widget.size,
-          ),
-        ),
-      ),
+      child: widget.showBackground
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Color(0xFF2d2d2d), Color(0xFF1c1c1c)],
+                ),
+              ),
+              child: ScaleTransition(
+                scale: _scaleAnimation,
+                child: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_outline,
+                  color: widget.heartColor,
+                  size: widget.size,
+                ),
+              ),
+            )
+          : ScaleTransition(
+              scale: _scaleAnimation,
+              child: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_outline,
+                color: widget.heartColor,
+                size: widget.size,
+              ),
+            ),
     );
   }
 

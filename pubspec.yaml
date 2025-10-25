@@ -77,6 +77,7 @@ dependencies:
   retry: ^3.1.2
   visibility_detector: ^0.4.0+2
   bloc_concurrency: ^0.3.0
+  readmore: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

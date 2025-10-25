@@ -51,6 +51,8 @@ class _CategoryViewScreenState extends State<CategoryViewScreen>
   @override
   Widget buildBody(BuildContext context) {
     return RefreshIndicator(
+      color: context.iconColor,
+      backgroundColor: context.containerColor,
       onRefresh: () async {
         context.read<CategoryViewBloc>().add(
           GetCategoryProductsEvent(categoryId: widget.args.categoryId),

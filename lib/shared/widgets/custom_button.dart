@@ -12,6 +12,7 @@ class CustomButton extends StatefulWidget {
   final bool isLoading;
   final bool handleNoInternet;
   final Widget? loadingWidget;
+  final Widget? icon;
   //final Future<bool> Function()? onNoInternetMessagePressed;
 
   const CustomButton({
@@ -24,6 +25,7 @@ class CustomButton extends StatefulWidget {
     this.loadingWidget,
     //this.onNoInternetMessagePressed,
     this.handleNoInternet = false,
+    this.icon,
   });
 
   @override
@@ -80,6 +82,20 @@ class _CustomButtonState extends State<CustomButton> {
             )
           : widget.isLoading && widget.loadingWidget != null
           ? widget.loadingWidget
+          : widget.icon != null
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                widget.icon!,
+                SizedBox(width: 10.w),
+                Text(
+                  widget.title,
+                  style: AppStyles.buttonTextStyle(
+                    context,
+                  ).copyWith(color: widget.textColor),
+                ),
+              ],
+            )
           : Text(
               widget.title,
               style: AppStyles.buttonTextStyle(
