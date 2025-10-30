@@ -7,6 +7,7 @@ import 'package:evira_e_commerce/core/routes/args/product_details_screen_args.da
 import 'package:evira_e_commerce/features/category_view/ui/bloc/category_view_bloc.dart';
 import 'package:evira_e_commerce/features/category_view/ui/screen/category_view_screen.dart';
 import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
+import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
@@ -20,7 +21,6 @@ import 'package:evira_e_commerce/features/search/ui/screens/search_screen.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/bloc/special_offers_bloc.dart';
 import 'package:evira_e_commerce/features/special_offers/ui/screens/special_offers_screen.dart';
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
-import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart';
 import 'package:evira_e_commerce/features/login/ui/cubit/login_cubit.dart';
 import 'package:evira_e_commerce/features/no_internet/ui/screen/no_internet_screen.dart';
 import 'package:evira_e_commerce/features/notification/ui/bloc/notification_bloc.dart';
@@ -118,7 +118,7 @@ class AppRouter {
                 BlocProvider(create: (context) => getIt<GreetingCubit>()),
                 BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
                 BlocProvider(create: (context) => getIt<CategoryCubit>()),
-                BlocProvider(create: (context) => getIt<HomeProductCubit>()),
+                BlocProvider(create: (context) => getIt<HomeProductsBloc>()),
                 BlocProvider.value(value: getIt<NotificationBloc>()),
               ],
               child: const HomeScreen(),

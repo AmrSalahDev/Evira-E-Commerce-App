@@ -1008,6 +1008,16 @@ class EviraLang {
   String get totalPrice {
     return Intl.message('Total Price', name: 'totalPrice', desc: '', args: []);
   }
+
+  /// `No more products to show.`
+  String get noMoreProducts {
+    return Intl.message(
+      'No more products to show.',
+      name: 'noMoreProducts',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<EviraLang> {

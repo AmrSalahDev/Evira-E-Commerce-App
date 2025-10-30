@@ -124,5 +124,6 @@
     "color":"Color",
     "quantity":"Quantity",
     "addToCart":"Add to Cart",
-    "totalPrice":"Total Price"
+    "totalPrice":"Total Price",
+    "noMoreProducts":"No more products to show."
 }

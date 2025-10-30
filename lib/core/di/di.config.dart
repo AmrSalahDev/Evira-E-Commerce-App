@@ -60,32 +60,34 @@ import 'package:evira_e_commerce/features/fill_profile/ui/cubit/fill_profile_cub
     as _i179;
 import 'package:evira_e_commerce/features/fill_profile/ui/cubit/profile_image_cubit.dart'
     as _i378;
+import 'package:evira_e_commerce/features/home/data/datasources/home_remote_datasource_impl.dart'
+    as _i168;
 import 'package:evira_e_commerce/features/home/data/repos/home_app_bar_repo_impl.dart'
     as _i603;
 import 'package:evira_e_commerce/features/home/data/repos/home_banner_repo_impl.dart'
     as _i170;
-import 'package:evira_e_commerce/features/home/data/repos/home_product_repo_impl.dart'
-    as _i99;
+import 'package:evira_e_commerce/features/home/data/repos/home_repo_impl.dart'
+    as _i478;
+import 'package:evira_e_commerce/features/home/domain/datasources/home_remote_datasource.dart'
+    as _i924;
 import 'package:evira_e_commerce/features/home/domain/repos/home_app_bar_repo.dart'
     as _i771;
 import 'package:evira_e_commerce/features/home/domain/repos/home_banner_repo.dart'
     as _i487;
-import 'package:evira_e_commerce/features/home/domain/repos/home_product_repo.dart'
-    as _i424;
-import 'package:evira_e_commerce/features/home/domain/usecases/get_all_products_usecase.dart'
-    as _i350;
+import 'package:evira_e_commerce/features/home/domain/repos/home_repo.dart'
+    as _i670;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_home_banners_usecase.dart'
     as _i167;
-import 'package:evira_e_commerce/features/home/domain/usecases/get_products_by_category_id_usecase.dart'
-    as _i685;
+import 'package:evira_e_commerce/features/home/domain/usecases/get_home_products_usecase.dart'
+    as _i1058;
 import 'package:evira_e_commerce/features/home/domain/usecases/get_user_info_usecase.dart'
     as _i965;
+import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart'
+    as _i1051;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart'
     as _i329;
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
     as _i1000;
-import 'package:evira_e_commerce/features/home/ui/cubits/home_product_cubit.dart'
-    as _i385;
 import 'package:evira_e_commerce/features/login/data/repos/login_repo_impl.dart'
     as _i1036;
 import 'package:evira_e_commerce/features/login/domain/repos/login_repo.dart'
@@ -271,7 +273,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i563.SpecialOffersRepo>(
       () => _i752.SpecialOffersRepoImpl(gh<_i64.SpecialOffersDatasource>()),
     );
-    gh.lazySingleton<_i424.HomeProductRepo>(() => _i99.HomeProductRepoImpl());
     gh.lazySingleton<_i1011.ImagePickerRepo>(() => _i782.ImagePickerRepoImpl());
     gh.lazySingleton<_i962.SignupRepo>(() => _i280.SignupRepoImpl());
     gh.lazySingleton<_i890.LoginRepo>(() => _i1036.LoginRepoImpl());
@@ -290,15 +291,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i136.ProductDetailsRemoteDatasource>(
       () => _i444.ProductDetailsRemoteDatasourceImpl(),
     );
+    gh.lazySingleton<_i924.HomeRemoteDatasource>(
+      () => _i168.HomeRemoteDatasourceImpl(),
+    );
     gh.lazySingleton<_i457.CategoryRepo>(() => _i1010.CategoryRepoImpl());
     gh.lazySingleton<_i815.MostPopularRepo>(
       () => _i299.MostPopularRepoImpl(gh<_i369.MostPopularRemoteDatasource>()),
-    );
-    gh.factory<_i350.GetAllProductsUsecase>(
-      () => _i350.GetAllProductsUsecase(gh<_i424.HomeProductRepo>()),
-    );
-    gh.factory<_i685.GetProductsByCategoryIdUsecase>(
-      () => _i685.GetProductsByCategoryIdUsecase(gh<_i424.HomeProductRepo>()),
     );
     gh.lazySingleton<_i603.WishlistRepo>(
       () => _i540.WishlistRepoImpl(gh<_i307.WishlistRemoteDataSource>()),
@@ -410,21 +408,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i790.GetCategoriesUseCase>(
       () => _i790.GetCategoriesUseCase(gh<_i457.CategoryRepo>()),
     );
+    gh.lazySingleton<_i670.HomeRepo>(
+      () => _i478.HomeRepoImpl(gh<_i924.HomeRemoteDatasource>()),
+    );
     gh.factory<_i86.GetCategoryProductsUsecase>(
       () => _i86.GetCategoryProductsUsecase(gh<_i211.CategoryViewRepo>()),
     );
     gh.factory<_i166.LoginCubit>(
       () => _i166.LoginCubit(gh<_i516.LoginUsecase>()),
     );
+    gh.factory<_i1058.GetHomeProductsUsecase>(
+      () => _i1058.GetHomeProductsUsecase(gh<_i670.HomeRepo>()),
+    );
     gh.lazySingleton<_i305.NotificationRepo>(
       () =>
           _i583.NotificationRepoImpl(gh<_i251.NotificationRemoteDataSource>()),
-    );
-    gh.factory<_i385.HomeProductCubit>(
-      () => _i385.HomeProductCubit(
-        gh<_i685.GetProductsByCategoryIdUsecase>(),
-        gh<_i350.GetAllProductsUsecase>(),
-      ),
     );
     gh.factory<_i299.AddSearchRecentKeywordUsecase>(
       () => _i299.AddSearchRecentKeywordUsecase(gh<_i595.SearchRepo>()),
@@ -443,6 +441,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i570.SearchResultUsecase>(
       () => _i570.SearchResultUsecase(gh<_i595.SearchRepo>()),
+    );
+    gh.factory<_i1051.HomeProductsBloc>(
+      () => _i1051.HomeProductsBloc(gh<_i1058.GetHomeProductsUsecase>()),
     );
     gh.factory<_i296.CategoryCubit>(
       () => _i296.CategoryCubit(gh<_i790.GetCategoriesUseCase>()),

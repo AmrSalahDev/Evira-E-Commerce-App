@@ -147,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please check your Wi-Fi or mobile data and try again.",
     ),
     "noInternetTitle": MessageLookupByLibrary.simpleMessage("No Internet"),
+    "noMoreProducts": MessageLookupByLibrary.simpleMessage(
+      "No more products to show.",
+    ),
     "noNotifications": MessageLookupByLibrary.simpleMessage(
       "No notifications yet.",
     ),

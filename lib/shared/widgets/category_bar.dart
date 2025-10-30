@@ -10,8 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CategoryBar extends StatelessWidget {
-  final Function(int categoryId) onCategorySelected;
-  final Function() onAllSelected;
+  final void Function(int categoryId) onCategorySelected;
+  final void Function() onAllSelected;
   final int defaultCategoryIndex;
 
   const CategoryBar({

@@ -26,3 +26,11 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+
+
+bloc:
+  rules:
+    #avoid_build_context_extensions: true
+    avoid_flutter_imports: true
+    avoid_public_bloc_methods: true
+    #avoid_public_fields: true
