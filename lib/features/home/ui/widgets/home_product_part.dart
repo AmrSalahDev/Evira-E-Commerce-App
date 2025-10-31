@@ -24,7 +24,6 @@ class HomeProductPart extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is HomeProductsLoading) {
-          // First page loading shimmer
           return ShimmerProducts();
         }
 
@@ -72,20 +71,11 @@ class _ProductsPart extends StatelessWidget {
             return ProductItem(product: product);
           },
         ),
-
         // Show bottom loader while loading more
         if (!state.hasReachedEnd)
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20.h),
             child: const CircularProgressIndicator(),
-          )
-        else
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h),
-            child: Text(
-              EviraLang.of(context).noMoreProducts,
-              style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-            ),
           ),
       ],
     );

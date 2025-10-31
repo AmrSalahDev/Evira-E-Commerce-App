@@ -92,78 +92,75 @@ class _HomeScreenState extends State<HomeScreen> {
               _isLoadingMore = false; // Reset after load completes or fails
             }
           },
-          child: SafeArea(
-            child: CustomScrollView(
-              controller: _scrollController,
-              clipBehavior: Clip.none,
-              slivers: [
-                SliverStickyHeader(
-                  header: Container(
+          child: CustomScrollView(
+            controller: _scrollController,
+            clipBehavior: Clip.none,
+            slivers: [
+              SliverStickyHeader(
+                header: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  color: context.backgroundColor,
+                  child: Column(
+                    children: [
+                      SizedBox(height: 30.h),
+                      const HomeAppBarPart(),
+                      SizedBox(height: 30.h),
+                      HomeSearchBarPart(
+                        onTap: () => context.push(AppPaths.search),
+                      ),
+                      SizedBox(height: 5.h),
+                    ],
+                  ),
+                ),
+                sliver: SliverToBoxAdapter(
+                  child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    color: context.backgroundColor,
                     child: Column(
                       children: [
-                        const HomeAppBarPart(),
-                        SizedBox(height: 30.h),
-                        HomeSearchBarPart(
-                          onTap: () => context.push(AppPaths.search),
+                        SizedBox(height: 25.h),
+                        SeeAllWidgetPart(
+                          title: EviraLang.of(context).specialOffers,
+                          onTap: () => context.push(AppPaths.specialOffer),
                         ),
-                        SizedBox(height: 5.h),
+                        SizedBox(height: 30.h),
+                        const HomeBannerPart(),
+
+                        const HomeCategoryGridPart(),
+                        SizedBox(height: 30.h),
+                        SeeAllWidgetPart(
+                          title: EviraLang.of(context).mostPopular,
+                          onTap: () => context.push(AppPaths.mostPopular),
+                        ),
+                        SizedBox(height: 20.h),
+                        CategoryBar(
+                          onCategorySelected: (categoryId) {
+                            _currentPage =
+                                1; // Reset page when switching categories
+                            context.read<HomeProductsBloc>().add(
+                              LoadHomeProducts(
+                                limit: 10,
+                                page: _currentPage,
+                                categoryId: categoryId == 0 ? null : categoryId,
+                              ),
+                            );
+                          },
+                          onAllSelected: () {
+                            _currentPage =
+                                1; // Reset page when switching categories
+                            context.read<HomeProductsBloc>().add(
+                              LoadHomeProducts(limit: 10, page: _currentPage),
+                            );
+                          },
+                        ),
+
+                        const HomeProductPart(),
+                        SizedBox(height: 50.h),
                       ],
                     ),
                   ),
-                  sliver: SliverToBoxAdapter(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 25.h),
-                          SeeAllWidgetPart(
-                            title: EviraLang.of(context).specialOffers,
-                            onTap: () => context.push(AppPaths.specialOffer),
-                          ),
-                          SizedBox(height: 30.h),
-                          const HomeBannerPart(),
-                          SizedBox(height: 30.h),
-                          const HomeCategoryGridPart(),
-                          SizedBox(height: 30.h),
-                          SeeAllWidgetPart(
-                            title: EviraLang.of(context).mostPopular,
-                            onTap: () => context.push(AppPaths.mostPopular),
-                          ),
-                          SizedBox(height: 20.h),
-                          CategoryBar(
-                            onCategorySelected: (categoryId) {
-                              _currentPage =
-                                  1; // Reset page when switching categories
-                              context.read<HomeProductsBloc>().add(
-                                LoadHomeProducts(
-                                  limit: 10,
-                                  page: _currentPage,
-                                  categoryId: categoryId == 0
-                                      ? null
-                                      : categoryId,
-                                ),
-                              );
-                            },
-                            onAllSelected: () {
-                              _currentPage =
-                                  1; // Reset page when switching categories
-                              context.read<HomeProductsBloc>().add(
-                                LoadHomeProducts(limit: 10, page: _currentPage),
-                              );
-                            },
-                          ),
-                          SizedBox(height: 20.h),
-                          const HomeProductPart(),
-                          SizedBox(height: 50.h),
-                        ],
-                      ),
-                    ),
-                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
