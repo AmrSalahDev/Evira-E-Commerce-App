@@ -8,7 +8,6 @@ import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart'
 import 'package:evira_e_commerce/shared/cubits/category_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_app_bar_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_banner_part.dart';
-import 'package:evira_e_commerce/features/home/ui/widgets/home_bottom_navigation_bar.dart';
 import 'package:evira_e_commerce/shared/widgets/category_bar.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_category_grid_part.dart';
 import 'package:evira_e_commerce/features/home/ui/widgets/home_product_part.dart';
@@ -173,7 +172,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const HomeBottomNavigationBar(),
     );
   }
 }

@@ -11,6 +11,8 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
 
   bool get applyPaddingForBottomNavigationBar => true;
 
+  bool get showBackButton => true;
+
   String get title => "";
 
   Widget? buildBottomNavigationBar() => null;
@@ -41,17 +43,22 @@ mixin StatefulScreenMixin<T extends StatefulWidget> on State<T> {
                       ),
                     )
                   : null,
-              leading: IconButton(
-                padding: EdgeInsets.zero,
-                iconSize: 30.h,
+              leading: showBackButton
+                  ? IconButton(
+                      padding: EdgeInsets.zero,
+                      iconSize: 30.h,
 
-                constraints: BoxConstraints(minWidth: 48.h, minHeight: 48.h),
-                color: context.iconColor,
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  if (Navigator.canPop(context)) Navigator.pop(context);
-                },
-              ),
+                      constraints: BoxConstraints(
+                        minWidth: 48.h,
+                        minHeight: 48.h,
+                      ),
+                      color: context.iconColor,
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        if (Navigator.canPop(context)) Navigator.pop(context);
+                      },
+                    )
+                  : null,
               actions: buildActions(),
 
               backgroundColor: context.backgroundColor,

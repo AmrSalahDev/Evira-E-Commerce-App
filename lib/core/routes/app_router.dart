@@ -10,10 +10,13 @@ import 'package:evira_e_commerce/features/error/ui/screen/error_screen.dart';
 import 'package:evira_e_commerce/features/home/ui/bloc/home_products_bloc.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_app_bar_cubit.dart';
 import 'package:evira_e_commerce/features/home/ui/cubits/home_banner_cubit.dart';
+import 'package:evira_e_commerce/shared/widgets/custom_bottom_navigation_bar.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/bloc/most_popular_bloc.dart';
 import 'package:evira_e_commerce/features/most_popular/ui/screens/most_popular_screen.dart';
 import 'package:evira_e_commerce/features/product_details/ui/bloc/product_details_bloc.dart';
 import 'package:evira_e_commerce/features/product_details/ui/screen/product_details_screen.dart';
+import 'package:evira_e_commerce/features/profile/ui/bloc/profile_bloc.dart';
+import 'package:evira_e_commerce/features/profile/ui/screen/profile_screen.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_recents_bloc.dart';
 import 'package:evira_e_commerce/features/search/ui/blocs/search_results_bloc.dart';
 import 'package:evira_e_commerce/features/search/ui/cubit/filter_cubit.dart';
@@ -74,6 +77,7 @@ class AppPaths {
   static final String search = '/search';
   static final String categoryView = '/categoryView';
   static final String productDetails = '/productDetails';
+  static final String profile = '/profile';
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
@@ -99,6 +103,38 @@ class AppRouter {
       initialLocation: path,
       refreshListenable: GoRouterRefreshStream(appFlowCubit.stream),
       routes: <RouteBase>[
+        ShellRoute(
+          builder: (context, state, child) {
+            return CustomBottomNavigationBar(child: child);
+          },
+          routes: [
+            GoRoute(
+              path: AppPaths.home,
+              builder: (context, state) {
+                return MultiBlocProvider(
+                  providers: [
+                    BlocProvider(create: (context) => getIt<HomeAppBarCubit>()),
+                    BlocProvider(create: (context) => getIt<GreetingCubit>()),
+                    BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
+                    BlocProvider(create: (context) => getIt<CategoryCubit>()),
+                    BlocProvider(
+                      create: (context) => getIt<HomeProductsBloc>(),
+                    ),
+                    BlocProvider.value(value: getIt<NotificationBloc>()),
+                  ],
+                  child: const HomeScreen(),
+                );
+              },
+            ),
+            GoRoute(
+              path: AppPaths.profile,
+              builder: (context, state) => BlocProvider(
+                create: (context) => getIt<ProfileBloc>(),
+                child: const ProfileScreen(),
+              ),
+            ),
+          ],
+        ),
         GoRoute(
           path: AppPaths.onboarding,
           builder: (context, state) {
@@ -110,29 +146,13 @@ class AppRouter {
         ),
 
         GoRoute(
-          path: AppPaths.home,
-          builder: (context, state) {
-            return MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => getIt<HomeAppBarCubit>()),
-                BlocProvider(create: (context) => getIt<GreetingCubit>()),
-                BlocProvider(create: (context) => getIt<HomeBannerCubit>()),
-                BlocProvider(create: (context) => getIt<CategoryCubit>()),
-                BlocProvider(create: (context) => getIt<HomeProductsBloc>()),
-                BlocProvider.value(value: getIt<NotificationBloc>()),
-              ],
-              child: const HomeScreen(),
-            );
-          },
-        ),
-
-        GoRoute(
           path: AppPaths.notification,
           builder: (context, state) => BlocProvider.value(
             value: getIt<NotificationBloc>(),
             child: const NotificationScreen(),
           ),
         ),
+
         GoRoute(
           path: AppPaths.categoryView,
           builder: (context, state) {
