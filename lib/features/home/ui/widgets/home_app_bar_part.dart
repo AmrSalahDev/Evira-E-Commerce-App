@@ -27,7 +27,7 @@ class HomeAppBarPart extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      HomeGreetingPart(),
+                      const HomeGreetingPart(),
                       HomeUserNamePart(name: state.data?.name),
                     ],
                   ),
