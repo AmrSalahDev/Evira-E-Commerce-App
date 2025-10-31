@@ -32,6 +32,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final ScrollController _scrollController;
+  int? _selectedCategoryId;
   int _currentPage = 1;
   bool _isLoadingMore = false;
 
@@ -63,8 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _isLoadingMore = true;
     _currentPage++;
+
     context.read<HomeProductsBloc>().add(
-      LoadMoreHomeProducts(limit: 10, page: _currentPage),
+      LoadMoreHomeProducts(
+        limit: 10,
+        page: _currentPage,
+        categoryId: _selectedCategoryId,
+      ),
     );
   }
 
@@ -124,7 +130,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         SizedBox(height: 30.h),
                         const HomeBannerPart(),
-
                         const HomeCategoryGridPart(),
                         SizedBox(height: 30.h),
                         SeeAllWidgetPart(
@@ -134,17 +139,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(height: 20.h),
                         CategoryBar(
                           onCategorySelected: (categoryId) {
+                            _selectedCategoryId = categoryId == 0
+                                ? null
+                                : categoryId;
                             _currentPage =
                                 1; // Reset page when switching categories
                             context.read<HomeProductsBloc>().add(
                               LoadHomeProducts(
                                 limit: 10,
                                 page: _currentPage,
-                                categoryId: categoryId == 0 ? null : categoryId,
+                                categoryId: _selectedCategoryId,
                               ),
                             );
                           },
                           onAllSelected: () {
+                            _selectedCategoryId = null;
                             _currentPage =
                                 1; // Reset page when switching categories
                             context.read<HomeProductsBloc>().add(
